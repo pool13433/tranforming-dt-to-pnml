@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+    <net id="n-3BB8-AC2DF-0" type="http://www.laas.fr/tina/tpn">
+        <name>
+            <text>buffer1</text>
+        </name>
+        <page id="g-3BB8-AC2EB-1">
+            <place id="p-3BB8-AC2A1">
+                <name>
+                    <text>A1</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <label>
+                    <text>Receive 3%</text>
+                    <graphics>
+                        <offset x="10" y="-10"/>
+                    </graphics>
+                </label>
+                <graphics>
+                    <position x="820" y="335"/>
+                </graphics>
+            </place>
+            <place id="p-3BB8-AC2A2">
+                <name>
+                    <text>A2</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <label>
+                    <text>Receive 5%</text>
+                    <graphics>
+                        <offset x="10" y="-10"/>
+                    </graphics>
+                </label>
+                <graphics>
+                    <position x="820" y="425"/>
+                </graphics>
+            </place>
+            <place id="p-3BB8-AC2A3">
+                <name>
+                    <text>A3</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <label>
+                    <text>Receive10%</text>
+                    <graphics>
+                        <offset x="10" y="-10"/>
+                    </graphics>
+                </label>
+                <graphics>
+                    <position x="820" y="515"/>
+                </graphics>
+            </place>
+            <place id="p-3BB8-AC2C1">
+                <name>
+                    <text>C1</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <label>
+                    <text>Salary</text>
+                    <graphics>
+                        <offset x="10" y="-10"/>
+                    </graphics>
+                </label>
+                <graphics>
+                    <position x="240" y="330"/>
+                </graphics>
+            </place>
+            <place id="p-3BB8-AC2C2">
+                <name>
+                    <text>C2</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <label>
+                    <text>Age</text>
+                    <graphics>
+                        <offset x="10" y="-10"/>
+                    </graphics>
+                </label>
+                <graphics>
+                    <position x="240" y="420"/>
+                </graphics>
+            </place>
+            <place id="p-3BB8-AC2C3">
+                <name>
+                    <text>C3</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <label>
+                    <text>Gender</text>
+                    <graphics>
+                        <offset x="10" y="-10"/>
+                    </graphics>
+                </label>
+                <graphics>
+                    <position x="240" y="510"/>
+                </graphics>
+            </place>
+            <place id="p-3BB8-AC31AD1">
+                <name>
+                    <text>D1</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <initialMarking>
+                    <text>1</text>
+                </initialMarking>
+                <graphics>
+                    <position x="35" y="125"/>
+                </graphics>
+            </place>
+            <place id="p-3BB8-AC31AD2">
+                <name>
+                    <text>D2</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <initialMarking>
+                    <text>1</text>
+                </initialMarking>
+                <graphics>
+                    <position x="35" y="225"/>
+                </graphics>
+            </place>
+            <place id="p-3BB8-AC31AD3">
+                <name>
+                    <text>D3</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <initialMarking>
+                    <text>1</text>
+                </initialMarking>
+                <graphics>
+                    <position x="35" y="325"/>
+                </graphics>
+            </place>
+            <place id="p-3BB8-AC31AD4">
+                <name>
+                    <text>D4</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <initialMarking>
+                    <text>1</text>
+                </initialMarking>
+                <graphics>
+                    <position x="35" y="425"/>
+                </graphics>
+            </place>
+            <place id="p-3BB8-AC31AD5">
+                <name>
+                    <text>D5</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <initialMarking>
+                    <text>1</text>
+                </initialMarking>
+                <graphics>
+                    <position x="35" y="525"/>
+                </graphics>
+            </place>
+            <transition id="t-3BB8-AC30D-XR4">
+                <name>
+                    <text>CT1</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="460" y="50"/>
+                </graphics>
+            </transition>
+            <transition id="t-3BB8-AC30D-XR5">
+                <name>
+                    <text>CT2</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="460" y="140"/>
+                </graphics>
+            </transition>
+            <transition id="t-3BB8-AC30D-XR1">
+                <name>
+                    <text>CT3</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="460" y="230"/>
+                </graphics>
+            </transition>
+            <transition id="t-3BB8-AC30D-XR1">
+                <name>
+                    <text>CT4</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="460" y="320"/>
+                </graphics>
+            </transition>
+            <transition id="t-3BB8-AC30D-XR2">
+                <name>
+                    <text>CT5</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="460" y="410"/>
+                </graphics>
+            </transition>
+            <transition id="t-3BB8-AC30D-XR3">
+                <name>
+                    <text>CT6</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="460" y="500"/>
+                </graphics>
+            </transition>
+            <transition id="t-3BB8-AC30D-XR3">
+                <name>
+                    <text>CT7</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="460" y="590"/>
+                </graphics>
+            </transition>
+        </page>
+    </net>
+</pnml>

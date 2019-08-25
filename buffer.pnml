@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net id="n-3BB8-AC2DF-0" type="http://www.laas.fr/tina/tpn">
+    <name>
+      <text>buffer1</text>
+    </name>
+    <page id="g-3BB8-AC2EB-1">
+      <place id="p-3BB8-AC2EE-2">
+        <name>
+          <text>A1</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <label>
+          <text>Receive 3%</text>
+          <graphics>
+            <offset x="10" y="-10" />
+          </graphics>
+        </label>
+        <graphics>
+          <position x="820" y="245" />
+        </graphics>
+      </place>
+      <place id="p-3BB8-AC2FE-3">
+        <name>
+          <text>A2</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <label>
+          <text>Receive 5%</text>
+          <graphics>
+            <offset x="10" y="-10" />
+          </graphics>
+        </label>
+        <graphics>
+          <position x="825" y="335" />
+        </graphics>
+      </place>
+      <place id="p-3BB8-AC302-4">
+        <name>
+          <text>A3</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <label>
+          <text>Receive 10%</text>
+          <graphics>
+            <offset x="10" y="-10" />
+          </graphics>
+        </label>
+        <graphics>
+          <position x="825" y="425" />
+        </graphics>
+      </place>
+      <place id="p-3BB8-AC305-5">
+        <name>
+          <text>C1</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <label>
+          <text>Salary</text>
+          <graphics>
+            <offset x="10" y="-10" />
+          </graphics>
+        </label>
+        <graphics>
+          <position x="240" y="240" />
+        </graphics>
+      </place>
+      <place id="p-3BB8-AC308-6">
+        <name>
+          <text>C2</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <label>
+          <text>Age</text>
+          <graphics>
+            <offset x="10" y="-10" />
+          </graphics>
+        </label>
+        <graphics>
+          <position x="240" y="330" />
+        </graphics>
+      </place>
+      <place id="p-3BB8-AC30A-7">
+        <name>
+          <text>C3</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <label>
+          <text>Gender</text>
+          <graphics>
+            <offset x="10" y="-10" />
+          </graphics>
+        </label>
+        <graphics>
+          <position x="240" y="420" />
+        </graphics>
+      </place>
+      <transition id="t-3BB8-AC30D-8">
+        <name>
+          <text>CT1</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="460" y="50" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC30F-9">
+        <name>
+          <text>CT2</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="460" y="140" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC312-10">
+        <name>
+          <text>CT3</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="460" y="230" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC313-11">
+        <name>
+          <text>CT4</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="460" y="305" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC315-12">
+        <name>
+          <text>CT5</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="460" y="390" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC317-13">
+        <name>
+          <text>CT6</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="460" y="465" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC319-14">
+        <name>
+          <text>CT7</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="460" y="550" />
+        </graphics>
+      </transition>
+      <place id="p-3BB8-AC31A-15">
+        <name>
+          <text>D1</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="35" y="125" />
+        </graphics>
+      </place>
+      <place id="p-3BB8-AC31C-16">
+        <name>
+          <text>D2</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="30" y="215" />
+        </graphics>
+      </place>
+      <place id="p-3BB8-AC35E-17">
+        <name>
+          <text>D3</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="30" y="295" />
+        </graphics>
+      </place>
+      <place id="p-3BB8-AC360-18">
+        <name>
+          <text>D4</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="30" y="380" />
+        </graphics>
+      </place>
+      <place id="p-3BB8-AC362-19">
+        <name>
+          <text>D5</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="30" y="465" />
+        </graphics>
+      </place>
+      <transition id="t-3BB8-AC363-20">
+        <name>
+          <text>DT1</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="125" y="125" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC366-21">
+        <name>
+          <text>DT2</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="125" y="215" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC367-22">
+        <name>
+          <text>DT3</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="120" y="295" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC369-23">
+        <name>
+          <text>DT4</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="120" y="380" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC36A-24">
+        <name>
+          <text>DT5</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="120" y="465" />
+        </graphics>
+      </transition>
+      <place id="p-3BB8-AC36D-25">
+        <name>
+          <text>R1</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="545" y="50" />
+        </graphics>
+      </place>
+      <place id="p-3BB8-AC36E-26">
+        <name>
+          <text>R2</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="545" y="140" />
+        </graphics>
+      </place>
+      <place id="p-3BB8-AC371-27">
+        <name>
+          <text>R3</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="545" y="230" />
+        </graphics>
+      </place>
+      <place id="p-3BB8-AC372-28">
+        <name>
+          <text>R4.1</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="545" y="305" />
+        </graphics>
+      </place>
+      <place id="p-3BB8-AC374-29">
+        <name>
+          <text>R4.2</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="545" y="390" />
+        </graphics>
+      </place>
+      <place id="p-3BB8-AC375-30">
+        <name>
+          <text>R5.1</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="545" y="465" />
+        </graphics>
+      </place>
+      <place id="p-3BB8-AC377-31">
+        <name>
+          <text>R5.2</text>
+          <graphics>
+            <offset x="0" y="-10" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="545" y="550" />
+        </graphics>
+      </place>
+      <transition id="t-3BB8-AC379-32">
+        <name>
+          <text>RT1</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="635" y="50" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC37B-33">
+        <name>
+          <text>RT2</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="635" y="140" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC37C-34">
+        <name>
+          <text>RT3</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="635" y="230" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC37F-35">
+        <name>
+          <text>RT4</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="635" y="305" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC380-36">
+        <name>
+          <text>RT5</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="635" y="390" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC3A4-37">
+        <name>
+          <text>RT6</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="635" y="465" />
+        </graphics>
+      </transition>
+      <transition id="t-3BB8-AC3A5-38">
+        <name>
+          <text>RT7</text>
+          <graphics>
+            <offset x="0" y="0" />
+          </graphics>
+        </name>
+        <graphics>
+          <position x="635" y="550" />
+        </graphics>
+      </transition>
+      <arc id="e-3BB8-AC3A8-39" source="p-3BB8-AC362-19" target="t-3BB8-AC36A-24"></arc>
+      <arc id="e-3BB8-AC3AC-40" source="t-3BB8-AC317-13" target="p-3BB8-AC375-30"></arc>
+      <arc id="e-3BB8-AC3AC-41" source="t-3BB8-AC380-36" target="p-3BB8-AC302-4"></arc>
+      <arc id="e-3BB8-AC3AD-42" source="p-3BB8-AC374-29" target="t-3BB8-AC380-36"></arc>
+      <arc id="e-3BB8-AC3AE-43" source="t-3BB8-AC315-12" target="p-3BB8-AC374-29"></arc>
+      <arc id="e-3BB8-AC3B0-44" source="t-3BB8-AC37F-35" target="p-3BB8-AC302-4"></arc>
+      <arc id="e-3BB8-AC3B0-45" source="p-3BB8-AC372-28" target="t-3BB8-AC37F-35"></arc>
+      <arc id="e-3BB8-AC3B1-46" source="t-3BB8-AC313-11" target="p-3BB8-AC372-28"></arc>
+      <arc id="e-3BB8-AC3B1-47" source="p-3BB8-AC30A-7" target="t-3BB8-AC319-14">
+        <type value="inhibitor" />
+      </arc>
+      <arc id="e-3BB8-AC3B5-48" source="p-3BB8-AC308-6" target="t-3BB8-AC319-14">
+        <type value="inhibitor" />
+      </arc>
+      <arc id="e-3BB8-AC3B5-49" source="p-3BB8-AC305-5" target="t-3BB8-AC319-14">
+        <type value="inhibitor" />
+      </arc>
+      <arc id="e-3BB8-AC3B6-50" source="t-3BB8-AC369-23" target="p-3BB8-AC308-6"></arc>
+      <arc id="e-3BB8-AC3B8-51" source="p-3BB8-AC308-6" target="t-3BB8-AC317-13">
+        <type value="inhibitor" />
+      </arc>
+      <arc id="e-3BB8-AC3B8-52" source="p-3BB8-AC305-5" target="t-3BB8-AC317-13">
+        <type value="inhibitor" />
+      </arc>
+      <arc id="e-3BB8-AC3B9-53" source="p-3BB8-AC30A-7" target="t-3BB8-AC317-13"></arc>
+      <arc id="e-3BB8-AC3B9-54" source="p-3BB8-AC30A-7" target="t-3BB8-AC315-12">
+        <type value="inhibitor" />
+      </arc>
+      <arc id="e-3BB8-AC3BA-55" source="p-3BB8-AC308-6" target="t-3BB8-AC315-12"></arc>
+      <arc id="e-3BB8-AC3BB-56" source="p-3BB8-AC305-5" target="t-3BB8-AC315-12"></arc>
+      <arc id="e-3BB8-AC3BB-57" source="p-3BB8-AC30A-7" target="t-3BB8-AC313-11"></arc>
+      <arc id="e-3BB8-AC3BD-58" source="p-3BB8-AC308-6" target="t-3BB8-AC313-11"></arc>
+      <arc id="e-3BB8-AC3BE-59" source="p-3BB8-AC305-5" target="t-3BB8-AC313-11"></arc>
+      <arc id="e-3BB8-AC3BE-60" source="t-3BB8-AC37C-34" target="p-3BB8-AC2EE-2"></arc>
+      <arc id="e-3BB8-AC3BF-61" source="t-3BB8-AC369-23" target="p-3BB8-AC305-5"></arc>
+      <arc id="e-3BB8-AC3BF-62" source="t-3BB8-AC37C-34" target="p-3BB8-AC302-4"></arc>
+      <arc id="e-3BB8-AC3C0-63" source="p-3BB8-AC371-27" target="t-3BB8-AC37C-34"></arc>
+      <arc id="e-3BB8-AC3C1-64" source="t-3BB8-AC312-10" target="p-3BB8-AC371-27"></arc>
+      <arc id="e-3BB8-AC3C1-65" source="t-3BB8-AC37B-33" target="p-3BB8-AC2FE-3"></arc>
+      <arc id="e-3BB8-AC3C3-66" source="p-3BB8-AC36E-26" target="t-3BB8-AC37B-33"></arc>
+      <arc id="e-3BB8-AC3C4-67" source="t-3BB8-AC30F-9" target="p-3BB8-AC36E-26"></arc>
+      <arc id="e-3BB8-AC3C4-68" source="t-3BB8-AC379-32" target="p-3BB8-AC2FE-3"></arc>
+      <arc id="e-3BB8-AC3C5-69" source="t-3BB8-AC379-32" target="p-3BB8-AC2EE-2"></arc>
+      <arc id="e-3BB8-AC3C6-70" source="p-3BB8-AC36D-25" target="t-3BB8-AC379-32"></arc>
+      <arc id="e-3BB8-AC3C6-71" source="t-3BB8-AC30D-8" target="p-3BB8-AC36D-25"></arc>
+      <arc id="e-3BB8-AC3C7-72" source="p-3BB8-AC360-18" target="t-3BB8-AC369-23"></arc>
+      <arc id="e-3BB8-AC3C9-73" source="p-3BB8-AC35E-17" target="t-3BB8-AC367-22"></arc>
+      <arc id="e-3BB8-AC3CA-74" source="t-3BB8-AC367-22" target="p-3BB8-AC30A-7"></arc>
+      <arc id="e-3BB8-AC3CA-75" source="t-3BB8-AC367-22" target="p-3BB8-AC305-5"></arc>
+      <arc id="e-3BB8-AC3CB-76" source="t-3BB8-AC366-21" target="p-3BB8-AC30A-7"></arc>
+      <arc id="e-3BB8-AC3CB-77" source="t-3BB8-AC366-21" target="p-3BB8-AC308-6"></arc>
+      <arc id="e-3BB8-AC3D9-78" source="t-3BB8-AC366-21" target="p-3BB8-AC305-5"></arc>
+      <arc id="e-3BB8-AC3DA-79" source="p-3BB8-AC31C-16" target="t-3BB8-AC366-21"></arc>
+      <arc id="e-3BB8-AC3DA-80" source="t-3BB8-AC363-20" target="p-3BB8-AC308-6"></arc>
+      <arc id="e-3BB8-AC3DC-81" source="p-3BB8-AC31A-15" target="t-3BB8-AC363-20"></arc>
+      <arc id="e-3BB8-AC3DD-82" source="t-3BB8-AC363-20" target="p-3BB8-AC305-5"></arc>
+      <arc id="e-3BB8-AC3DD-83" source="t-3BB8-AC3A5-38" target="p-3BB8-AC2FE-3"></arc>
+      <arc id="e-3BB8-AC3DE-84" source="p-3BB8-AC305-5" target="t-3BB8-AC30D-8"></arc>
+      <arc id="e-3BB8-AC3DF-85" source="p-3BB8-AC308-6" target="t-3BB8-AC30D-8"></arc>
+      <arc id="e-3BB8-AC3DF-86" source="p-3BB8-AC30A-7" target="t-3BB8-AC30D-8">
+        <type value="inhibitor" />
+      </arc>
+      <arc id="e-3BB8-AC3E0-87" source="p-3BB8-AC305-5" target="t-3BB8-AC30F-9"></arc>
+      <arc id="e-3BB8-AC3E2-88" source="p-3BB8-AC308-6" target="t-3BB8-AC30F-9"></arc>
+      <arc id="e-3BB8-AC3E2-89" source="p-3BB8-AC30A-7" target="t-3BB8-AC30F-9"></arc>
+      <arc id="e-3BB8-AC3E3-90" source="p-3BB8-AC305-5" target="t-3BB8-AC312-10"></arc>
+      <arc id="e-3BB8-AC3E3-91" source="p-3BB8-AC308-6" target="t-3BB8-AC312-10">
+        <type value="inhibitor" />
+      </arc>
+      <arc id="e-3BB8-AC3E4-92" source="p-3BB8-AC30A-7" target="t-3BB8-AC312-10"></arc>
+      <arc id="e-3BB8-AC3E4-93" source="p-3BB8-AC377-31" target="t-3BB8-AC3A5-38"></arc>
+      <arc id="e-3BB8-AC3E5-94" source="t-3BB8-AC319-14" target="p-3BB8-AC377-31"></arc>
+      <arc id="e-3BB8-AC3E6-95" source="t-3BB8-AC3A4-37" target="p-3BB8-AC2FE-3"></arc>
+      <arc id="e-3BB8-AC3E8-96" source="p-3BB8-AC375-30" target="t-3BB8-AC3A4-37"></arc>
+    </page>
+  </net>
+</pnml>
