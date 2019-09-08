@@ -1,0 +1,5974 @@
+2019-09-03 21:55:22,778 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 21:55:51,908 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:02:18,086 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:05:43,265 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:08:01,049 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:09:41,943 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:15:59,460 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:17:21,596 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:32:56,186 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:41:22,407 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:42:12,572 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:42:25,585 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:43:38,276 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:44:47,897 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:45:12,913 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:46:43,539 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:47:44,216 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:48:57,148 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:49:49,839 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:50:25,335 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:52:53,634 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:53:36,466 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 22:55:04,966 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 23:11:55,138 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 23:12:53,414 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 23:14:20,252 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 23:17:49,634 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 23:18:30,759 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+2019-09-03 23:24:56,865 - INFO - 2json::=={
+  "net": {
+    "attributes": {
+      "id": "n-3BB8-AC2DF-0", 
+      "type": "http://www.laas.fr/tina/tpn"
+    }, 
+    "childs": {
+      "name": {
+        "childs": {
+          "text": {
+            "text": "buffer1"
+          }
+        }
+      }, 
+      "page": {
+        "attributes": {
+          "id": "p-3BB8-AC2EE-2"
+        }, 
+        "childs": {
+          "places": [
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }, 
+            {
+              "childs": {
+                "graphics": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {
+                    "offset": {
+                      "attributes": {
+                        "id": "p-3BB8-AC2EE-2"
+                      }, 
+                      "childs": {}
+                    }
+                  }
+                }, 
+                "position": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}
+                }, 
+                "text": {
+                  "attributes": {
+                    "id": "p-3BB8-AC2EE-2"
+                  }, 
+                  "childs": {}, 
+                  "text": "xxxxxxx"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

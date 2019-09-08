@@ -1,13 +1,18 @@
 import pandas as pd
-from xml.etree.ElementTree import Element, SubElement, tostring, XML
-from xml.dom import minidom
 import logging
 import json
 import sys
 
+from datetime import date
+from xml.etree.ElementTree import Element, SubElement, tostring, XML
+from xml.dom import minidom
+
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
-logging.basicConfig(filename='./log./transform.log', level=logging.DEBUG,
+today = date.today()
+dailydate = today.strftime("%Y%m%d")
+logging.basicConfig(filename='./log./transform_'+dailydate+'.log', level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 df = pd.read_excel('./DTProgram.xlsx', sheet_name='Sheet1')
@@ -97,66 +102,6 @@ def drawing_element(parent, obj_key, obj_data):
             drawingElement(_sub, y, _tag)
     return _sub
 
-
-def parse_2json():
-    columns = get_decision_columns()
-    rows = get_decision_rows()
-
-    jason = {
-        "net": {
-            "attributes": {
-                "id": "n-3BB8-AC2DF-0",
-                "type": "http://www.laas.fr/tina/tpn"
-            },
-            "childs": {
-                "name": {
-                    "childs": {
-                        "text": {
-                            "text": "buffer1"
-                        }
-                    }
-                },
-                "page" : {
-                    "attributes": {"id": "p-3BB8-AC2EE-2"}, 
-                    "childs":  {
-                        "places" : []
-                    }
-                }
-            }
-        }
-    }
-
-    tags = {
-        "name": {
-            "text": "",
-            "graphics": {
-                    "offset": ""
-            },
-        },
-        "label": {
-            "text": "",
-            "graphics": {
-                    "offset": ""
-            }
-        },
-        "graphics": {
-            "position": ""
-        }
-    }
-
-    net = jason['net']
-    places = net["childs"]["page"]["childs"]["places"]
-    for col in rows:
-        #print(" col ::=="+col)
-        place = {"childs" : {}}
-        for tag0 in tags:
-            tags_next = tags[tag0]
-            append_dict(place, tags_next)
-        #print("place ::=="+json.dumps(place, indent=2, sort_keys=True))                
-        places.append(place)
-    logging.info('2json::=='+json.dumps(jason, indent=2, sort_keys=True))
-
-
 def append_dict(child, tags):
     for tag in tags:
         #print("  tag ::=="+tag)
@@ -178,11 +123,43 @@ def append_2json(parent, prop):
         }
     }
     return child
+
+def read_rawdata():
+    df_cols = df.columns
+    df_rows = df.index
+
+    # "C": ["ID", "Variable/Description", "Operator", "Value", "R1", "R2", "R3", "R4", "R5"]
+    store = {'R' : {} , 'C' : {} , 'A' : {}}       
+    for col_idx in df_cols:
+        #print('col::=='+str(col))
+        # row [R]        
+        if col_idx.find('R') == 0:
+            modules = {}
+            for c_idx in df_rows:
+                row_val = df['ID'][c_idx]
+                col_val = df[col_idx][c_idx]
+                if row_val.find('C') == 0:
+                    modules[row_val] = col_val            
+            store['R'][col_idx] = modules
+
+    
+    for row_idx in df_rows:
+        row_val = df['ID'][row_idx]            
+        modules = {}
+        #print('row_val::=='+str(row_val))
+        for col_idx in df_cols:
+            col_val = df[col_idx][row_idx]
+            if col_idx.find('R') == 0:                                
+                modules[col_idx] = col_val     
+        if row_val.find('C') == 0:
+            store['C'][row_val] = modules
+        elif row_val.find('A') == 0:
+            store['A'][row_val] = modules
+        
+    print('store ::=='+json.dumps(store,indent=2, sort_keys=True))
 # -----------------------------------------------------------------------------------
 
-
-parse_2json()
-
+read_rawdata()
 
 # --------------------------------------------------------------------------------------------
 # create a new XML file with the results

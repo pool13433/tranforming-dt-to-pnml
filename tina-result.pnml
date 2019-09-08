@@ -5,7 +5,7 @@
             <text>buffer1</text>
         </name>
         <page id="g-3BB8-AC2EB-1">
-            <place id="p-3BB8-AC2A1">
+            <place id="ac-3BB8-AC2A1">
                 <name>
                     <text>A1</text>
                     <graphics>
@@ -19,10 +19,10 @@
                     </graphics>
                 </label>
                 <graphics>
-                    <position x="820" y="335"/>
+                    <position x="820" y="230"/>
                 </graphics>
             </place>
-            <place id="p-3BB8-AC2A2">
+            <place id="ac-3BB8-AC2A2">
                 <name>
                     <text>A2</text>
                     <graphics>
@@ -36,10 +36,10 @@
                     </graphics>
                 </label>
                 <graphics>
-                    <position x="820" y="425"/>
+                    <position x="820" y="320"/>
                 </graphics>
             </place>
-            <place id="p-3BB8-AC2A3">
+            <place id="ac-3BB8-AC2A3">
                 <name>
                     <text>A3</text>
                     <graphics>
@@ -53,46 +53,12 @@
                     </graphics>
                 </label>
                 <graphics>
-                    <position x="820" y="515"/>
+                    <position x="820" y="410"/>
                 </graphics>
             </place>
-            <place id="p-3BB8-AC2C1">
+            <place id="ac-3BB8-AC2C1">
                 <name>
                     <text>C1</text>
-                    <graphics>
-                        <offset x="0" y="-10"/>
-                    </graphics>
-                </name>
-                <label>
-                    <text>Salary</text>
-                    <graphics>
-                        <offset x="10" y="-10"/>
-                    </graphics>
-                </label>
-                <graphics>
-                    <position x="240" y="330"/>
-                </graphics>
-            </place>
-            <place id="p-3BB8-AC2C2">
-                <name>
-                    <text>C2</text>
-                    <graphics>
-                        <offset x="0" y="-10"/>
-                    </graphics>
-                </name>
-                <label>
-                    <text>Age</text>
-                    <graphics>
-                        <offset x="10" y="-10"/>
-                    </graphics>
-                </label>
-                <graphics>
-                    <position x="240" y="420"/>
-                </graphics>
-            </place>
-            <place id="p-3BB8-AC2C3">
-                <name>
-                    <text>C3</text>
                     <graphics>
                         <offset x="0" y="-10"/>
                     </graphics>
@@ -104,10 +70,44 @@
                     </graphics>
                 </label>
                 <graphics>
-                    <position x="240" y="510"/>
+                    <position x="240" y="230"/>
                 </graphics>
             </place>
-            <place id="p-3BB8-AC31AD1">
+            <place id="ac-3BB8-AC2C3">
+                <name>
+                    <text>C3</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <label>
+                    <text>Age</text>
+                    <graphics>
+                        <offset x="10" y="-10"/>
+                    </graphics>
+                </label>
+                <graphics>
+                    <position x="240" y="320"/>
+                </graphics>
+            </place>
+            <place id="ac-3BB8-AC2C4">
+                <name>
+                    <text>C4</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <label>
+                    <text>Salary</text>
+                    <graphics>
+                        <offset x="10" y="-10"/>
+                    </graphics>
+                </label>
+                <graphics>
+                    <position x="240" y="410"/>
+                </graphics>
+            </place>
+            <place id="D-35-125D1">
                 <name>
                     <text>D1</text>
                     <graphics>
@@ -121,7 +121,18 @@
                     <position x="35" y="125"/>
                 </graphics>
             </place>
-            <place id="p-3BB8-AC31AD2">
+            <place id="R-545-50R1">
+                <name>
+                    <text>R1</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="545" y="50"/>
+                </graphics>
+            </place>
+            <place id="D-35-215D2">
                 <name>
                     <text>D2</text>
                     <graphics>
@@ -132,10 +143,21 @@
                     <text>1</text>
                 </initialMarking>
                 <graphics>
-                    <position x="35" y="225"/>
+                    <position x="35" y="215"/>
                 </graphics>
             </place>
-            <place id="p-3BB8-AC31AD3">
+            <place id="R-545-140R2">
+                <name>
+                    <text>R2</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="545" y="140"/>
+                </graphics>
+            </place>
+            <place id="D-35-305D3">
                 <name>
                     <text>D3</text>
                     <graphics>
@@ -146,10 +168,21 @@
                     <text>1</text>
                 </initialMarking>
                 <graphics>
-                    <position x="35" y="325"/>
+                    <position x="35" y="305"/>
                 </graphics>
             </place>
-            <place id="p-3BB8-AC31AD4">
+            <place id="R-545-230R3">
+                <name>
+                    <text>R3</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="545" y="230"/>
+                </graphics>
+            </place>
+            <place id="D-35-395D4">
                 <name>
                     <text>D4</text>
                     <graphics>
@@ -160,10 +193,32 @@
                     <text>1</text>
                 </initialMarking>
                 <graphics>
-                    <position x="35" y="425"/>
+                    <position x="35" y="395"/>
                 </graphics>
             </place>
-            <place id="p-3BB8-AC31AD5">
+            <place id="R-545-320R4.1">
+                <name>
+                    <text>R4.1</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="545" y="320"/>
+                </graphics>
+            </place>
+            <place id="R-545-410R4.2">
+                <name>
+                    <text>R4.2</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="545" y="410"/>
+                </graphics>
+            </place>
+            <place id="D-35-485D5">
                 <name>
                     <text>D5</text>
                     <graphics>
@@ -174,10 +229,32 @@
                     <text>1</text>
                 </initialMarking>
                 <graphics>
-                    <position x="35" y="525"/>
+                    <position x="35" y="485"/>
                 </graphics>
             </place>
-            <transition id="t-3BB8-AC30D-XR4">
+            <place id="R-545-500R5.1">
+                <name>
+                    <text>R5.1</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="545" y="500"/>
+                </graphics>
+            </place>
+            <place id="R-545-590R5.2">
+                <name>
+                    <text>R5.2</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="545" y="590"/>
+                </graphics>
+            </place>
+            <transition id="CT460-50-1CT">
                 <name>
                     <text>CT1</text>
                     <graphics>
@@ -188,7 +265,29 @@
                     <position x="460" y="50"/>
                 </graphics>
             </transition>
-            <transition id="t-3BB8-AC30D-XR5">
+            <transition id="RT635-50-1RT">
+                <name>
+                    <text>RT1</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="635" y="50"/>
+                </graphics>
+            </transition>
+            <transition id="DT125-125-1DT">
+                <name>
+                    <text>DT1</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="125" y="125"/>
+                </graphics>
+            </transition>
+            <transition id="CT460-140-2CT">
                 <name>
                     <text>CT2</text>
                     <graphics>
@@ -199,7 +298,29 @@
                     <position x="460" y="140"/>
                 </graphics>
             </transition>
-            <transition id="t-3BB8-AC30D-XR1">
+            <transition id="RT635-140-2RT">
+                <name>
+                    <text>RT2</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="635" y="140"/>
+                </graphics>
+            </transition>
+            <transition id="DT125-215-2DT">
+                <name>
+                    <text>DT2</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="125" y="215"/>
+                </graphics>
+            </transition>
+            <transition id="CT460-230-3CT">
                 <name>
                     <text>CT3</text>
                     <graphics>
@@ -210,7 +331,29 @@
                     <position x="460" y="230"/>
                 </graphics>
             </transition>
-            <transition id="t-3BB8-AC30D-XR1">
+            <transition id="RT635-230-3RT">
+                <name>
+                    <text>RT3</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="635" y="230"/>
+                </graphics>
+            </transition>
+            <transition id="DT125-305-3DT">
+                <name>
+                    <text>DT3</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="125" y="305"/>
+                </graphics>
+            </transition>
+            <transition id="CT460-320-4CT">
                 <name>
                     <text>CT4</text>
                     <graphics>
@@ -221,7 +364,18 @@
                     <position x="460" y="320"/>
                 </graphics>
             </transition>
-            <transition id="t-3BB8-AC30D-XR2">
+            <transition id="RT635-320-4RT">
+                <name>
+                    <text>RT4</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="635" y="320"/>
+                </graphics>
+            </transition>
+            <transition id="CT460-410-5CT">
                 <name>
                     <text>CT5</text>
                     <graphics>
@@ -232,7 +386,29 @@
                     <position x="460" y="410"/>
                 </graphics>
             </transition>
-            <transition id="t-3BB8-AC30D-XR3">
+            <transition id="RT635-410-5RT">
+                <name>
+                    <text>RT5</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="635" y="410"/>
+                </graphics>
+            </transition>
+            <transition id="DT125-395-4DT">
+                <name>
+                    <text>DT4</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="125" y="395"/>
+                </graphics>
+            </transition>
+            <transition id="CT460-500-6CT">
                 <name>
                     <text>CT6</text>
                     <graphics>
@@ -243,7 +419,18 @@
                     <position x="460" y="500"/>
                 </graphics>
             </transition>
-            <transition id="t-3BB8-AC30D-XR3">
+            <transition id="RT635-500-6RT">
+                <name>
+                    <text>RT6</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="635" y="500"/>
+                </graphics>
+            </transition>
+            <transition id="CT460-590-7CT">
                 <name>
                     <text>CT7</text>
                     <graphics>
@@ -254,6 +441,90 @@
                     <position x="460" y="590"/>
                 </graphics>
             </transition>
+            <transition id="RT635-590-7RT">
+                <name>
+                    <text>RT7</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="635" y="590"/>
+                </graphics>
+            </transition>
+            <transition id="DT125-485-5DT">
+                <name>
+                    <text>DT5</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="125" y="485"/>
+                </graphics>
+            </transition>
+            <arc id="C0-0-0" source="ac-3BB8-AC2C1" target="CT460-50-1CT"/>
+            <arc id="C0-1-1" source="ac-3BB8-AC2C1" target="CT460-140-2CT"/>
+            <arc id="C0-2-2" source="ac-3BB8-AC2C1" target="CT460-230-3CT"/>
+            <arc id="C0-3-3" source="ac-3BB8-AC2C1" target="CT460-320-4CT"/>
+            <arc id="C0-4-4" source="ac-3BB8-AC2C1" target="CT460-410-5CT">
+                <type value="inhibitor"/>
+            </arc>
+            <arc id="C1-0-0" source="ac-3BB8-AC2C3" target="CT460-50-1CT"/>
+            <arc id="C1-1-1" source="ac-3BB8-AC2C3" target="CT460-140-2CT"/>
+            <arc id="C1-2-2" source="ac-3BB8-AC2C3" target="CT460-230-3CT">
+                <type value="inhibitor"/>
+            </arc>
+            <arc id="C1-3-3" source="ac-3BB8-AC2C3" target="CT460-320-4CT">
+                <type value="inhibitor"/>
+            </arc>
+            <arc id="C1-4-4" source="ac-3BB8-AC2C3" target="CT460-410-5CT">
+                <type value="inhibitor"/>
+            </arc>
+            <arc id="C2-0-0" source="ac-3BB8-AC2C4" target="CT460-50-1CT">
+                <type value="inhibitor"/>
+            </arc>
+            <arc id="C2-1-1" source="ac-3BB8-AC2C4" target="CT460-140-2CT">
+                <type value="inhibitor"/>
+            </arc>
+            <arc id="C2-2-2" source="ac-3BB8-AC2C4" target="CT460-230-3CT">
+                <type value="inhibitor"/>
+            </arc>
+            <arc id="C2-2-2" source="ac-3BB8-AC2C4" target="CT460-230-3CT">
+                <type value="inhibitor"/>
+            </arc>
+            <arc id="C2-3-3" source="ac-3BB8-AC2C4" target="CT460-320-4CT">
+                <type value="inhibitor"/>
+            </arc>
+            <arc id="C2-5-5" source="ac-3BB8-AC2C4" target="CT460-500-6CT">
+                <type value="inhibitor"/>
+            </arc>
+            <arc id="C2-6-6" source="ac-3BB8-AC2C4" target="CT460-590-7CT">
+                <type value="inhibitor"/>
+            </arc>
+            <arc id="R-R-545-50R1" source="R-545-50R1" target="RT635-50-1RT"/>
+            <arc id="R-R-545-140R2" source="R-545-140R2" target="RT635-140-2RT"/>
+            <arc id="R-R-545-230R3" source="R-545-230R3" target="RT635-230-3RT"/>
+            <arc id="R-R-545-320R4.1" source="R-545-320R4.1" target="RT635-320-4RT"/>
+            <arc id="R-R-545-410R4.2" source="R-545-410R4.2" target="RT635-410-5RT"/>
+            <arc id="R-R-545-500R5.1" source="R-545-500R5.1" target="RT635-500-6RT"/>
+            <arc id="R-R-545-590R5.2" source="R-545-590R5.2" target="RT635-590-7RT"/>
+            <arc id="DT0-C1-0" source="DT125-125-1DT" target="ac-3BB8-AC2C1"/>
+            <arc id="DT0-C3-1" source="DT125-125-1DT" target="ac-3BB8-AC2C3"/>
+            <arc id="DT1-C1-0" source="DT125-215-2DT" target="ac-3BB8-AC2C1"/>
+            <arc id="DT1-C3-1" source="DT125-215-2DT" target="ac-3BB8-AC2C3"/>
+            <arc id="DT1-C4-2" source="DT125-215-2DT" target="ac-3BB8-AC2C4"/>
+            <arc id="DT2-C1-0" source="DT125-305-3DT" target="ac-3BB8-AC2C1"/>
+            <arc id="DT2-C4-2" source="DT125-305-3DT" target="ac-3BB8-AC2C4"/>
+            <arc id="DT3-C1-0" source="DT125-395-4DT" target="ac-3BB8-AC2C1"/>
+            <arc id="DT3-C3-1" source="DT125-395-4DT" target="ac-3BB8-AC2C3"/>
+            <arc id="CT-CT460-50-1CT" source="CT460-50-1CT" target="R-545-50R1"/>
+            <arc id="CT-CT460-140-2CT" source="CT460-140-2CT" target="R-545-140R2"/>
+            <arc id="CT-CT460-230-3CT" source="CT460-230-3CT" target="R-545-230R3"/>
+            <arc id="CT-CT460-320-4CT" source="CT460-320-4CT" target="R-545-320R4.1"/>
+            <arc id="CT-CT460-410-5CT" source="CT460-410-5CT" target="R-545-410R4.2"/>
+            <arc id="CT-CT460-500-6CT" source="CT460-500-6CT" target="R-545-500R5.1"/>
+            <arc id="CT-CT460-590-7CT" source="CT460-590-7CT" target="R-545-590R5.2"/>
         </page>
     </net>
 </pnml>
