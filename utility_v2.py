@@ -129,18 +129,31 @@ def read_rawdata():
     df_rows = df.index
 
     # "C": ["ID", "Variable/Description", "Operator", "Value", "R1", "R2", "R3", "R4", "R5"]
-    store = {'R' : {} , 'C' : {} , 'A' : {}}       
+    store = {
+        'R' : {
+            'C' : {},
+            'A' : {}
+        } , 
+        'C' : {} , 
+        'A' : {}
+    }       
     for col_idx in df_cols:
         #print('col::=='+str(col))
         # row [R]        
         if col_idx.find('R') == 0:
-            modules = {}
+            modules = {
+                'C' : {},
+                'A' : {}
+            }
             for c_idx in df_rows:
                 row_val = df['ID'][c_idx]
                 col_val = df[col_idx][c_idx]
                 if row_val.find('C') == 0:
-                    modules[row_val] = col_val            
-            store['R'][col_idx] = modules
+                    modules['C'][row_val] = col_val            
+                elif row_val.find('A') == 0:
+                    modules['A'][row_val] = col_val 
+            store['R']['C'][col_idx] = modules['C']
+            store['R']['A'][col_idx] = modules['A']
 
     
     for row_idx in df_rows:
@@ -156,7 +169,8 @@ def read_rawdata():
         elif row_val.find('A') == 0:
             store['A'][row_val] = modules
         
-    print('store ::=='+json.dumps(store,indent=2, sort_keys=True))
+    #print('store ::=='+json.dumps(store,indent=2, sort_keys=True))
+    return store
 # -----------------------------------------------------------------------------------
 
 read_rawdata()

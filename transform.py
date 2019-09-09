@@ -94,7 +94,7 @@ def draw_place(page, place_dict):
         arc_data['index'] = _name['index']   
     push_arcs(name_text,arc_data)
 
-def draw_places(page):
+def draw_places(page,store):
     rows = get_decision_rows()
     place_offset = {
            'a' : {'x': '820', 'y': '140'},
@@ -102,39 +102,46 @@ def draw_places(page):
            'd' : {'x': '35', 'y': '125'},
            'r' :  {'x': '545', 'y': '50'},
     }    
-    # Place Group A*,C*
-    rows_sorted = collections.OrderedDict(rows.keys())
+
+    # Place Group "A*"
     place_index = 1
-    for key in sorted(rows.keys()):
-        values = rows[key]
-        #print('rows-keyows-key ::=='+key)
-        place_text = values[0]
+    for a_idx in store['A']:
+        key = a_idx
+        values = store['A'][a_idx]
+        place_text = a_idx
         place_offset,place_index = draw_place_ac(page,key,place_offset,place_text,place_index)
 
+    # Place Group "C*"
+    place_index = 1
+    for c_idx in store['C']:
+        key = c_idx
+        values = store['C'][c_idx]
+        place_text = c_idx
+        place_offset,place_index = draw_place_ac(page,key,place_offset,place_text,place_index)
+        
     # Place Group D* , R*
-    columns = get_decision_columns()
     place_index = {
         'r' : 1,
         'd' : 1
     }
-    for key in sorted(columns.keys()):
-        values = columns[key]
-        #print('key::=='+str(key))
-        #print('values::=='+json.dumps(values))
-        
+    store_rc = store['R']['C']
+    for r_idx in store_rc:
+        r_values = store_rc[r_idx]
+        #print('r_values::=='+str(r_values))
+        key = r_idx
         #child D
         place_offset ,place_index  = draw_place_d(page,key,place_offset,place_index)
+        #print('r_idx::=='+str(r_idx))
+        dashs = find_dash(r_values)
+        #print('len_dashs::=='+str(dashs))
+        if len(dashs) > 0:    
+            for x in range(2*len(dashs)):
+                place_offset,place_index = draw_place_r(page,key+'.'+str(x+1),place_offset,place_index)                
+        else:
+            place_offset,place_index = draw_place_r(page,key,place_offset,place_index)            
+def find_dash(r_values):
+    return map(lambda y: r_values[y],filter(lambda x: r_values[x] == '-',r_values))
 
-        #child R                
-        if key.find('R') ==0:
-            if '-' in values:    
-                index_dash = values.index('-')
-                #print('index_dash::=='+str(index_dash))
-                for x in range(index_dash):
-                    place_offset,place_index = draw_place_r(page,key+'.'+str(x+1),place_offset,place_index)                
-            else:
-                place_offset,place_index = draw_place_r(page,key,place_offset,place_index)        
-        
 def draw_place_d(page,key,place_offset,place_index):
     if  key.find('R') == 0:
         offset_d = place_offset['d'] 
@@ -217,7 +224,7 @@ def draw_transition(page, transition_dict):
         graphics = SubElement(transition, 'graphics')
         position = SubElement(graphics, 'position',graphics_offset)
 
-def draw_transitions(page):
+def draw_transitions(page,store):
     columns = get_decision_columns()
     rows = get_decision_rows()
     tran_index = {'CT' : 1,'DT' : 1,'RT' : 1}
@@ -226,41 +233,37 @@ def draw_transitions(page):
         'DT' : {'x': '125', 'y': '125'},        
         'RT' : {'x': '635', 'y': '50'},    
     }
-    dict_r = sorted(filter(lambda x: x.find('R') == 0,columns))
-    dict_c = sorted(filter(lambda y: y.find('C') ==0 , rows))
-    #print('dict_r::=='+json.dumps(dict_r))
-    for r_idx in range(len(dict_r)):
-        r_key = dict_r[r_idx]
-        r_values = columns.get(r_key)
-        #print('*******************'+c_key+'*******************')        
-        #print('values ::=='+str(c_values))
-        if r_key.find('R') == 0:            
-            r_dashs = filter(lambda z: z == '-' ,r_values)
-            trans_keys = {'CT' : 'CT'+str(r_idx+1),'RT' : 'RT'+str(r_idx+1)}
-            if len(r_dashs) > 0:
-                couter_float = 1
-                for dash_idx in range(len(r_dashs)):
-                    
-                    # child0 [CT]
-                    ct_key = trans_keys['CT']+'.'+str(couter_float+1)
-                    #print('ct_key ::=='+ct_key)
-                    tran_offset,tran_index = draw_transition_ctrt(page,ct_key,tran_offset,tran_index)
-                    # child0 [RT]
-                    rt_key = trans_keys['RT']+'.'+str(couter_float+1)
-                    #print('rt_key ::=='+rt_key)
-                    tran_offset,tran_index = draw_transition_ctrt(page,rt_key,tran_offset,tran_index)
-                    couter_float = couter_float+1
+    store_rc = store['R']['C']
+    for r_idx in store_rc:
+        r_values = store_rc[r_idx]
+        rc_idx = store_rc.keys().index(r_idx)
+        print('rc_idx::=='+str(rc_idx))
+        print('r_idx::=='+str(r_idx))
+        print('r_values::=='+str(r_values))
+        dashs = find_dash(r_values)
+        trans_keys = {'CT' : 'CT'+str(rc_idx+1),'RT' : 'RT'+str(rc_idx+1)}
+        if len(dashs) > 0:
+            couter_float = 1
+            for dash_idx in range(2*len(dashs)):
+                # child0 [CT]
+                ct_key = trans_keys['CT']+'.'+str(couter_float+1)
+                #print('ct_key ::=='+ct_key)
+                tran_offset,tran_index = draw_transition_ctrt(page,ct_key,tran_offset,tran_index)
+                # child0 [RT]
+                rt_key = trans_keys['RT']+'.'+str(couter_float+1)
+                #print('rt_key ::=='+rt_key)
+                tran_offset,tran_index = draw_transition_ctrt(page,rt_key,tran_offset,tran_index)
+                couter_float = couter_float+1
+        # child [CT]
+        tran_offset,tran_index = draw_transition_ctrt(page,trans_keys['CT'],tran_offset,tran_index)
+        # child [RT]
+        tran_offset,tran_index = draw_transition_ctrt(page,trans_keys['RT'],tran_offset,tran_index)
+    
+        # child1 [DT]
+        #dt_index = transition_index['dt']
+        dt_key = 'DT'+str(tran_index['DT'])
+        tran_offset,tran_index = draw_transition_ctrt(page,dt_key,tran_offset,tran_index)            
 
-            # child [CT]
-            tran_offset,tran_index = draw_transition_ctrt(page,trans_keys['CT'],tran_offset,tran_index)
-            # child [RT]
-            tran_offset,tran_index = draw_transition_ctrt(page,trans_keys['RT'],tran_offset,tran_index)
-        
-            # child1 [DT]
-            #dt_index = transition_index['dt']
-            dt_key = 'DT'+str(tran_index['DT'])
-            tran_offset,tran_index = draw_transition_ctrt(page,dt_key,tran_offset,tran_index)            
-                    
 def draw_transition_ctrt(page,key,trans_offset,trans_idx):
     key_char,key_len = grep_char(key)
     #print('key ::=='+str(key))
@@ -455,30 +458,34 @@ def filter_index(source_dict,_where):
             idxs.append(real_idx)'''
     return idxs
 
+def draw_decision_rawdata():
+    store = read_rawdata()
+
+    pnml = Element('pnml')
+    pnml.set('xmlns', 'http://www.pnml.org/version-2009/grammar/pnml')
+
+    net = SubElement(pnml, 'net', {
+        'id': 'n-3BB8-AC2DF-0',
+        'type': 'http://www.laas.fr/tina/tpn'
+    })
+
+    name = SubElement(net, 'name')
+    SubElement(name, 'text').text = 'buffer1'
+
+    page = SubElement(net, 'page', {'id': 'g-3BB8-AC2EB-1'})
+
+    draw_places(page,store)
+    draw_transitions(page,store)
+    #draw_arcs(page)
+
+    xmlstr = minidom.parseString(tostring(pnml)).toprettyxml(
+        encoding="ISO-8859-1", indent="    ")
+    with open('./tina-result.pnml', "w") as f:
+        f.write(xmlstr)
+
 def main():
-    #draw_decision()    
-    '''columns = get_decision_columns()
-    rows = get_decision_rows()
-    rules = filter(lambda x: x.find('R') == 0,columns)
-    map_rule = map(lambda r: {r : columns[r]},rules)
-    print('map_rule::=='+json.dumps(map_rule))
-
-    conds = filter(lambda x: c.find('C') == 0,rows)'''
-
-    mock_rules = {
-        'C2' : ['T','T','T','-'],
-        'R1' : ['T','T','T','-'],
-        'R2' : ['T','T','T','T'],
-        'C1' : ['T','T','T','-'],
-        'R3' : ['T','T','T','F'],
-        'R4' : ['T','T','T','-'],
-        'C4' : ['T','T','T','-'],
-        'R5' : ['T','T','T','-'],
-    }
-    idxs = filter_index(mock_rules,'R')
-    print('idxs::=='+json.dumps(idxs))
-
-
+    #draw_decision()   
+    draw_decision_rawdata()
 # ------- execute main -----------
 if __name__ == "__main__":
     main()
