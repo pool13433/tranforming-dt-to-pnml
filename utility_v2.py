@@ -90,7 +90,6 @@ class Utility():
     def read_rawdata(self):
         df_cols = self.df.columns
         df_rows = self.df.index
-
         # "C": ["ID", "Variable/Description", "Operator", "Value", "R1", "R2", "R3", "R4", "R5"]
         store = {
             'R' : {
@@ -121,12 +120,13 @@ class Utility():
         
         for row_idx in df_rows:
             row_val = self.df['ID'][row_idx]            
-            modules = {}
+            modules = {}            
             #print('row_val::=='+str(row_val))
             for col_idx in df_cols:
                 col_val = self.df[col_idx][row_idx]
-                if col_idx.find('R') == 0:                                
-                    modules[col_idx] = col_val     
+                modules[col_idx] = col_val 
+                     
+            print('modules::=='+json.dumps(modules))   
             if row_val.find('C') == 0:
                 store['C'][row_val] = modules
             elif row_val.find('A') == 0:
@@ -135,3 +135,7 @@ class Utility():
         #print('store ::=='+json.dumps(store,indent=2, sort_keys=True))
         return store
     # -----------------------------------------------------------------------------------
+
+'''utility = Utility('./DTProgram.xlsx')
+store = utility.read_rawdata()
+print('store::=='+json.dumps(store))'''

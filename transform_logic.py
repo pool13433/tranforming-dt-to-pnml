@@ -96,6 +96,8 @@ class TransformationLogic():
         arc_data = {'id' : uuid}
         if 'index' in _name:
             arc_data['index'] = _name['index']   
+        if 'unique' in place_dict:
+            arc_data['unique'] = place_dict['unique']
         self.push_arcs(name_text,arc_data)
 
     def draw_places(self,page,store):
@@ -109,19 +111,22 @@ class TransformationLogic():
 
         # Place Group "A*"
         place_index = 1
-        for a_idx in store['A']:
+        for a_idx in sorted(store['A']):
             key = a_idx
             values = store['A'][a_idx]
+            print('values ::=='+json.dumps(values))
+            c_desc = values['Variable/Description']
             place_text = a_idx
-            place_offset,place_index = self.draw_place_ac(page,key,place_offset,place_text,place_index)
+            place_offset,place_index = self.draw_place_ac(page,key,place_offset,c_desc,place_index)
 
         # Place Group "C*"
         place_index = 1
-        for c_idx in store['C']:
+        for c_idx in sorted(store['C']):
             key = c_idx
             values = store['C'][c_idx]
+            c_desc = values['Variable/Description']
             place_text = c_idx
-            place_offset,place_index = self.draw_place_ac(page,key,place_offset,place_text,place_index)
+            place_offset,place_index = self.draw_place_ac(page,key,place_offset,c_desc,place_index)
             
         # Place Group D* , R*
         place_index = {
@@ -142,7 +147,8 @@ class TransformationLogic():
                 for x in range(2*len(dashs)):
                     place_offset,place_index = self.draw_place_r(page,key+'.'+str(x+1),place_offset,place_index)                
             else:
-                place_offset,place_index = self.draw_place_r(page,key,place_offset,place_index)            
+                place_offset,place_index = self.draw_place_r(page,key,place_offset,place_index) 
+
     def find_dash(self,r_values):
         return map(lambda y: r_values[y],filter(lambda x: r_values[x] == '-',r_values))
 
@@ -200,6 +206,7 @@ class TransformationLogic():
             offset_a['x'] = str(int(offset_a['x']))
             offset_a['y'] = str(int(offset_a['y'])+self.pnml_options['y_space'])        
 
+        value_dict['unique'] = key
         self.draw_place(page, value_dict)
         return place_offset,place_index
 
@@ -217,9 +224,10 @@ class TransformationLogic():
             graphics = SubElement(name, 'graphics')
             SubElement(graphics, 'offset',name_offset)
 
-            self.push_arcs(name_text,{
-                'id' : name_id
-            })
+            arc_data = {'id' : name_id}
+            if 'unique' in transition_dict:
+                arc_data['unique'] = transition_dict['unique']
+            self.push_arcs(name_text,arc_data)
 
         if 'graphics' in transition_dict:
             graphics_offset = transition_dict['graphics']['offset']    
@@ -238,37 +246,43 @@ class TransformationLogic():
             'RT' : {'x': '635', 'y': '50'},    
         }
         store_rc = store['R']['C']
-        for r_idx in store_rc:
-            r_values = store_rc[r_idx]
-            rc_idx = store_rc.keys().index(r_idx)
-            print('rc_idx::=='+str(rc_idx))
-            print('r_idx::=='+str(r_idx))
-            print('r_values::=='+str(r_values))
+        #print('store_rc::=='+json.dumps(store_rc))
+        for r_key in sorted(store_rc):
+            r_values = store_rc[r_key]
+            rc_idx = store_rc.keys().index(r_key)
+            #print('rc_idx::=='+str(rc_idx))
+            #print('r_key::=='+str(r_key))
+            #print('r_values::=='+str(r_values))
             dashs = self.find_dash(r_values)
             trans_keys = {'CT' : 'CT'+str(rc_idx+1),'RT' : 'RT'+str(rc_idx+1)}
+            ctrt_data = {'unique' : r_key}
             if len(dashs) > 0:
                 couter_float = 1
                 for dash_idx in range(2*len(dashs)):
-                    # child0 [CT]
-                    ct_key = trans_keys['CT']+'.'+str(couter_float+1)
+                    # child0 [CT]                    
+                    ctrt_data['dash_key'] = trans_keys['CT']+'.'+str(couter_float+1)
                     #print('ct_key ::=='+ct_key)
-                    tran_offset,tran_index = self.draw_transition_ctrt(page,ct_key,tran_offset,tran_index)
+                    tran_offset,tran_index = self.draw_transition_ctrt(page,ctrt_data,tran_offset,tran_index)
                     # child0 [RT]
-                    rt_key = trans_keys['RT']+'.'+str(couter_float+1)
+                    ctrt_data['dash_key'] = trans_keys['RT']+'.'+str(couter_float+1)
                     #print('rt_key ::=='+rt_key)
-                    tran_offset,tran_index = self.draw_transition_ctrt(page,rt_key,tran_offset,tran_index)
+                    tran_offset,tran_index = self.draw_transition_ctrt(page,ctrt_data,tran_offset,tran_index)
                     couter_float = couter_float+1
-            # child [CT]
-            tran_offset,tran_index = self.draw_transition_ctrt(page,trans_keys['CT'],tran_offset,tran_index)
-            # child [RT]
-            tran_offset,tran_index = self.draw_transition_ctrt(page,trans_keys['RT'],tran_offset,tran_index)
+            else:
+                # child [CT]
+                ctrt_data['dash_key'] = trans_keys['CT']
+                tran_offset,tran_index = self.draw_transition_ctrt(page,ctrt_data,tran_offset,tran_index)
+                # child [RT]
+                ctrt_data['dash_key'] = trans_keys['RT']
+                tran_offset,tran_index = self.draw_transition_ctrt(page,ctrt_data,tran_offset,tran_index)
         
             # child1 [DT]
             #dt_index = transition_index['dt']
-            dt_key = 'DT'+str(tran_index['DT'])
-            tran_offset,tran_index = self.draw_transition_ctrt(page,dt_key,tran_offset,tran_index)            
+            ctrt_data['dash_key'] = 'DT'+str(tran_index['DT'])            
+            tran_offset,tran_index = self.draw_transition_ctrt(page,ctrt_data,tran_offset,tran_index)
 
-    def draw_transition_ctrt(self,page,key,trans_offset,trans_idx):
+    def draw_transition_ctrt(self,page,ctrt_data,trans_offset,trans_idx):
+        key = ctrt_data['dash_key']
         key_char,key_len = self.grep_char(key)
         #print('key ::=='+str(key))
         #print('key_char ::=='+str(key_char))
@@ -281,16 +295,23 @@ class TransformationLogic():
             offset = trans_offset[key_char]
             trans_id = key_char+self.concat_unique(offset)+'-'+str(idx)+str(key_char)
             trans_text = key_char+str(idx)
-            self.draw_transition(page,{
+
+            # raw arc_data push to arcs collection
+            arc_data = {
                 'name' : {'text' : trans_text,'id' : trans_id, 'offset' : {'x' : '0','y' : '0'}},
-                'graphics' : {'offset' : offset}
-            })
+                'graphics' : {'offset' : offset},
+                'unique' : key
+            }
+            if 'unique' in ctrt_data:
+                arc_data['unique'] = ctrt_data['unique']                
+            self.draw_transition(page,arc_data)
+
             offset['x'] = str(int(offset['x']))
             offset['y'] = str(int(offset['y'])+self.pnml_options['y_space'])
             trans_idx[key_char] = trans_idx[key_char]+1
         return trans_offset,trans_idx
 
-    def draw_arc(page,arc):
+    def draw_arc(self,page,arc):
         if 'target' in arc:
             _arc = SubElement(page,'arc',{
                 'id' : arc['id'],
@@ -301,10 +322,107 @@ class TransformationLogic():
                 SubElement(_arc,'type',{
                     'value' : arc['type']
                 })
+        
+    def draw_arcline(self,page,source_key,target_key):
+        for source in self.arcs[source_key]:
+            print('source::='+json.dumps(source))
+            source_idx = source['index']
+            source_id = source['id']
+            target_array = self.arcs[target_key]
+            target_dict = target_array[source_idx-1]
+            target_id = target_dict['id']
+            self.draw_arc(page,{
+                'id' : source_key+'-'+target_key+source_id+'-'+target_id,
+                'source' : source_id,
+                'target' :target_id 
+            })
 
-    def draw_arcs(page):
-        #print('arcs ::=='+json.dumps(arcs,indent=2, sort_keys=True))
-        columns = get_decision_columns()
+    def draw_arclineDT_C(self,page,store):
+        # DT => C
+        source_key = 'DT'
+        target_key = 'C'
+        store_rc = store['R']['C']
+        c_dicts = self.arcs[target_key]        
+        print('\nstore_rc'+json.dumps(store_rc))
+        print('\nc_dicts::=='+json.dumps(c_dicts))        
+        for source in self.arcs[source_key]:
+            #print('source::=='+json.dumps(source))
+            dt_idx = source['index']
+            dt_id = source['id']
+            r_dict = store_rc['R'+str(dt_idx)]
+            #print('r_dict::=='+json.dumps(r_dict))
+            for c_key in r_dict:
+                #c_value = c_dict[c_key]
+                c_dict = self.find_unique(c_dicts,c_key)  
+                if c_dict is not None:
+                    print('c_dict::=='+json.dumps(c_dict))  
+                    c_id = c_dict['id']
+                    c_idx = c_dict['index']
+                    c_unique = c_dict['unique']
+                    #print('c_key::=='+json.dumps(c_key))            
+                    #print('c_value::=='+json.dumps(c_value)) 
+                    if 'T' == r_dict[c_unique]:
+                        self.draw_arc(page,{
+                            'id' : source_key+'-'+target_key+dt_id+'-'+c_id,
+                            'source' : dt_id,
+                            'target' :c_id 
+                        })
+
+    def draw_arclineRT_A(self,page,store):
+        # RT => A
+        source_key = 'RT'
+        target_key = 'A'
+        store_ra = store['R']['A']        
+        rt_dicts = self.arcs[source_key]
+        a_dicts = self.arcs[target_key]
+        #print('\nstore_ra'+json.dumps(store_ra))
+        #print('\na_dicts::=='+json.dumps(a_dicts)) 
+        print('\nrt_dicts::=='+json.dumps(rt_dicts)) 
+        #for r_key in sorted(store_ra):
+        for r_dict in rt_dicts:
+            r_key = r_dict['unique']
+            rt_id = r_dict['id']
+            #print('r_key::=='+str(r_key))
+            c_values = store_ra[r_key]
+            print('c_values::=='+json.dumps(c_values))
+            for c_key in c_values:                
+                #print('c_key::=='+json.dumps(c_key))
+                a_dict = self.find_unique(a_dicts,c_key)
+                if a_dict is not None:
+                    a_id = a_dict['id']
+                    a_key = a_dict['unique']
+                    print('a_dict::=='+json.dumps(a_dict))  
+                    if 'X' == c_values[a_key]:
+                        self.draw_arc(page,{
+                            'id' : source_key+'-'+target_key+rt_id+'-'+a_id,
+                            'source' : rt_id,
+                            'target' :a_id 
+                        })
+
+
+    def find_unique(self,c_dict,c_key):
+        #return find(lambda _key: c_dict[_key] == c_key,c_dict)
+        #print('c_dict::=='+json.dumps(c_dict))
+        #print('c_key::=='+json.dumps(c_key))        
+        c_unique = filter(lambda item: item['unique'] == c_key,c_dict)
+        #print('c_unique::=='+json.dumps(c_unique))
+        if len(c_unique) > 0:
+            return c_unique[0]
+        else:
+            return None
+
+    def draw_arcs(self,page,store):
+        store_rc = store['R']['C']
+        store_c = store['C']
+        
+        self.draw_arcline(page,'D','DT')        
+        self.draw_arcline(page,'CT','R')        
+        self.draw_arcline(page,'R','RT')
+        self.draw_arclineDT_C(page,store)
+        self.draw_arclineRT_A(page,store)
+
+        
+        '''columns = get_decision_columns()
         rows = get_decision_rows()
         data_link = {
                 'DT' : 'C' ,'C' : 'CT', 'CT' : 'R'
@@ -398,6 +516,7 @@ class TransformationLogic():
                         dict_arc['target'] = ref_target['id']
 
                     draw_arc(page,dict_arc)
+            '''
     def find_value_t(page,rows,r_value,dict_arc,start_idx):
         c_index = 0    
         for row in sorted(rows.keys()):
@@ -481,7 +600,7 @@ class TransformationLogic():
 
         self.draw_places(page,store)
         self.draw_transitions(page,store)
-        #draw_arcs(page)
+        self.draw_arcs(page,store)
 
         xmlstr = minidom.parseString(tostring(pnml)).toprettyxml(
             encoding="ISO-8859-1", indent="    ")
@@ -489,4 +608,5 @@ class TransformationLogic():
             f.write(xmlstr)
 
 
-
+logic = TransformationLogic()
+logic.draw_decision_rawdata("./DTProgram.xlsx","result_pnmp-arc.pnml")

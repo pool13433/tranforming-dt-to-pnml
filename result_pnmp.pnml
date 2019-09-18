@@ -507,6 +507,11 @@
                     <position x="125" y="485"/>
                 </graphics>
             </transition>
+            <arc id="xxxxxxxxxxxxx" source="D-35-125D1" target="DT125-125-1DT"/>
+            <arc id="xxxxxxxxxxxxx" source="D-35-215D2" target="DT125-215-2DT"/>
+            <arc id="xxxxxxxxxxxxx" source="D-35-305D3" target="DT125-305-3DT"/>
+            <arc id="xxxxxxxxxxxxx" source="D-35-395D4" target="DT125-395-4DT"/>
+            <arc id="xxxxxxxxxxxxx" source="D-35-485D5" target="DT125-485-5DT"/>
         </page>
     </net>
 </pnml>

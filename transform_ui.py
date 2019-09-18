@@ -120,7 +120,7 @@ class TransformationUI(Frame):
 
     def makeTxtbChoose(self,row,column):        
         self.textbox_choose = Entry(self,font=self.fontFamily)
-        self.textbox_choose.insert(END,'Please choose file')
+        self.textbox_choose.insert(END,"")
         self.textbox_choose['width'] = 70        
         self.textbox_choose.pack({"side": "left"})        
         self.textbox_choose['bg'] = '#eff0f1'
@@ -172,21 +172,24 @@ class TransformationUI(Frame):
             self.quit()
 
     def commandProcessTransforming(self):
-        fullPathExcell = self.getTxtbChooseVal()                
-        print('fullPathExcell::=='+str(fullPathExcell))
-        
-        # handle output file
-        now = datetime.now() # current date and time
-        date_time = now.strftime("%Y%m%d_%H%M")
-        dirFullPathPmnl = os.path.dirname(os.path.abspath(fullPathExcell))
-        fillpathPnml = dirFullPathPmnl+'/result_tina_'+str(date_time)+'.pnml'
-        print('fillpathPnml::=='+str(fillpathPnml))
+        fullPathExcell = self.getTxtbChooseVal() 
+        if fullPathExcell == '':
+            dialog.showerror('Choose File from directory!','Cannot select file. Must select only xlsx file.')
+        else:    
+            print('fullPathExcell::=='+str(fullPathExcell))
+            
+            # handle output file
+            now = datetime.now() # current date and time
+            date_time = now.strftime("%Y%m%d_%H%M")
+            dirFullPathPmnl = os.path.dirname(os.path.abspath(fullPathExcell))
+            fillpathPnml = dirFullPathPmnl+'/result_tina_'+str(date_time)+'.pnml'
+            print('fillpathPnml::=='+str(fillpathPnml))
 
-        logic = TransformationLogic()
-        logic.draw_decision_rawdata(fullPathExcell,fillpathPnml)
-        self.setLabelProcessFinished('Program Process Business Logic Successfully.')
-        self.setTxtbFileOut(fillpathPnml.replace("\\","/"))
-        print('export file successfully.')
+            logic = TransformationLogic()
+            logic.draw_decision_rawdata(fullPathExcell,fillpathPnml)
+            self.setLabelProcessFinished('Program Process Business Logic Successfully.')
+            self.setTxtbFileOut(fillpathPnml.replace("\\","/"))
+            print('export file successfully.')
 
     def commandBrowserFile(self):
         file = tkFileDialog.askopenfile(parent=self,mode='rb',title='Choose a file')
@@ -197,6 +200,7 @@ class TransformationUI(Frame):
             if file_name.find('.xlsx') == -1 or file_name.find('.xls') == -1:
                 dialog.showerror('Select File Input Incorrect!','Cannot select file. Must select only xlsx file.')
                 self.appendTxtbConsole('choose file fail')
+                self.setTxtbChooseVal("")
             else:
                 #print "I got %d bytes from this file." % len(data)                        
                 self.setTxtbChooseVal(file_name)
