@@ -1,0 +1,128 @@
+{
+    "A": {
+        "A1": {
+            "R4": NaN,
+            "R5": NaN,
+            "R1": "X",
+            "R2": NaN,
+            "R3": "X",
+            "Value": NaN,
+            "Operator": NaN,
+            "ID": "A1",
+            "Variable/Description": "Receive 3%"
+        },
+        "A3": {
+            "R4": "X",
+            "R5": NaN,
+            "R1": NaN,
+            "R2": NaN,
+            "R3": "X",
+            "Value": NaN,
+            "Operator": NaN,
+            "ID": "A3",
+            "Variable/Description": "Receive10%"
+        },
+        "A2": {
+            "R4": NaN,
+            "R5": "X",
+            "R1": "X",
+            "R2": "X",
+            "R3": NaN,
+            "Value": NaN,
+            "Operator": NaN,
+            "ID": "A2",
+            "Variable/Description": "Receive 5%"
+        }
+    },
+    "C": {
+        "C3": {
+            "R4": "-",
+            "R5": "-",
+            "R1": "F",
+            "R2": "T",
+            "R3": "T",
+            "Value": "Male",
+            "Operator": "=",
+            "ID": "C3",
+            "Variable/Description": "Gender"
+        },
+        "C2": {
+            "R4": "T",
+            "R5": "F",
+            "R1": "T",
+            "R2": "T",
+            "R3": "F",
+            "Value": 3,
+            "Operator": "\u2265",
+            "ID": "C2",
+            "Variable/Description": "Age"
+        },
+        "C1": {
+            "R4": "T",
+            "R5": "F",
+            "R1": "T",
+            "R2": "T",
+            "R3": "T",
+            "Value": 20000,
+            "Operator": ">",
+            "ID": "C1",
+            "Variable/Description": "Salary"
+        }
+    },
+    "R": {
+        "A": {
+            "R4": {
+                "A1": NaN,
+                "A3": "X",
+                "A2": NaN
+            },
+            "R5": {
+                "A1": NaN,
+                "A3": NaN,
+                "A2": "X"
+            },
+            "R1": {
+                "A1": "X",
+                "A3": NaN,
+                "A2": "X"
+            },
+            "R2": {
+                "A1": NaN,
+                "A3": NaN,
+                "A2": "X"
+            },
+            "R3": {
+                "A1": "X",
+                "A3": "X",
+                "A2": NaN
+            }
+        },
+        "C": {
+            "R4": {
+                "C3": "-",
+                "C2": "T",
+                "C1": "T"
+            },
+            "R5": {
+                "C3": "-",
+                "C2": "F",
+                "C1": "F"
+            },
+            "R1": {
+                "C3": "F",
+                "C2": "T",
+                "C1": "T"
+            },
+            "R2": {
+                "C3": "T",
+                "C2": "T",
+                "C1": "T"
+            },
+            "R3": {
+                "C3": "T",
+                "C2": "F",
+                "C1": "T"
+            }
+        }
+    }
+}

@@ -16,7 +16,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 today = date.today()
 dailydate = today.strftime("%Y%m%d")
-logging.basicConfig(filename='./log/transform_'+dailydate+'.log', level=logging.DEBUG,
+logging.basicConfig(filename='./logs/transform_'+dailydate+'.log', level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 class TransformationLogic():
@@ -114,7 +114,7 @@ class TransformationLogic():
         for a_idx in sorted(store['A']):
             key = a_idx
             values = store['A'][a_idx]
-            print('values ::=='+json.dumps(values))
+            #print('values ::=='+json.dumps(values))
             c_desc = values['Variable/Description']
             place_text = a_idx
             place_offset,place_index = self.draw_place_ac(page,key,place_offset,c_desc,place_index)
@@ -325,7 +325,7 @@ class TransformationLogic():
         
     def draw_arcline(self,page,source_key,target_key):
         for source in self.arcs[source_key]:
-            print('source::='+json.dumps(source))
+            #print('source::='+json.dumps(source))
             source_idx = source['index']
             source_id = source['id']
             target_array = self.arcs[target_key]
@@ -343,8 +343,8 @@ class TransformationLogic():
         target_key = 'C'
         store_rc = store['R']['C']
         c_dicts = self.arcs[target_key]        
-        print('\nstore_rc'+json.dumps(store_rc))
-        print('\nc_dicts::=='+json.dumps(c_dicts))        
+        #print('\nstore_rc'+json.dumps(store_rc))
+        #print('\nc_dicts::=='+json.dumps(c_dicts))        
         for source in self.arcs[source_key]:
             #print('source::=='+json.dumps(source))
             dt_idx = source['index']
@@ -355,7 +355,7 @@ class TransformationLogic():
                 #c_value = c_dict[c_key]
                 c_dict = self.find_unique(c_dicts,c_key)  
                 if c_dict is not None:
-                    print('c_dict::=='+json.dumps(c_dict))  
+                    #print('c_dict::=='+json.dumps(c_dict))  
                     c_id = c_dict['id']
                     c_idx = c_dict['index']
                     c_unique = c_dict['unique']
@@ -371,27 +371,28 @@ class TransformationLogic():
     def draw_arclineRT_A(self,page,store):
         # RT => A
         source_key = 'RT'
-        target_key = 'A'
-        store_ra = store['R']['A']        
+        target_key = 'A'              
         rt_dicts = self.arcs[source_key]
         a_dicts = self.arcs[target_key]
+
+        store_ra = store['R']['A']  
         #print('\nstore_ra'+json.dumps(store_ra))
         #print('\na_dicts::=='+json.dumps(a_dicts)) 
-        print('\nrt_dicts::=='+json.dumps(rt_dicts)) 
+        #print('\nrt_dicts::=='+json.dumps(rt_dicts)) 
         #for r_key in sorted(store_ra):
         for r_dict in rt_dicts:
             r_key = r_dict['unique']
             rt_id = r_dict['id']
             #print('r_key::=='+str(r_key))
             c_values = store_ra[r_key]
-            print('c_values::=='+json.dumps(c_values))
+            #print('c_values::=='+json.dumps(c_values))
             for c_key in c_values:                
                 #print('c_key::=='+json.dumps(c_key))
                 a_dict = self.find_unique(a_dicts,c_key)
                 if a_dict is not None:
                     a_id = a_dict['id']
                     a_key = a_dict['unique']
-                    print('a_dict::=='+json.dumps(a_dict))  
+                    #print('a_dict::=='+json.dumps(a_dict))  
                     if 'X' == c_values[a_key]:
                         self.draw_arc(page,{
                             'id' : source_key+'-'+target_key+rt_id+'-'+a_id,
@@ -399,6 +400,20 @@ class TransformationLogic():
                             'target' :a_id 
                         })
 
+    def draw_arclineC_CT(self,page,store):
+        source_key = 'C'
+        target_key = 'CT'        
+        c_dicts = self.arcs[source_key]
+        ct_dicts = self.arcs[target_key]
+        #print('c_dicts::=='+json.dumps(c_dicts))
+        store_extends = store['C_EXTEND']
+        for ext_dict in store_extends:
+            dash_name = ext_dict['name']
+            dash_exts = ext_dict['extends']    
+            #print('dash_name::=='+json.dumps(dash_name))
+            #print('dash_exts::=='+json.dumps(dash_exts))
+        for c_dict in c_dicts:
+            print('c_dict::=='+json.dumps(c_dict))          
 
     def find_unique(self,c_dict,c_key):
         #return find(lambda _key: c_dict[_key] == c_key,c_dict)
@@ -420,103 +435,8 @@ class TransformationLogic():
         self.draw_arcline(page,'R','RT')
         self.draw_arclineDT_C(page,store)
         self.draw_arclineRT_A(page,store)
+        self.draw_arclineC_CT(page,store)
 
-        
-        '''columns = get_decision_columns()
-        rows = get_decision_rows()
-        data_link = {
-                'DT' : 'C' ,'C' : 'CT', 'CT' : 'R'
-                ,'R' : 'RT',
-                #, 'RT' : 'A'
-                }           
-        counter_arc = {
-            'CT' : -1     
-        }
-
-        dict_row_c = sorted(filter(lambda key: key.find('C') ==0  ,rows))                
-        #print('dict_c ::=='+json.dumps(dict_row_c)) 
-        dict_col_r = sorted(filter(lambda key: key.find('R') ==0 , columns))
-        #print('dict_r ::=='+json.dumps(dict_col_r))
-
-
-        for group in self.arcs: # for loop "key" [D,DT,R,RT,C,...]
-            #print('arc  => group ::=='+group)
-            #chars = re.findall('[a-zA-Z]+',group) 
-            arc  = self.arcs[group]
-            #print('arc ::=='+json.dumps(arc,indent=2, sort_keys=True))
-            #print(' ------------------------------ chars ::=='+json.dumps(group)+'---------------------------------------')
-            for (r_index,_arc) in enumerate(arc): #for loop "value" [D,DT,R,RT,C,...]
-                #print('index ::=='+json.dumps(index))
-                #print('_arc ::=='+json.dumps(_arc,indent=2, sort_keys=True))
-                ref_source = _arc['id']
-                dict_arc = {'id' : group+'-'+str(ref_source),'source' : ref_source}  
-                group_char,group_len = self.grep_char(group)      
-                #print('group_char::=='+str(group_char))               
-                if 'DT' == group_char:                             
-                    #print('\n-------------------------index '+str(r_index)+'------------------------------------')
-                    for c_idx in range(len(dict_row_c)):
-                        c_key = dict_row_c[c_idx]
-                        c_dict = rows.get(c_key)
-                        #print('c_key::=='+json.dumps(c_key))
-                        #print('c_dict::=='+json.dumps(c_dict))
-                        #print('r_idx::=='+json.dumps(c_idx))
-                        if group in data_link:
-                            r_value = columns['R'+str(r_index+1)][c_idx]
-                            #print('r_value::=='+str(r_value))
-                            if 'T' == r_value:
-                                dict_arc['id'] = group+str(r_index)+'-'+str(c_key)+'-'+str(c_idx)
-                                ref_target = self.arcs[data_link[group]][c_idx]
-                                dict_arc['target'] = ref_target['id']
-                                draw_arc(page,dict_arc)
-                            
-                elif 'C' == group_char:  
-                    #print('\nC:==group ::=='+str(group))
-                    for r_idx in range(len(dict_col_r)):
-                        #print('r_idx::=='+str(r_idx))
-                        r_key = dict_col_r[r_idx]
-                        r_dict = columns.get(r_key)
-                        print('r_idx::=='+str(r_idx))
-                        #print('r_key::=='+str(r_key))
-                        #print('r_dict::=='+str(r_dict))
-                        if group in data_link:
-                            r_value = r_dict[r_index]
-                            r_idx_dash = r_idx
-                            #print('r_value::=='+str(r_value)) 
-                                                
-                            if '-' == r_value: # fine dash then extrace 2 line
-                                index_dash = r_value.index('-')                            
-                                if index_dash > -1:
-                                    extrace_dashs = ['T','F']
-                                    for dash_idx in range(len(extrace_dashs)): 
-                                        r_idx_dash = r_idx+int(counter_arc['CT'])  
-                                        print('r_idx_dash::=='+str(r_idx_dash))                                      
-                                        r_value_dash = extrace_dashs[dash_idx]                                    
-                                        dict_arc['id'] = group+str(r_index)+'-'+str(r_idx_dash)+'-'+str(r_idx_dash)
-                                        ref_target = self.arcs[data_link[group]][r_idx_dash]
-                                        print('ref_target::=='+json.dumps(ref_target))
-                                        dict_arc['target'] = ref_target['id'] 
-                                        if 'F' == r_value_dash:                                    
-                                            dict_arc['type'] = 'inhibitor'
-                                        draw_arc(page,dict_arc)
-                                        counter_arc['CT'] = counter_arc['CT']+1
-                                        print('counter_arc::=='+json.dumps(counter_arc))                                                          
-                            else:
-                                dict_arc['id'] = group+str(r_index)+'-'+str(r_idx_dash)+'-'+str(r_idx_dash)
-                                ref_target = self.arcs[data_link[group]][r_idx_dash]
-                                dict_arc['target'] = ref_target['id'] 
-                                if 'F' == r_value:                                    
-                                    dict_arc['type'] = 'inhibitor'
-                                draw_arc(page,dict_arc)
-
-                elif 'RT' == group_char:  
-                    print('RT')
-                else:
-                    if group in data_link:
-                        ref_target = self.arcs[data_link[group]][r_index]
-                        dict_arc['target'] = ref_target['id']
-
-                    draw_arc(page,dict_arc)
-            '''
     def find_value_t(page,rows,r_value,dict_arc,start_idx):
         c_index = 0    
         for row in sorted(rows.keys()):
@@ -607,6 +527,8 @@ class TransformationLogic():
         with open(pnmlpath, "w") as f: #'./tina-result.pnml'
             f.write(xmlstr)
 
-
-logic = TransformationLogic()
-logic.draw_decision_rawdata("./DTProgram.xlsx","result_pnmp-arc.pnml")
+def main():
+    logic = TransformationLogic()
+    logic.draw_decision_rawdata("./DTProgram.xlsx","result_pnmp-arc.pnml")
+if __name__ == "__main__":
+    main()
