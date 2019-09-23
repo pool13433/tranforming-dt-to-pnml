@@ -134,7 +134,7 @@ class TransformationLogic():
             'd' : 1
         }
         store_rc = store['R']['C']
-        for r_idx in store_rc:
+        for r_idx in sorted(store_rc):
             r_values = store_rc[r_idx]
             #print('r_values::=='+str(r_values))
             key = r_idx
@@ -227,6 +227,8 @@ class TransformationLogic():
             arc_data = {'id' : name_id}
             if 'unique' in transition_dict:
                 arc_data['unique'] = transition_dict['unique']
+            if 'unique_ext' in transition_dict:
+                arc_data['unique_ext'] = transition_dict['unique_ext']
             self.push_arcs(name_text,arc_data)
 
         if 'graphics' in transition_dict:
@@ -255,10 +257,11 @@ class TransformationLogic():
             #print('r_values::=='+str(r_values))
             dashs = self.find_dash(r_values)
             trans_keys = {'CT' : 'CT'+str(rc_idx+1),'RT' : 'RT'+str(rc_idx+1)}
-            ctrt_data = {'unique' : r_key}
+            ctrt_data = {'unique' : r_key,'unique_ext' : r_key}
             if len(dashs) > 0:
                 couter_float = 1
                 for dash_idx in range(2*len(dashs)):
+                    ctrt_data['unique_ext'] = r_key+'.'+str(dash_idx)
                     # child0 [CT]                    
                     ctrt_data['dash_key'] = trans_keys['CT']+'.'+str(couter_float+1)
                     #print('ct_key ::=='+ct_key)
@@ -269,6 +272,7 @@ class TransformationLogic():
                     tran_offset,tran_index = self.draw_transition_ctrt(page,ctrt_data,tran_offset,tran_index)
                     couter_float = couter_float+1
             else:
+                ctrt_data['unique_ext'] = r_key+'.0'
                 # child [CT]
                 ctrt_data['dash_key'] = trans_keys['CT']
                 tran_offset,tran_index = self.draw_transition_ctrt(page,ctrt_data,tran_offset,tran_index)
@@ -303,7 +307,9 @@ class TransformationLogic():
                 'unique' : key
             }
             if 'unique' in ctrt_data:
-                arc_data['unique'] = ctrt_data['unique']                
+                arc_data['unique'] = ctrt_data['unique']     
+            if 'unique_ext' in ctrt_data:
+                arc_data['unique_ext'] = ctrt_data['unique_ext'] #'unique_ext'
             self.draw_transition(page,arc_data)
 
             offset['x'] = str(int(offset['x']))
@@ -353,7 +359,7 @@ class TransformationLogic():
             #print('r_dict::=='+json.dumps(r_dict))
             for c_key in r_dict:
                 #c_value = c_dict[c_key]
-                c_dict = self.find_unique(c_dicts,c_key)  
+                c_dict = self.find_one(c_dicts,'unique',c_key)  
                 if c_dict is not None:
                     #print('c_dict::=='+json.dumps(c_dict))  
                     c_id = c_dict['id']
@@ -388,7 +394,7 @@ class TransformationLogic():
             #print('c_values::=='+json.dumps(c_values))
             for c_key in c_values:                
                 #print('c_key::=='+json.dumps(c_key))
-                a_dict = self.find_unique(a_dicts,c_key)
+                a_dict = self.find_one(a_dicts,'unique',c_key)
                 if a_dict is not None:
                     a_id = a_dict['id']
                     a_key = a_dict['unique']
@@ -405,21 +411,56 @@ class TransformationLogic():
         target_key = 'CT'        
         c_dicts = self.arcs[source_key]
         ct_dicts = self.arcs[target_key]
-        #print('c_dicts::=='+json.dumps(c_dicts))
-        store_extends = store['C_EXTEND']
-        for ext_dict in store_extends:
-            dash_name = ext_dict['name']
-            dash_exts = ext_dict['extends']    
-            #print('dash_name::=='+json.dumps(dash_name))
-            #print('dash_exts::=='+json.dumps(dash_exts))
-        for c_dict in c_dicts:
-            print('c_dict::=='+json.dumps(c_dict))          
+        store_RCR_EXT = store['RCR_EXTEND']
+        print('store_RCR_EXT::=='+json.dumps(store_RCR_EXT))
+        print('c_dicts::=='+json.dumps(c_dicts))
+        print('ct_dicts::=='+json.dumps(ct_dicts))
+        
+        for c_key in sorted(store_RCR_EXT):
+            #print('c_key::=='+json.dumps(c_key))
+            r_values = store_RCR_EXT[c_key]
+            #print('r_values::=='+json.dumps(r_values))
+            arcC_dicts = filter(lambda _dict: _dict['unique'] == c_key,c_dicts)
+            if len(arcC_dicts) > 0:
+                c_dict = arcC_dicts[0] 
+                c_id = c_dict['id']
+                for r_dict in r_values:
+                    #print('r_dict::=='+json.dumps(r_dict))
+                    for r_key in r_dict:
+                        r_vals = r_dict[r_key]
+                        #print('r_key::=='+json.dumps(r_key))
+                        print('r_vals::=='+json.dumps(r_vals))                        
+                        for ext_dict in r_vals:
+                            #print('ext_dict::=='+json.dumps(ext_dict))
+                            ext_key,ext_val = ext_dict.items()[0]                            
+                            #print('ext_key::=='+str(ext_key)+' ext_val::=='+str(ext_val)) 
+                            arcCT_dicts = filter(lambda _dict: _dict['unique_ext'] == ext_key,ct_dicts)
+                            if len(arcCT_dicts) > 0:
+                                for ct_dict in arcCT_dicts:   
+                                    #print('ct_dict::=='+json.dumps(ct_dict))                                 
+                                    ct_id = ct_dict['id']
+                                    ct_key = ct_dict['id']
+                                    arc_data = {
+                                        'c_key' : c_key,'ext_key' : ext_key,
+                                        'id' : c_key+'-'+ct_key+c_id+'-'+ct_id,
+                                        'source' : c_id,'target' : ct_id 
+                                    }
+                                    #print('arc_data::=='+json.dumps(arc_data))
+                                    if 'F' == ext_val:
+                                        arc_data['type'] = 'inhibitor'                                    
+                                    self.draw_arc(page,arc_data)
 
-    def find_unique(self,c_dict,c_key):
-        #return find(lambda _key: c_dict[_key] == c_key,c_dict)
+    def find_name(self,ext_dict,ext_key):
+        ext_val = filter(lambda _dict: _dict['name'] == ext_key,ext_dict)
+        if len(ext_val) > 0:
+            return ext_val[0]
+        else:
+            return None
+    def find_one(self,c_dict,source_key,equal_key):
+        #return find(lambda _key: c_dict[_key] == equal_key,c_dict)
         #print('c_dict::=='+json.dumps(c_dict))
-        #print('c_key::=='+json.dumps(c_key))        
-        c_unique = filter(lambda item: item['unique'] == c_key,c_dict)
+        #print('equal_key::=='+json.dumps(equal_key))        
+        c_unique = filter(lambda item: item[source_key] == equal_key,c_dict)
         #print('c_unique::=='+json.dumps(c_unique))
         if len(c_unique) > 0:
             return c_unique[0]
@@ -529,6 +570,6 @@ class TransformationLogic():
 
 def main():
     logic = TransformationLogic()
-    logic.draw_decision_rawdata("./DTProgram.xlsx","result_pnmp-arc.pnml")
+    logic.draw_decision_rawdata("./DTProgram.xlsx","result_pnml_final.pnml")
 if __name__ == "__main__":
     main()

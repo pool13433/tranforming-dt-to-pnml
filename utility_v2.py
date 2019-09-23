@@ -97,7 +97,8 @@ class Utility():
             },
             'C': {},
             'A': {},
-            'C_EXTEND': []
+            'CRC_EXTEND': [],
+            'RCR_EXTEND' :{}
         }
         for col_idx in df_cols:
             # print('col::=='+str(col))
@@ -125,11 +126,12 @@ class Utility():
                 col_val = self.df[col_idx][row_idx]
                 modules[col_idx] = col_val
 
-            # print('modules::=='+json.dumps(modules))
+            #print('modules::=='+json.dumps(modules))
             if row_val.find('C') == 0:
                 store['C'][row_val] = modules
             elif row_val.find('A') == 0:
                 store['A'][row_val] = modules
+        #print('store[\'C\']::=='+json.dumps(store['C']))
 
         store_rc = store['R']['C']
         for rdash_key in store_rc:
@@ -137,22 +139,23 @@ class Utility():
             #print('\nrdash_key::=='+json.dumps(rdash_key))
             vals = store_rc[rdash_key]
             # print('val::=='+json.dumps(vals))
-            len_C_EXTEND = len(filter(lambda c_key: vals[c_key] == '-', vals))
-            #print('len_C_EXTEND::=='+str(len_C_EXTEND))
-            matrixs = self.matrix_logic_boolean(len_C_EXTEND,is_reshap=True)
-            if len_C_EXTEND > 0:
+            len_CRC_EXTEND = len(filter(lambda c_key: vals[c_key] == '-', vals))
+            #print('len_CRC_EXTEND::=='+str(len_CRC_EXTEND))
+            if len_CRC_EXTEND > 0:
+                matrixs_reshap = self.matrix_logic_boolean(len_CRC_EXTEND,is_reshap=True)
                 extends_data = {}
-                len_dash_power = pow(2,len_C_EXTEND)                
-                for v_idx in range(len_dash_power):
+                len_dash_power = pow(2,len_CRC_EXTEND)                
+                for v_idx in range(len_CRC_EXTEND):
                     rdash_extends_key = rdash_key+'.'+str(v_idx)
                     new_vals = {}
+                    das_idx = 0
                     for das_key in vals:
                         das_val = vals[das_key]
-                        das_idx = vals.keys().index(das_key)
                         #print('das_key::=='+str(das_key))
                         #print('das_val::=='+str(das_val))
                         if '-' == das_val:                           
-                            new_vals[das_key] = matrixs[v_idx][das_idx]
+                            new_vals[das_key] =  matrixs_reshap[das_idx][v_idx]
+                            das_idx +=1
                         else:
                             new_vals[das_key] = das_val        
                     #print('new_vals::=='+json.dumps(new_vals))               
@@ -161,8 +164,48 @@ class Utility():
                 extend_data['extends'] = extends_data
             else:
                 extend_data['extends'] = {rdash_key : vals}
-            store['C_EXTEND'].append(extend_data)
-        #print('store[\'C_EXTEND\']::==' +json.dumps(store['C_EXTEND'], indent=1, sort_keys=True))
+            store['CRC_EXTEND'].append(extend_data)
+        #print('store[\'CRC_EXTEND\']::==' +json.dumps(store['CRC_EXTEND'], indent=1, sort_keys=True))
+
+        store_c = store['C']        
+        #print('store_c::=='+json.dumps(store_c))        
+        for c_key in store_c:
+            c_array = []
+            c_values = store_c[c_key]            
+            extend_data = {'name' : c_key , 'extends' : []}
+            c_data = {'name' : c_key , 'extends' : []}
+            #print('c_values::==',json.dumps(c_values))            
+            c_idx = 0 
+            for r_key in c_values:                           
+                r_value = c_values[r_key]                
+                #print('r_key::=='+str(r_key))
+                #print('r_value::=='+str(r_value))
+                if r_key.find('R') == 0: 
+                    child = []                   
+                    rc_values = store_rc[r_key]
+                    len_RCR_EXTEND = len(filter(lambda c_key: rc_values[c_key] == '-', rc_values))
+                    matrixs = self.matrix_logic_boolean(len_RCR_EXTEND,is_reshap=False)
+                    #print('matrixs::=='+json.dumps(matrixs))
+                    len_dash_power = pow(2,len_RCR_EXTEND) 
+                    print('len_dash_power::=='+str(len_dash_power))
+                    for ext_idx in range(len_dash_power):
+                        rdash_extends_key = r_key+'.'+str(ext_idx)                                                           
+                        if '-' == r_value:
+                            rdash_extends_value = matrixs[c_idx][ext_idx]
+                        else:
+                            rdash_extends_value =  r_value 
+                        child.append({rdash_extends_key : rdash_extends_value})
+                    c_idx +=1
+                    '''print('c_key::=='+json.dumps(c_key))
+                    print(' r_value::=='+json.dumps(r_value))
+                    print(' child::=='+json.dumps(child))
+                    print(' r_key::=='+json.dumps(r_key))'''
+                    c_array.append({r_key : child})
+                    #print('\n')
+                c_idx = 0 
+                
+            store['RCR_EXTEND'][c_key] = c_array
+        print('store[\'RCR_EXTEND\']::=='+json.dumps(store['RCR_EXTEND']))
         return store
     # -----------------------------------------------------------------------------------
     def matrix_logic_boolean(self,len_power,is_reshap=True):
@@ -206,13 +249,16 @@ def main():
         for bool_idx in store:
             print(str(bool_idx))'''
     store = utility.read_rawdata()
-    store_C_EXTEND = store['C_EXTEND']
-    print('store_C_EXTEND::=='+json.dumps(store_C_EXTEND))
-    for dash_dict in store_C_EXTEND:    
+    '''store_CRC_EXTEND = store['CRC_EXTEND']
+    print('store_CRC_EXTEND::=='+json.dumps(store_CRC_EXTEND))
+    for dash_dict in store_CRC_EXTEND:    
         dash_name = dash_dict['name']
         dash_exts = dash_dict['extends']    
         print('dash_name::=='+json.dumps(dash_name))
-        print('dash_exts::=='+json.dumps(dash_exts))
+        print('dash_exts::=='+json.dumps(dash_exts))'''
+    store_RCR_EXTEND = store['RCR_EXTEND']
+    
+
     #store = utility.matrix_logic_boolean(3)
     #utility.transform_matrix_logic(store)
     # print('store::=='+json.dumps(store))
