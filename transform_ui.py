@@ -182,7 +182,7 @@ class TransformationUI(Frame):
             now = datetime.now() # current date and time
             date_time = now.strftime("%Y%m%d_%H%M")
             dirFullPathPmnl = os.path.dirname(os.path.abspath(fullPathExcell))
-            fillpathPnml = dirFullPathPmnl+'/result_tina_'+str(date_time)+'.pnml'
+            fillpathPnml = dirFullPathPmnl+'/outputs/result_tina_'+str(date_time)+'.pnml'
             print('fillpathPnml::=='+str(fillpathPnml))
 
             logic = TransformationLogic()
@@ -190,6 +190,7 @@ class TransformationUI(Frame):
             self.setLabelProcessFinished('Program Process Business Logic Successfully.')
             self.setTxtbFileOut(fillpathPnml.replace("\\","/"))
             print('export file successfully.')
+            os.system(os.getcwd()+'/tina-3.5.0/bin/nd.exe')
 
     def commandBrowserFile(self):
         file = tkFileDialog.askopenfile(parent=self,mode='rb',title='Choose a file')

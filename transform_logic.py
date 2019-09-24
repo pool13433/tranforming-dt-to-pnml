@@ -26,7 +26,7 @@ class TransformationLogic():
         self.pnml_options = {
                 'y_space' : 90
         }
-        self.arcs = {'A' : [],'C' : [],'CT' : [],'D' : [],'R' : [],'RT' : [],'DT' : []}
+        self.arcs = {'A' : [],'C' : [],'CT' : [],'D' : [],'R' : [],'RT' : [],'DT' : []}    
 
     def grep_char(self,str):
         chars = re.findall('[a-zA-Z]+',str) 
@@ -571,5 +571,6 @@ class TransformationLogic():
 def main():
     logic = TransformationLogic()
     logic.draw_decision_rawdata("./DTProgram.xlsx","result_pnml_final.pnml")
+    
 if __name__ == "__main__":
     main()

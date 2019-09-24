@@ -8,4 +8,5 @@ def main():
 # ------- execute main -----------
 if __name__ == "__main__":
     main()
+    #print os.getcwd()
 print("finish export xml")
