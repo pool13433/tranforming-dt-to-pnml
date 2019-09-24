@@ -1,7 +1,0 @@
-
-source train.tpn
-dup
-dup
-merge 3
-
-
