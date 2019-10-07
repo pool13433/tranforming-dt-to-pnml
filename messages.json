@@ -1,0 +1,16 @@
+{
+    "NOT_BLANK": {
+        "CODE": "001",
+        "MESSAGE": {
+            "TH": "AAAA",
+            "EN": "NOT Blank"
+        }
+    },
+    "ONLY_VALUES": {
+        "CODE": "002",
+        "MESSAGE": {
+            "TH": "BBBB",
+            "EN": "Only this Values"
+        }
+    }
+}

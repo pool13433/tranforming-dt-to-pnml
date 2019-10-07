@@ -98,7 +98,7 @@ class Utility():
             'C': {},
             'A': {},
             'CRC_EXTEND': [],
-            'RCR_EXTEND' :{}
+            'RCR_EXTEND' :{},            
         }
         for col_idx in df_cols:
             # print('col::=='+str(col))
@@ -187,7 +187,7 @@ class Utility():
                     matrixs = self.matrix_logic_boolean(len_RCR_EXTEND,is_reshap=False)
                     #print('matrixs::=='+json.dumps(matrixs))
                     len_dash_power = pow(2,len_RCR_EXTEND) 
-                    print('len_dash_power::=='+str(len_dash_power))
+                    #print('len_dash_power::=='+str(len_dash_power))
                     for ext_idx in range(len_dash_power):
                         rdash_extends_key = r_key+'.'+str(ext_idx)                                                           
                         if '-' == r_value:
@@ -205,7 +205,7 @@ class Utility():
                 c_idx = 0 
                 
             store['RCR_EXTEND'][c_key] = c_array
-        print('store[\'RCR_EXTEND\']::=='+json.dumps(store['RCR_EXTEND']))
+        #print('store[\'RCR_EXTEND\']::=='+json.dumps(store['RCR_EXTEND']))
         return store
     # -----------------------------------------------------------------------------------
     def matrix_logic_boolean(self,len_power,is_reshap=True):

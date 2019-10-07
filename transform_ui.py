@@ -2,11 +2,14 @@ import Tkinter, Tkconstants, tkFileDialog, ScrolledText
 import tkFont as font
 import os
 import tkMessageBox as dialog
+import json
 
 from Tkinter import * 
 from PIL import ImageTk, Image
-from transform_logic import *
 from datetime import datetime
+
+from transform_logic import *
+from input_validation import *
 
 class TransformationUI(Frame):    
 
@@ -110,13 +113,13 @@ class TransformationUI(Frame):
 
     def makeTxtbConsole(self,row,column):        
         self.textbox_console = Text(self,font=self.fontFamily)
-        self.textbox_console['width'] = 70        
-        self.textbox_console['height'] = 3  
+        self.textbox_console['width'] = 120        
+        self.textbox_console['height'] = 5  
         self.textbox_console['bg'] = '#eff0f1'
         #textbox_console.pack({"side": "left"})        
         self.textbox_console.grid(row = row, column = column, sticky=W, pady = 2)        
-    def appendTxtbConsole(self,text):
-        self.textbox_console.insert(END,'info: '+text+'\n')
+    def appendTxtbConsole(self,text,level='info'):
+        self.textbox_console.insert(END,level+': '+text+'\n')
 
     def makeTxtbChoose(self,row,column):        
         self.textbox_choose = Entry(self,font=self.fontFamily)
@@ -177,20 +180,35 @@ class TransformationUI(Frame):
             dialog.showerror('Choose File from directory!','Cannot select file. Must select only xlsx file.')
         else:    
             print('fullPathExcell::=='+str(fullPathExcell))
-            
-            # handle output file
-            now = datetime.now() # current date and time
-            date_time = now.strftime("%Y%m%d_%H%M")
-            dirFullPathPmnl = os.path.dirname(os.path.abspath(fullPathExcell))
-            fillpathPnml = dirFullPathPmnl+'/outputs/result_tina_'+str(date_time)+'.pnml'
-            print('fillpathPnml::=='+str(fillpathPnml))
 
-            logic = TransformationLogic()
-            logic.draw_decision_rawdata(fullPathExcell,fillpathPnml)
-            self.setLabelProcessFinished('Program Process Business Logic Successfully.')
-            self.setTxtbFileOut(fillpathPnml.replace("\\","/"))
-            print('export file successfully.')
-            os.system(os.getcwd()+'/tina-3.5.0/bin/nd.exe')
+            validate = InputValidation(fullPathExcell)
+            validate.runValidateInput()
+            resultValidates = validate.getValidtors()
+            if len(resultValidates) > 0:
+                for valid in resultValidates:
+                    invalid_msg = json.dumps(valid,sort_keys=True,indent=3)
+                    print('valid::=='+invalid_msg)
+                    self.appendTxtbConsole(invalid_msg,'error')
+                dialog.showerror('Validate Input File Invalid','Input File Parameters Invalid!')
+            else:            
+                # handle output file
+                now = datetime.now() # current date and time
+                date_time = now.strftime("%Y%m%d_%H%M")
+                dirFullPathPmnl = os.path.dirname(os.path.abspath(fullPathExcell))
+                fillpathPnml = dirFullPathPmnl+'/outputs/result_tina_'+str(date_time)+'.pnml'
+                print('fillpathPnml::=='+str(fillpathPnml))
+
+                logic = TransformationLogic()
+                logic.draw_decision_rawdata(fullPathExcell,fillpathPnml)
+                self.setLabelProcessFinished('Program Process Business Logic Successfully.')            
+                self.setTxtbFileOut(fillpathPnml.replace("\\","/"))
+
+                dialog.showinfo('Transform xls to pnml successfully.','Transform xls to pnml successfully.')
+                self.appendTxtbConsole('Transform xls to pnml successfully.')
+
+                print('export file successfully.')
+                os.system(os.getcwd()+'/tina-3.5.0/bin/nd.exe')
+                
 
     def commandBrowserFile(self):
         file = tkFileDialog.askopenfile(parent=self,mode='rb',title='Choose a file')
@@ -214,7 +232,7 @@ def disableWindowClose():
 def setupApplication():
     root = Tk()
     root.title('Transformation Data to Tina tools')
-    root.geometry("800x550")
+    root.geometry("1200x550")
     root.resizable(width=False, height=False)
     root.protocol("WM_DELETE_WINDOW", disableWindowClose)
 
