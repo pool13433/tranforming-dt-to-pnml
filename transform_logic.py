@@ -22,10 +22,7 @@ logging.basicConfig(filename='./logs/transform_'+dailydate+'.log', level=logging
 class TransformationLogic():
 
     def __init__(self):
-        self.df = pd.read_excel('./DTProgram.xlsx', sheet_name='Sheet1')
-        self.pnml_options = {
-                'y_space' : 90
-        }
+        self.pnml_options = {'y_space' : 90}
         self.arcs = {'A' : [],'C' : [],'CT' : [],'D' : [],'R' : [],'RT' : [],'DT' : []}    
 
     def grep_char(self,str):
@@ -142,9 +139,11 @@ class TransformationLogic():
             place_offset ,place_index  = self.draw_place_d(page,key,place_offset,place_index)
             #print('r_idx::=='+str(r_idx))
             dashs = self.find_dash(r_values)
-            #print('len_dashs::=='+str(dashs))
-            if len(dashs) > 0:    
-                for x in range(2*len(dashs)):
+            print('len_dashs::=='+str(dashs))
+            len_dashs = len(dashs)
+            if len_dashs > 0:    
+                len_dash_power = pow(2,len_dashs) 
+                for x in range(len_dash_power):
                     place_offset,place_index = self.draw_place_r(page,key+'.'+str(x+1),place_offset,place_index)                
             else:
                 place_offset,place_index = self.draw_place_r(page,key,place_offset,place_index) 
@@ -258,9 +257,11 @@ class TransformationLogic():
             dashs = self.find_dash(r_values)
             trans_keys = {'CT' : 'CT'+str(rc_idx+1),'RT' : 'RT'+str(rc_idx+1)}
             ctrt_data = {'unique' : r_key,'unique_ext' : r_key}
-            if len(dashs) > 0:
+            len_dashs = len(dashs)
+            if len_dashs > 0:
                 couter_float = 1
-                for dash_idx in range(2*len(dashs)):
+                len_dash_power = pow(2,len_dashs)  
+                for dash_idx in range(len_dash_power):
                     ctrt_data['unique_ext'] = r_key+'.'+str(dash_idx)
                     # child0 [CT]                    
                     ctrt_data['dash_key'] = trans_keys['CT']+'.'+str(couter_float+1)
@@ -422,7 +423,7 @@ class TransformationLogic():
         #print('ct_dicts::=='+json.dumps(ct_dicts))
         
         for c_key in sorted(store_RCR_EXT):
-            print('c_key::=='+json.dumps(c_key))
+            #print('c_key::=='+json.dumps(c_key))
             c_values = store_RCR_EXT[c_key]
             #print('r_values::=='+json.dumps(r_values))
             arcC_dicts = filter(lambda _dict: _dict['unique'] == c_key,c_dicts)
