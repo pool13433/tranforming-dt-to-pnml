@@ -26,10 +26,17 @@ class Utility():
     def __init__(self, filepath):
         print('filepath::==', filepath)
         if filepath is not None:
-            self.df = pd.read_excel(
-                filepath, sheet_name='Sheet1')  # './DTProgram.xlsx'
+            #self.has_firstsheet(filepath)
+            try:
+                self.df = pd.read_excel(filepath, sheet_name=0) # read sheet first tab
+            except expression as identifier:
+                raise Exception('Program Error')
         else:
             print('File Excell Not Found !!!')
+    def has_firstsheet(self,filepath):
+        pd_sheets = pd.ExcelFile(filepath)
+        for sheet in pd_sheets.sheet_names:
+            print('sheet::=='+sheet)
 
     def get_decision_range(_key):
         ranges = []
@@ -87,6 +94,10 @@ class Utility():
             append_dict(_child, tags[tag])
 
     def read_rawdata(self):
+        #print('hasattr(self,\'df\')::=='+json.dumps(not hasattr(self,'df')))
+        if not hasattr(self,'df'):     
+            raise Exception('df not found please implement code again.')  
+
         df_cols = self.df.columns
         df_rows = self.df.index
         # "C": ["ID", "Variable/Description", "Operator", "Value", "R1", "R2", "R3", "R4", "R5"]
@@ -101,9 +112,9 @@ class Utility():
             'RCR_EXTEND' :{},            
         }
         for col_idx in df_cols:
-            # print('col::=='+str(col))
+            #print('col_idx::=='+str(col_idx))
             # row [R]
-            if col_idx.find('R') == 0:
+            if str(col_idx).startswith('R'):
                 modules = {
                     'C': {},
                     'A': {}
@@ -168,44 +179,54 @@ class Utility():
         #print('store[\'CRC_EXTEND\']::==' +json.dumps(store['CRC_EXTEND'], indent=1, sort_keys=True))
 
         store_c = store['C']        
-        #print('store_c::=='+json.dumps(store_c))        
-        for c_key in store_c:
-            c_array = []
-            c_values = store_c[c_key]            
-            extend_data = {'name' : c_key , 'extends' : []}
-            c_data = {'name' : c_key , 'extends' : []}
-            #print('c_values::==',json.dumps(c_values))            
-            c_idx = 0 
-            for r_key in c_values:                           
+        #print('store_c::=='+json.dumps(store_c))         
+        cr_array = {}               
+        matrY_idx = {}
+        for c_idx in range(len(store_c)):                        
+            c_key = list(sorted(store_c))[c_idx]
+            c_values = store_c[c_key]               
+            r_dicts = {k: v for k, v in c_values.items() if str(k).startswith('R')}
+            #print('\nc_key::=='+str(c_key))
+            #print('c_idx::=='+str(c_idx))
+            #print('r_dicts::=='+json.dumps(r_dicts)) 
+            #print('c_values::=='+json.dumps(c_values)) 
+            cr_array[c_key] = {}             
+            #print('matrY_idx::=='+json.dumps(matrY_idx))
+            for r_key in r_dicts:                   
+                #print('matrY_idx::=='+json.dumps(matrY_idx))
+                c_array = []     
+                child = []                                    
                 r_value = c_values[r_key]                
-                #print('r_key::=='+str(r_key))
-                #print('r_value::=='+str(r_value))
-                if r_key.find('R') == 0: 
-                    child = []                   
-                    rc_values = store_rc[r_key]
-                    len_RCR_EXTEND = len(filter(lambda c_key: rc_values[c_key] == '-', rc_values))
-                    matrixs = self.matrix_logic_boolean(len_RCR_EXTEND,is_reshap=False)
-                    #print('matrixs::=='+json.dumps(matrixs))
-                    len_dash_power = pow(2,len_RCR_EXTEND) 
-                    #print('len_dash_power::=='+str(len_dash_power))
-                    for ext_idx in range(len_dash_power):
-                        rdash_extends_key = r_key+'.'+str(ext_idx)                                                           
-                        if '-' == r_value:
-                            rdash_extends_value = matrixs[c_idx][ext_idx]
-                        else:
-                            rdash_extends_value =  r_value 
-                        child.append({rdash_extends_key : rdash_extends_value})
-                    c_idx +=1
-                    '''print('c_key::=='+json.dumps(c_key))
-                    print(' r_value::=='+json.dumps(r_value))
-                    print(' child::=='+json.dumps(child))
-                    print(' r_key::=='+json.dumps(r_key))'''
-                    c_array.append({r_key : child})
-                    #print('\n')
-                c_idx = 0 
-                
-            store['RCR_EXTEND'][c_key] = c_array
-        #print('store[\'RCR_EXTEND\']::=='+json.dumps(store['RCR_EXTEND']))
+                rc_values = store_rc[r_key]
+                #print('    r_key ::=='+str(r_key))
+                #print('    r_value::=='+json.dumps(r_value))
+                #print('    rc_values::=='+json.dumps(rc_values))
+                len_RCR_EXTEND = len(filter(lambda c_key: rc_values[c_key] == '-', rc_values))
+                #print('    len_RCR_EXTEND::=='+json.dumps(len_RCR_EXTEND))
+                matrixs = self.matrix_logic_boolean(len_RCR_EXTEND,is_reshap=False)
+                #print('    matrixs::=='+json.dumps(matrixs,indent=1))
+                len_dash_power = pow(2,len_RCR_EXTEND) 
+                #print('    len_dash_power::=='+str(len_dash_power))
+                _idx = self.get_extend_idx(matrY_idx,r_key)
+                #print('_idx::=='+str(_idx))
+                for dup_idx in range(len_dash_power):                        
+                    rdash_extends_key = r_key+'.'+str(dup_idx)  
+                    if '-' == r_value:                                                
+                        matrY_vals = matrixs[_idx]
+                        matrX_val = matrY_vals[dup_idx]                         
+                    else:
+                        matrX_val = r_value
+                    child.append({rdash_extends_key : matrX_val})
+                cr_array[c_key][r_key] = child  
+                if '-' == r_value:
+                    matrY_idx = self.add_extend_idx(matrY_idx,r_key)
+
+        store['RCR_EXTEND'] = cr_array
+        #print('store[\'RCR_EXTEND\']::=='+json.dumps(store['RCR_EXTEND'],indent=1))
+        #print('matrY_idx::=='+json.dumps(matrY_idx))
+        #for f_idx in range(len(c_array)):
+        #print('store_c::=='+json.dumps(store_c,indent=1))
+        #print('cr_array::=='+json.dumps(cr_array,indent=1))
         return store
     # -----------------------------------------------------------------------------------
     def matrix_logic_boolean(self,len_power,is_reshap=True):
@@ -242,8 +263,24 @@ class Utility():
         #print('matrix_x::=='+json.dumps(matrix_x,indent=1,sort_keys=True))
         return matrix_x
 
+    def add_extend_idx(self,matrY_idx,r_key):
+        if r_key in matrY_idx:
+            matrY_idx[r_key] += 1
+        else:
+            if not matrY_idx:
+                matrY_idx = {r_key : 1}
+            else:
+                matrY_idx[r_key] = 1
+        return matrY_idx
+    def get_extend_idx(self,matrY_idx,r_key):
+        if r_key in matrY_idx:
+            return matrY_idx[r_key]
+        else:
+            return 0
+        return matrY_idx
 def main():
-    utility = Utility('./DTProgram.xlsx')
+    utility = Utility('./DTProgramBug.xlsx')
+    #utility = Utility('./DTProgram.xlsx')
     '''for store_idx in range(4):
         store = utility.matrix_logic_boolean((store_idx+1))
         for bool_idx in store:
