@@ -35,14 +35,14 @@ class TransformationUI(Frame):
         self.makeLabelFileInPath(1,0) 
         self.makeTxtbChoose(1,1)        
 
-        self.makeLabelProcessing(2,0)
-        self.makeImageLoading(2,1)
+        #self.makeLabelProcessing(2,0)
+        #self.makeImageLoading(2,1)
 
         self.makeLabelStartProcess(3,0)
         self.makeBtnStartProcess(3,1)
 
-        self.makeLabelFinished(4,0)
-        self.makeLabelProcessFinished(4,1)
+        #self.makeLabelFinished(4,0)
+        #self.makeLabelProcessFinished(4,1)
 
         self.makeLabelFileOutPath(5,0)
         self.makeTxtbFileOut(5,1)
@@ -114,12 +114,13 @@ class TransformationUI(Frame):
     def makeTxtbConsole(self,row,column):        
         self.textbox_console = Text(self,font=self.fontFamily)
         self.textbox_console['width'] = 120        
-        self.textbox_console['height'] = 5  
+        self.textbox_console['height'] = 12 
         self.textbox_console['bg'] = '#eff0f1'
         #textbox_console.pack({"side": "left"})        
         self.textbox_console.grid(row = row, column = column, sticky=W, pady = 2)        
     def appendTxtbConsole(self,text,level='info'):
         self.textbox_console.insert(END,level+': '+text+'\n')
+        self.textbox_console.see(END)
 
     def makeTxtbChoose(self,row,column):        
         self.textbox_choose = Entry(self,font=self.fontFamily)
@@ -232,7 +233,7 @@ def disableWindowClose():
 def setupApplication():
     root = Tk()
     root.title('Transformation Data to Tina tools')
-    root.geometry("1200x550")
+    root.geometry("1200x600")
     root.resizable(width=False, height=False)
     root.protocol("WM_DELETE_WINDOW", disableWindowClose)
 
