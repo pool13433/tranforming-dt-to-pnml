@@ -78,6 +78,7 @@ class InputValidation():
         _messageNotBlank = messages['NOT_BLANK'] 
         _messageNotBlankEN = _messageNotBlank['MESSAGE']['EN'].replace('{0}',key_name) 
         _messageOnly = messages['ONLY_VALUES']
+        _messageOnlyEN = _messageOnly['MESSAGE']['EN'].replace('{0}',json.dumps(values)) 
         _validates = []
         if key_name not in raw:
             valid_message = key_name+' not has in raw collections'
@@ -111,7 +112,7 @@ class InputValidation():
                                 },
                                 'source': key_name,
                                 #'message': 'Value InValid '+str(values),
-                                'message' : _messageNotBlankEN                               
+                                'message' : _messageOnlyEN                               
                             })
 
         if len(_validates) == 0:
