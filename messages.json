@@ -3,14 +3,36 @@
         "CODE": "001",
         "MESSAGE": {
             "TH": "AAAA",
-            "EN": "NOT Blank"
+            "EN": "NOT Blank {0}"
+        }
+    },
+    "NOT_PK": {
+        "CODE": "002",
+        "MESSAGE": {
+            "TH": "AAAA",
+            "EN": "NOT FOUND {0}"
         }
     },
     "ONLY_VALUES": {
-        "CODE": "002",
+        "CODE": "003",
         "MESSAGE": {
             "TH": "BBBB",
-            "EN": "Only this Values"
+            "EN": "Only this Values {0}"
+        }
+    },
+    "PROCESS_ERROR" : {
+        "CODE": "004",
+        "MESSAGE": {
+            "TH": "",
+            "EN": "Process Error"
+        }
+    },
+    "PROCESS_SUCCESS" : {
+        "CODE": "005",
+        "MESSAGE": {
+            "TH": "BBBB",
+            "EN": "Process Success"
         }
     }
+    
 }

@@ -41,8 +41,8 @@ class TransformationUI(Frame):
         self.makeLabelStartProcess(3,0)
         self.makeBtnStartProcess(3,1)
 
-        #self.makeLabelFinished(4,0)
-        #self.makeLabelProcessFinished(4,1)
+        self.makeLabelFinished(4,0)
+        self.makeLabelProcessFinished(4,1)
 
         self.makeLabelFileOutPath(5,0)
         self.makeTxtbFileOut(5,1)
@@ -83,7 +83,7 @@ class TransformationUI(Frame):
         label_choose.grid(row = row, column = column, sticky=E,pady = 2,padx = 5)
     def makeLabelProcessFinished(self,row,column):      
         self.label_finished = Label(self,text = "Program Proscessing.",font=self.fontFamily)
-        self.label_finished['fg'] = "green"
+        self.label_finished['fg'] = "black"
         self.label_finished.grid(row = row, column = column, sticky=W,pady = 2,padx = 5)   
     def setLabelProcessFinished(self,text):
         self.label_finished['text'] = text
@@ -114,7 +114,7 @@ class TransformationUI(Frame):
     def makeTxtbConsole(self,row,column):        
         self.textbox_console = Text(self,font=self.fontFamily)
         self.textbox_console['width'] = 120        
-        self.textbox_console['height'] = 12 
+        self.textbox_console['height'] = 9
         self.textbox_console['bg'] = '#eff0f1'
         #textbox_console.pack({"side": "left"})        
         self.textbox_console.grid(row = row, column = column, sticky=W, pady = 2)        
@@ -176,7 +176,7 @@ class TransformationUI(Frame):
             self.quit()
 
     def commandProcessTransforming(self):
-        fullPathExcell = self.getTxtbChooseVal() 
+        fullPathExcell = self.getTxtbChooseVal()         
         if fullPathExcell == '':
             dialog.showerror('Choose File from directory!','Cannot select file. Must select only xlsx file.')
         else:    
@@ -184,12 +184,15 @@ class TransformationUI(Frame):
 
             validate = InputValidation(fullPathExcell)
             validate.runValidateInput()
+            messages = validate.read_messages()
+            _error = messages['PROCESS_ERROR']['MESSAGE']['EN']
             resultValidates = validate.getValidtors()
             if len(resultValidates) > 0:
                 for valid in resultValidates:
                     invalid_msg = json.dumps(valid,sort_keys=True,indent=3)
                     print('valid::=='+invalid_msg)
                     self.appendTxtbConsole(invalid_msg,'error')
+                    self.setLabelProcessFinished(_error)
                 dialog.showerror('Validate Input File Invalid','Input File Parameters Invalid!')
             else:            
                 # handle output file
@@ -201,7 +204,8 @@ class TransformationUI(Frame):
 
                 logic = TransformationLogic()
                 logic.draw_decision_rawdata(fullPathExcell,fillpathPnml)
-                self.setLabelProcessFinished('Program Process Business Logic Successfully.')            
+                #self.setLabelProcessFinished('Program Process Business Logic Successfully.')            
+                self.setLabelProcessFinished(validate.get_message('PROCESS_SUCCESS'))
                 self.setTxtbFileOut(fillpathPnml.replace("\\","/"))
 
                 dialog.showinfo('Transform xls to pnml successfully.','Transform xls to pnml successfully.')

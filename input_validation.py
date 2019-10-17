@@ -10,14 +10,27 @@ class InputValidation():
         self.validtors = []
         self.validSourceFile = soureFilePath
         self.validMessages = self.read_messages()
-        #print('self.validMessages::=='+json.dumps(self.validMessages))
+        print('self.validMessages::=='+json.dumps(self.validMessages))
 
         #self.runValidateInput()
         
 
     def read_messages(self):
         # return pd.read_json('./messages.json',orient='columns',encoding='UTF-8')
-        return pd.read_json(codecs.open('./messages.json', 'r', 'utf-8'))
+        '''df =  pd.read_json(codecs.open('./messages.json', 'r', 'utf-8'))    
+        print('head::=='+json.dumps(df.head()))'''
+        with open('./messages.json') as json_file:
+            data = json.load(json_file)        
+            return data
+        return None
+
+    def get_message(self,message_code):
+        message = self.validMessages[message_code]
+        print('message::=='+json.dumps(message))
+        if message != None:
+            return message['MESSAGE']['EN']
+        else:
+            return ''
 
     def runValidateInput(self):
         # check C
@@ -34,37 +47,44 @@ class InputValidation():
 
     def checkLeastOneValue(self, key_name):
         utility = Utility(self.validSourceFile)
-        raw = utility.read_rawdata()    
-        _message = self.validMessages['NOT_BLANK']
+        raw = utility.read_rawdata()  
+        messages =  self.validMessages        
+        _messageNotBlank = messages['NOT_BLANK'] 
+        _messageNotBlankEN = _messageNotBlank['MESSAGE']['EN'].replace('{0}',key_name) 
         valid_message = None
         if key_name not in raw:
-            valid_message = key_name+' not has in raw collections'
+            _messagePK = messages['NOT_PK']['MESSAGE']            
+            valid_message = _messagePK['EN'].replace('{0}',key_name)
         else:
             c_len = len(raw[key_name])
             # print('c_len::=='+str(c_len))
-            if c_len == 0:
-                valid_message = 'field '+key_name+' not blank'
+            if c_len == 0:           
+                valid_message = _messageNotBlankEN
 
         if valid_message is None:
             return True
         else:
+            _message = messages['NOT_BLANK']
             self.validtors.append({
-                'code': _message['CODE'],
-                'field': key_name, 'message': valid_message              
+                'code': _messageNotBlank['CODE'],
+                'field': key_name, 'message': _messageNotBlankEN
             })
             return False
 
     def checkValueContaine(self, key_name, values):
         utility = Utility(self.validSourceFile)
         raw = utility.read_rawdata()
-        _message = self.validMessages['ONLY_VALUES']
+        messages =  self.validMessages        
+        _messageNotBlank = messages['NOT_BLANK'] 
+        _messageNotBlankEN = _messageNotBlank['MESSAGE']['EN'].replace('{0}',key_name) 
+        _messageOnly = messages['ONLY_VALUES']
         _validates = []
         if key_name not in raw:
             valid_message = key_name+' not has in raw collections'
             _validates.append({
-                'code': _message['CODE'],
+                'code': _messageOnly['CODE'],
                 'source': key_name,
-                'message': _message['MESSAGE']['EN']
+                'message': _messageOnly['MESSAGE']['EN'].replace('{0}',values)
             })
         else:
             _values = raw[key_name]
@@ -76,11 +96,11 @@ class InputValidation():
                     #print('_key1::='+json.dumps(_key1))
                     _val1 = _vals[_key1]
                     #print('_val1::='+json.dumps(_val1))
-                    if _key1.find('R') == 0:
+                    if str(_key1).startswith('R'):
                         is_exist = _val1 in values
                         if not is_exist:
                             _validates.append({
-                                'code': _message['CODE'],
+                                'code': _messageNotBlank['CODE'],
                                 'xls': {
                                     'column': _key1,
                                     'row': _key0,
@@ -91,7 +111,7 @@ class InputValidation():
                                 },
                                 'source': key_name,
                                 #'message': 'Value InValid '+str(values),
-                                'message' : _message['MESSAGE']['EN']                                
+                                'message' : _messageNotBlankEN                               
                             })
 
         if len(_validates) == 0:
@@ -123,8 +143,10 @@ class InputValidation():
 
 def main():
     validate = InputValidation("./DTProgram.xlsx")
-    validators = validate.getValidtors()
-    print('validators ::=='+json.dumps(validators, indent=1))
+    '''validators = validate.getValidtors()
+    print('validators ::=='+json.dumps(validators, indent=1))'''
+    message = validate.get_message('PROCESS_ERROR')
+    print('message::=='+json.dumps(message))
 
 
 if __name__ == "__main__":
