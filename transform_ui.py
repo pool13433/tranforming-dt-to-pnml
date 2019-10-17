@@ -212,7 +212,7 @@ class TransformationUI(Frame):
                 self.appendTxtbConsole('Transform xls to pnml successfully.')
 
                 print('export file successfully.')
-                os.system(os.getcwd()+'/tina-3.5.0/bin/nd.exe')
+                os.system(os.getcwd()+'/tina/bin/nd.exe')
                 
 
     def commandBrowserFile(self):
