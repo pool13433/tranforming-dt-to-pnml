@@ -199,7 +199,7 @@ class TransformationUI(Frame):
                 now = datetime.now() # current date and time
                 date_time = now.strftime("%Y%m%d_%H%M")
                 dirFullPathPmnl = os.path.dirname(os.path.abspath(fullPathExcell))
-                fillpathPnml = dirFullPathPmnl+'/outputs/result_tina_'+str(date_time)+'.pnml'
+                fillpathPnml = './outputs/result_tina_'+str(date_time)+'.pnml'
                 print('fillpathPnml::=='+str(fillpathPnml))
 
                 logic = TransformationLogic()

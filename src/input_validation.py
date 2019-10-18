@@ -16,10 +16,7 @@ class InputValidation():
         
 
     def read_messages(self):
-        # return pd.read_json('./messages.json',orient='columns',encoding='UTF-8')
-        '''df =  pd.read_json(codecs.open('./messages.json', 'r', 'utf-8'))    
-        print('head::=='+json.dumps(df.head()))'''
-        with open('./messages.json') as json_file:
+        with open('./config/messages.json') as json_file:
             data = json.load(json_file)        
             return data
         return None

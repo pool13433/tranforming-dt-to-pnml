@@ -570,10 +570,3 @@ class TransformationLogic():
             encoding="ISO-8859-1", indent="    ")
         with open(pnmlpath, "w") as f: #'./tina-result.pnml'
             f.write(xmlstr)
-
-def main():
-    logic = TransformationLogic()
-    logic.draw_decision_rawdata("./DTProgram.xlsx","./outputs/result_pnml_issue01.pnml")
-    
-if __name__ == "__main__":
-    main()
