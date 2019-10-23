@@ -142,7 +142,7 @@ class Utility():
         for c_idx in range(len(store_c)):                        
             c_key = list(sorted(store_c))[c_idx]
             c_values = store_c[c_key]               
-            r_dicts = {k: v for k, v in c_values.items() if str(k).startswith('R')}
+            r_dicts = {k: v for k, v in c_values.items() if str(k).startswith(_rule)}
             #print('\nc_key::=='+str(c_key))
             #print('c_idx::=='+str(c_idx))
             #print('r_dicts::=='+json.dumps(r_dicts)) 
