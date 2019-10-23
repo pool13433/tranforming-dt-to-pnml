@@ -3,6 +3,7 @@ import tkFont as font
 import os
 import tkMessageBox as dialog
 import json
+import shutil
 
 from Tkinter import * 
 from PIL import ImageTk, Image
@@ -30,10 +31,19 @@ class TransformationUI(Frame):
     def createWidgets(self):    
 
         self.makeLabelChoose(0,0)         
-        self.makeBtnChoose(0,1)
 
-        self.makeLabelFileInPath(1,0) 
-        self.makeTxtbChoose(1,1)        
+        twin_frame = Frame(self)
+        twin_frame.grid(row = 0, column = 1, sticky=W)
+
+        choose_frame = Frame(twin_frame)
+        choose_frame.grid(row = 0, column = 0, sticky=W,pady=5,padx=10)
+        self.makeBtnChoose(choose_frame,width=40)
+        self.makeTxtbChoose(choose_frame,width=50)   
+
+        down_frame = Frame(twin_frame)
+        down_frame.grid(row = 0, column = 1, sticky=W,pady=5,padx=10)
+        self.makeBtnDownload(down_frame,width=40)     
+        self.makeTxtDirDownload(down_frame,width=50)
 
         #self.makeLabelProcessing(2,0)
         #self.makeImageLoading(2,1)
@@ -84,9 +94,17 @@ class TransformationUI(Frame):
     def makeLabelProcessFinished(self,row,column):      
         self.label_finished = Label(self,text = "Program Proscessing.",font=self.fontFamily)
         self.label_finished['fg'] = "black"
-        self.label_finished.grid(row = row, column = column, sticky=W,pady = 2,padx = 5)   
-    def setLabelProcessFinished(self,text):
+        #self.label_finished['width'] = 50
+        #self.label_finished.pack({'side': LEFT,'fill':'X'})
+        self.label_finished.grid(row = row, column = column, sticky=W)
+        
+
+    def setLabelProcessFinished(self,text,error=None):
         self.label_finished['text'] = text
+        if error is None:
+            self.label_finished['bg'] = '#aacb31'
+        else:
+            self.label_finished['bg'] = '#f74c32'
     # ****************** Label *********************
 
     # ****************** Image *********************
@@ -100,6 +118,17 @@ class TransformationUI(Frame):
     # ****************** Image *********************
 
     # ****************** Textbox *******************
+    def makeTxtDirDownload(self,_self,width=50):
+        self.textbox_dirdownload = Entry(_self,font=self.fontFamily)
+        self.textbox_dirdownload.insert(END,'Please Choose Directory Location for Save as File.')
+        self.textbox_dirdownload['width'] = width
+        self.textbox_dirdownload['bg'] = '#eff0f1'
+        self.textbox_dirdownload.pack({"side": BOTTOM}) 
+
+    def setTxtDirDownload(self,text):
+        self.textbox_dirdownload.delete(0,END)
+        self.textbox_dirdownload.insert(END,text)
+
     def makeTxtbFileOut(self,row,column):
         self.textbox_out = Entry(self,font=self.fontFamily)
         self.textbox_out.insert(END,'Result Out File after Processed.')
@@ -116,19 +145,29 @@ class TransformationUI(Frame):
         self.textbox_console['width'] = 120        
         self.textbox_console['height'] = 9
         self.textbox_console['bg'] = '#eff0f1'
-        #textbox_console.pack({"side": "left"})        
+        #textbox_console.pack({"side": "left"})                
         self.textbox_console.grid(row = row, column = column, sticky=W, pady = 2)        
-    def appendTxtbConsole(self,text,level='info'):
-        self.textbox_console.insert(END,level+': '+text+'\n')
+
+    def appendTxtbConsole(self,text,level='info'):        
+        date_time = datetime.now().strftime("[%Y/%m/%d-%H:%M:%S]")
+        #print('isinstance(text)::=='+str(type(text)))
+        if isinstance(text,str):
+            self.textbox_console.insert(END,date_time+'-'+level+': '+text+'\n')
+        elif isinstance(text,list):
+            self.textbox_console.insert(END,date_time+'-'+level+':')
+            for idx in range(len(text)):
+                _text = text[idx]
+                self.textbox_console.insert(END,_text+'\n')
         self.textbox_console.see(END)
 
-    def makeTxtbChoose(self,row,column):        
-        self.textbox_choose = Entry(self,font=self.fontFamily)
+    def makeTxtbChoose(self,_self,width=50):        
+        self.textbox_choose = Entry(_self,font=self.fontFamily)
         self.textbox_choose.insert(END,"")
-        self.textbox_choose['width'] = 70        
+        self.textbox_choose['width'] = width
         self.textbox_choose.pack({"side": "left"})        
         self.textbox_choose['bg'] = '#eff0f1'
-        self.textbox_choose.grid(row = row, column = column, sticky=W, pady = 2)
+        self.textbox_choose.pack(side=TOP, fill="x")
+        #self.textbox_choose.grid(row = row, column = column, sticky=W, pady = 1)
     def setTxtbChooseVal(self,text = None):
         self.textbox_choose.delete(0,END)
         self.textbox_choose.insert(END,text)
@@ -137,16 +176,16 @@ class TransformationUI(Frame):
     # ****************** Textbox *******************
 
     # ****************** Button *******************    
-    def makeBtnChoose(self,row,column):        
-        choose_file = Button(self,font=self.fontFamily)
+    def makeBtnChoose(self,_self,width=50):        
+        choose_file = Button(_self,font=self.fontFamily)
         choose_file["text"] = "Choose file from directory"
         choose_file["fg"]   = "#ffffff"
         choose_file['bg'] = '#4267b2'
-        choose_file['width'] = 25
+        choose_file['width'] = width
         choose_file['height'] = 1
         choose_file["command"] =  self.commandBrowserFile
-        #choose_file.pack({"side": "left"})
-        choose_file.grid(row = row, column = column,sticky=W, pady = 2)
+        choose_file.pack({"side": TOP,"anchor" : W,'fill' : 'x'})
+        #choose_file.grid(row = row, column = column,sticky=W, pady = 2)
 
     def makeBtnStartProcess(self,row,column):
         start_process = Button(self,font=self.fontFamily)
@@ -168,6 +207,17 @@ class TransformationUI(Frame):
         exit_program['height'] = 1
         exit_program["command"] =  self.commandExitProgram
         exit_program.grid(row = row, column = column,sticky=W, pady = 2)
+
+    def makeBtnDownload(self,_self,width=50):
+        download = Button(_self,font=self.fontFamily)
+        download["text"] = "Download File Template to..."
+        download["fg"]   = "#ffffff"
+        download['bg'] = '#000000'
+        download['width'] = width
+        download['height'] = 1
+        download.pack({"side":TOP,"anchor" : W,'fill' : 'x'})
+        download["command"] =  self.commandDownloadFile
+        #download.grid(row = row, column = column,sticky=W, pady = 2)
     # ****************** Button *******************
 
     def commandExitProgram(self):
@@ -182,17 +232,19 @@ class TransformationUI(Frame):
         else:    
             print('fullPathExcell::=='+str(fullPathExcell))
 
-            validate = InputValidation(fullPathExcell)
-            validate.runValidateInput()
+            validate = InputValidation(root_path='.')
+            validate.runValidateInput(fullPathExcell)
             messages = validate.read_messages()
             _error = messages['PROCESS_ERROR']['MESSAGE']['EN']
             resultValidates = validate.getValidtors()
             if len(resultValidates) > 0:
+                logger_texts = []
                 for valid in resultValidates:
                     invalid_msg = json.dumps(valid,sort_keys=True,indent=3)
                     print('valid::=='+invalid_msg)
-                    self.appendTxtbConsole(invalid_msg,'error')
-                    self.setLabelProcessFinished(_error)
+                    logger_texts.append(invalid_msg)
+                    self.setLabelProcessFinished(_error,error=True)
+                self.appendTxtbConsole(logger_texts,'error')
                 dialog.showerror('Validate Input File Invalid','Input File Parameters Invalid!')
             else:            
                 # handle output file
@@ -230,6 +282,19 @@ class TransformationUI(Frame):
                 self.setTxtbChooseVal(file_name)
                 self.appendTxtbConsole('choose file success')
             file.close()
+    def commandDownloadFile(self):
+        dir_name, file_name = os.path.split(__file__)
+        new_path = None
+        location = tkFileDialog.askdirectory( 
+                    initialdir=dir_name, 
+                    mustexist = True, parent = self,
+                    title='Choose Location for Save File.')
+        if location != None and location != '':
+            print('location::=='+json.dumps(location))
+            down_dest = location+"/template.xlsx"
+            shutil.copy('./template/template.xlsx', down_dest)
+            self.setTxtDirDownload(down_dest)
+        
             
 def disableWindowClose():
     pass

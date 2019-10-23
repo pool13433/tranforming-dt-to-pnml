@@ -1,80 +1,124 @@
 import json
 import codecs
 import pandas as pd
+import os
 
 from utility_v2 import *
+from config_manager import *
 
 
 class InputValidation():
-    def __init__(self, soureFilePath):
-        self.validtors = []
-        self.validSourceFile = soureFilePath
-        self.validMessages = self.read_messages()
-        print('self.validMessages::=='+json.dumps(self.validMessages))
-
-        #self.runValidateInput()
-        
-
-    def read_messages(self):
-        with open('./config/messages.json') as json_file:
-            data = json.load(json_file)        
-            return data
-        return None
+    def __init__(self,root_path):
+        self.validtors = []      
+        self.root_path= root_path    
+          
+    def read_messages(self):        
+        return ConfigManager(root_path=self.root_path).read_configs(json_filename='messages.json')
 
     def get_message(self,message_code):
-        message = self.validMessages[message_code]
-        print('message::=='+json.dumps(message))
+        messages =  ConfigManager(root_path=self.root_path).read_configs(json_filename='messages.json')
+        message = messages[message_code]
+        #print('message::=='+json.dumps(message))
         if message != None:
             return message['MESSAGE']['EN']
         else:
             return ''
 
-    def runValidateInput(self):
+    def runValidateInput(self,xls_filename):
+        configManager = ConfigManager(root_path=self.root_path)
+        config = configManager.read_configs(json_filename='input.json');
+        messages = configManager.read_configs(json_filename='messages.json');
+
+        _rule = config['RULE']['ALIAS']
+        _action = config['ACTION']['ALIAS']
+        _condition = config['CONDITION']['ALIAS']
+
+        utility = Utility(xls_filename)
+        raw = utility.read_rawdata(require=config)
+
         # check C
-        self.checkLeastOneValue('C')
+        has_cond = self.checkLeastOneValue(raw=raw,messages=messages,key_name='C')
         # check A
-        self.checkLeastOneValue('A')
-        # check B
-        #self.checkLeastOneValue('B')
+        has_action = self.checkLeastOneValue(raw=raw,messages=messages,key_name='A')        
         # check R
-        self.checkLeastOneValue('R')
+        has_rule = self.checkLeastOneValue(raw=raw,messages=messages,key_name='R')        
 
-        self.checkValueContaine('C', ['T', 'F', '-'])
-        self.checkValueContaine('A', ['X', pd.np.nan])
+        if has_cond and has_action and has_rule:
+            vals_condition = config['CONDITION']['VALUES']
+            vals_action = config['ACTION']['VALUES']
+            self.checkValueContaine(raw=raw,messages=messages,key_name='C',values=vals_condition) #['T', 'F', '-']
+            if "" in vals_action:                
+                vals_action.append(pd.np.nan)
+            self.checkValueContaine(raw=raw,messages=messages,key_name='A',values=vals_action) #['X', pd.np.nan]
 
-    def checkLeastOneValue(self, key_name):
-        utility = Utility(self.validSourceFile)
-        raw = utility.read_rawdata()  
-        messages =  self.validMessages        
-        _messageNotBlank = messages['NOT_BLANK'] 
-        _messageNotBlankEN = _messageNotBlank['MESSAGE']['EN'].replace('{0}',key_name) 
+            #check least one in rule cols
+            self.checkLeastOneInRule(raw=raw,messages=messages,config=config,key_name='R')
+        else:
+            print('invalid input!!')
+                
+            
+    def checkLeastOneInRule(self,raw,messages,config,key_name):
+        _messageLeastOne = messages['LEAST_ONE']
+        _messagLeastOneEN = _messageLeastOne['MESSAGE']['EN']
+        vals_required = config['ACTION']['VALUES']
+        if key_name in raw:
+            _validates = []
+            if 'A' in raw[key_name]:
+                raw_a = raw[key_name]['A']
+                len_a = len(raw_a)
+                for r_key in raw_a:
+                    print('c_idx::=='+str(r_key))
+                    r_values = raw_a[r_key]
+                    len_rule = len(r_values)
+                    len_nan = len(filter(lambda x:(r_values[x] is pd.np.nan) , r_values))
+                    print('len_rule::=='+str(len_rule)+' len_nan::=='+str(len_nan))
+                    if len_rule == len_nan:
+                        self.validtors.append({
+                            'code': _messageLeastOne['CODE'],
+                            'xls': {
+                                'column': r_key,
+                                'row': 'C?',
+                            },
+                            'value': {
+                                'actual': '',
+                                'expected': json.dumps(vals_required)
+                            },
+                            'source': key_name,
+                            'message' : _messagLeastOneEN                               
+                        })
+                
+    def checkLeastOneValue(self,raw,messages, key_name):        
+                
         valid_message = None
-        if key_name not in raw:
-            _messagePK = messages['NOT_PK']['MESSAGE']            
-            valid_message = _messagePK['EN'].replace('{0}',key_name)
+        if key_name not in raw:         
+            _messageNotPK = messages['NOT_PK'] 
+            valid_message = _messageNotPK['MESSAGE']['EN'].replace('{0}',key_name)
+            self.validtors.append({
+                'code': _messageNotPK['CODE'],
+                'field': key_name, 'message': valid_message
+            })
+            return False;
         else:
             c_len = len(raw[key_name])
             # print('c_len::=='+str(c_len))
             if c_len == 0:           
-                valid_message = _messageNotBlankEN
+                _messageNotBlank = messages['NOT_BLANK']         
+                _messageNotBlankEN = _messageNotBlank['MESSAGE']['EN'].replace('{0}',key_name)                 
+                self.validtors.append({
+                    'code': _messageNotBlank['CODE'],
+                    'field': key_name, 'message': _messageNotBlankEN
+                })
+                return False
+            else:
+                return True
 
-        if valid_message is None:
-            return True
-        else:
-            _message = messages['NOT_BLANK']
-            self.validtors.append({
-                'code': _messageNotBlank['CODE'],
-                'field': key_name, 'message': _messageNotBlankEN
-            })
-            return False
 
-    def checkValueContaine(self, key_name, values):
-        utility = Utility(self.validSourceFile)
-        raw = utility.read_rawdata()
-        messages =  self.validMessages        
+    def checkValueContaine(self,raw, messages, key_name, values):              
         _messageNotBlank = messages['NOT_BLANK'] 
+        #print('_messageNotBlank::=='+json.dumps(_messageNotBlank))
         _messageNotBlankEN = _messageNotBlank['MESSAGE']['EN'].replace('{0}',key_name) 
         _messageOnly = messages['ONLY_VALUES']
+        #print('_messageOnly::=='+json.dumps(_messageOnly))
         _messageOnlyEN = _messageOnly['MESSAGE']['EN'].replace('{0}',json.dumps(values)) 
         _validates = []
         if key_name not in raw:
@@ -82,7 +126,7 @@ class InputValidation():
             _validates.append({
                 'code': _messageOnly['CODE'],
                 'source': key_name,
-                'message': _messageOnly['MESSAGE']['EN'].replace('{0}',values)
+                'message': _messageOnlyEN
             })
         else:
             _values = raw[key_name]
@@ -115,7 +159,7 @@ class InputValidation():
         if len(_validates) == 0:
             return True
         else:
-            self.validtors += _validates
+            self.validtors.extend(_validates)
             return False
 
     def _decode_dict(self, data):
@@ -140,11 +184,10 @@ class InputValidation():
 
 
 def main():
-    validate = InputValidation("./DTProgram.xlsx")
-    '''validators = validate.getValidtors()
-    print('validators ::=='+json.dumps(validators, indent=1))'''
-    message = validate.get_message('PROCESS_ERROR')
-    print('message::=='+json.dumps(message))
+    validate = InputValidation(root_path="D:/NickWork/tina-transform")
+    validate.runValidateInput(xls_filename="D:/NickWork/tina-transform/inputs/DTProgram.xlsx")
+    validators = validate.getValidtors()
+    print('validators ::=='+json.dumps(validators, indent=1))    
 
 
 if __name__ == "__main__":

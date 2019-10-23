@@ -7,14 +7,15 @@ import numpy as numpy
 from datetime import date
 from xml.etree.ElementTree import Element, SubElement, tostring, XML
 from xml.dom import minidom
+from jproperties import Properties
 
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
-today = date.today()
+'''today = date.today()
 dailydate = today.strftime("%Y%m%d")
 logging.basicConfig(filename='./logs/transform_'+dailydate+'.log', level=logging.DEBUG,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
+                    format='%(asctime)s - %(levelname)s - %(message)s')'''
 # C , A , R
 # C = Condition
 # R = Rule
@@ -29,7 +30,7 @@ class Utility():
             #self.has_firstsheet(filepath)
             try:
                 self.df = pd.read_excel(filepath, sheet_name=0) # read sheet first tab
-            except expression as identifier:
+            except:
                 raise Exception('Program Error')
         else:
             print('File Excell Not Found !!!')
@@ -38,65 +39,21 @@ class Utility():
         for sheet in pd_sheets.sheet_names:
             print('sheet::=='+sheet)
 
-    def get_decision_range(_key):
-        ranges = []
-        for cell_col in df.columns:
-            for cell_row in df.index:
-                val = str(df[cell_col][cell_row])
-                # case _KEY == C or A
-                if _key == 'C' or _key == 'A':
-                    if _key in val and cell_col == 'ID':
-                        ranges.append(val)
-            # case _KEY == R
-            if _key in cell_col:
-                ranges.append(cell_col)
-        return ranges
+    @classmethod
+    def read_properties(cls,prop_name):    
+        p = Properties()
+        with open(prop_name, "r+b") as f:
+            p.load(f, "utf-8")            
+        return p    
 
-    def cast_nanval(cell_value):
-        return "" if pd.isna(cell_value) else cell_value
-
-    def get_decision_rows():
-        row_dict = {}
-        for cell_row in df.index:
-            row_array = []
-            cell_key = df['ID'][cell_row]
-            for cell_col in df.columns:
-                if cell_col != 'ID':
-                    cell_value = df[cell_col][cell_row]
-                    row_array.append(cast_nanval(cell_value))
-                #print('cell_key ::=='+cell_key)
-            if cell_key != 'ID':
-                row_dict[cell_key] = row_array
-        #logging.info('rows::=='+json.dumps(row_dict,indent=2, sort_keys=True))
-        return row_dict
-
-    def get_decision_columns():
-        column_dict = {}
-        for cell_col in df.columns:
-            column_array = []
-            for cell_row in df.index:
-                cell_value = df[cell_col][cell_row]
-                if cell_col != 'ID':
-                    column_array.append(cast_nanval(cell_value))
-            if cell_col != 'ID':
-                column_dict[cell_col] = column_array
-        #logging.info('columns::=='+json.dumps(column_dict,indent=2, sort_keys=True))
-        return column_dict
-
-    def append_dict(child, tags):
-        for tag in tags:
-            #print("  tag ::=="+tag)
-            _tag = {"attributes": {"id": "p-3BB8-AC2EE-2"}, "childs": {}}
-            if "text" == tag:
-                _tag["text"] = "xxxxxxx"
-            child["childs"][tag] = _tag
-            _child = child["childs"][tag]
-            append_dict(_child, tags[tag])
-
-    def read_rawdata(self):
+    def read_rawdata(self,require):
         #print('hasattr(self,\'df\')::=='+json.dumps(not hasattr(self,'df')))
         if not hasattr(self,'df'):     
-            raise Exception('df not found please implement code again.')  
+            raise Exception('df not found please implement code again.') 
+
+        _rule = require['RULE']['ALIAS']
+        _action = require['ACTION']['ALIAS']
+        _condition = require['CONDITION']['ALIAS'] 
 
         df_cols = self.df.columns
         df_rows = self.df.index
@@ -114,7 +71,7 @@ class Utility():
         for col_idx in df_cols:
             #print('col_idx::=='+str(col_idx))
             # row [R]
-            if str(col_idx).startswith('R'):
+            if str(col_idx).startswith(_rule):
                 modules = {
                     'C': {},
                     'A': {}
@@ -122,9 +79,9 @@ class Utility():
                 for c_idx in df_rows:
                     row_val = self.df['ID'][c_idx]
                     col_val = self.df[col_idx][c_idx]
-                    if row_val.find('C') == 0:
+                    if str(row_val).startswith(_condition):
                         modules['C'][row_val] = col_val
-                    elif row_val.find('A') == 0:
+                    elif str(row_val).startswith(_action):
                         modules['A'][row_val] = col_val
                 store['R']['C'][col_idx] = modules['C']
                 store['R']['A'][col_idx] = modules['A']
@@ -138,9 +95,9 @@ class Utility():
                 modules[col_idx] = col_val
 
             #print('modules::=='+json.dumps(modules))
-            if row_val.find('C') == 0:
+            if str(row_val).startswith(_condition):
                 store['C'][row_val] = modules
-            elif row_val.find('A') == 0:
+            elif str(row_val).startswith(_action):
                 store['A'][row_val] = modules
         #print('store[\'C\']::=='+json.dumps(store['C']))
 
@@ -279,21 +236,11 @@ class Utility():
             return 0
         return matrY_idx
 def main():
-    utility = Utility('./DTProgramBug.xlsx')
-    #utility = Utility('./DTProgram.xlsx')
-    '''for store_idx in range(4):
-        store = utility.matrix_logic_boolean((store_idx+1))
-        for bool_idx in store:
-            print(str(bool_idx))'''
-    store = utility.read_rawdata()
-    '''store_CRC_EXTEND = store['CRC_EXTEND']
-    print('store_CRC_EXTEND::=='+json.dumps(store_CRC_EXTEND))
-    for dash_dict in store_CRC_EXTEND:    
-        dash_name = dash_dict['name']
-        dash_exts = dash_dict['extends']    
-        print('dash_name::=='+json.dumps(dash_name))
-        print('dash_exts::=='+json.dumps(dash_exts))'''
-    store_RCR_EXTEND = store['RCR_EXTEND']
+    utility = Utility('./inputs/DTProgram.xlsx')
+    confs = Utility.read_rawdata()
+    print('name::=='+confs.get('name'))
+    '''for x in confs:
+        print('x::=='+str(x)+' conf::=='+json.dumps(confs[x]))'''
     
 
     #store = utility.matrix_logic_boolean(3)

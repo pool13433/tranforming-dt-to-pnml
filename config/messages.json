@@ -1,38 +1,46 @@
 {
     "NOT_BLANK": {
-        "CODE": "001",
+        "CODE": "01",
         "MESSAGE": {
-            "TH": "AAAA",
+            "TH": "-",
             "EN": "NOT Blank {0}"
         }
     },
     "NOT_PK": {
-        "CODE": "002",
+        "CODE": "02",
         "MESSAGE": {
-            "TH": "AAAA",
+            "TH": "-",
             "EN": "NOT FOUND {0}"
         }
     },
     "ONLY_VALUES": {
-        "CODE": "003",
+        "CODE": "03",
         "MESSAGE": {
-            "TH": "BBBB",
+            "TH": "-",
             "EN": "Only this Values {0}"
         }
     },
-    "PROCESS_ERROR" : {
-        "CODE": "004",
+    "LEAST_ONE" : {
+        "CODE": "04",
         "MESSAGE": {
-            "TH": "",
-            "EN": "Process Error"
+            "TH": "-",
+            "EN": "at least 1 value"
         }
     },
+
+
     "PROCESS_SUCCESS" : {
-        "CODE": "005",
+        "CODE": "10",
         "MESSAGE": {
-            "TH": "BBBB",
+            "TH": "-",
             "EN": "Process Success"
         }
-    }
-    
+    },
+    "PROCESS_ERROR" : {
+        "CODE": "20",
+        "MESSAGE": {
+            "TH": "-",
+            "EN": "Process Error"
+        }
+    }        
 }

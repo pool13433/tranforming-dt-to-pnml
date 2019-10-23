@@ -11,6 +11,7 @@ from xml.dom import minidom
 from collections import OrderedDict
 
 from utility_v2 import *
+from config_manager import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -24,6 +25,15 @@ class TransformationLogic():
     def __init__(self):
         self.pnml_options = {'y_space' : 90}
         self.arcs = {'A' : [],'C' : [],'CT' : [],'D' : [],'R' : [],'RT' : [],'DT' : []}    
+        self.assign_configs()
+        
+    def assign_configs(self):
+        configManager = ConfigManager(root_path='.');
+        config = configManager.read_configs(json_filename='input.json')
+        self._RULE = config['RULE']['ALIAS']
+        self._ACTION = config['ACTION']['ALIAS']
+        self._CONDITION = config['CONDITION']['ALIAS']
+        self._CONFIG = config
 
     def grep_char(self,str):
         chars = re.findall('[a-zA-Z]+',str) 
@@ -151,8 +161,8 @@ class TransformationLogic():
     def find_dash(self,r_values):
         return map(lambda y: r_values[y],filter(lambda x: r_values[x] == '-',r_values))
 
-    def draw_place_d(self,page,key,place_offset,place_index):
-        if  key.find('R') == 0:
+    def draw_place_d(self,page,key,place_offset,place_index):        
+        if  str(key).startswith(self._RULE):
             offset_d = place_offset['d'] 
             d_index = place_index['d']
             name_text = 'D'+str(d_index)
@@ -170,7 +180,7 @@ class TransformationLogic():
         return place_offset , place_index
 
     def draw_place_r(self,page,key,place_offset,place_index):
-        if  key.find('R') == 0:
+        if  str(key).startswith(self._RULE):
             offset_r = place_offset['r'] 
             r_index = place_index['r']
             self.draw_place(page,{
@@ -193,13 +203,13 @@ class TransformationLogic():
             'graphics': {'offset': {}}
         }
         graphics = value_dict['graphics']
-        if 'C' in key:
+        if str(key).startswith(self._CONDITION):
             offset_c = place_offset['c']
             graphics['offset'] = offset_c
             offset_c['x'] = str(int(offset_c['x']))
             offset_c['y'] = str(int(offset_c['y'])+self.pnml_options['y_space'])
         
-        elif 'A' in key:
+        elif str(key).startswith(self._ACTION):
             offset_a = place_offset['a']
             graphics['offset'] = offset_a
             offset_a['x'] = str(int(offset_a['x']))
@@ -481,10 +491,10 @@ class TransformationLogic():
         self.draw_arclineRT_A(page,store)
         self.draw_arclineC_CT(page,store)
 
-    def find_value_t(page,rows,r_value,dict_arc,start_idx):
+    def find_value_t(self,page,rows,r_value,dict_arc,start_idx):
         c_index = 0    
         for row in sorted(rows.keys()):
-            if row.find('C') == 0:
+            if str(row).startswith(self._CONDITION):
                 print('row::=='+str(row))
                 row_values = rows[row]
                 #print('DT::==row_values:=='+json.dumps(row_values))
@@ -547,7 +557,7 @@ class TransformationLogic():
 
     def draw_decision_rawdata(self,excellpath,pnmlpath):
         utility = Utility(excellpath)
-        store = utility.read_rawdata()
+        store = utility.read_rawdata(require=self._CONFIG)
 
         pnml = Element('pnml')
         pnml.set('xmlns', 'http://www.pnml.org/version-2009/grammar/pnml')
