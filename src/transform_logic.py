@@ -22,10 +22,16 @@ logging.basicConfig(filename='./logs/transform_'+dailydate+'.log', level=logging
 
 class TransformationLogic():
 
-    def __init__(self):
-        self.pnml_options = {'y_space' : 90}
-        self.arcs = {'A' : [],'C' : [],'CT' : [],'D' : [],'R' : [],'RT' : [],'DT' : []}    
+    def __init__(self):        
         self.assign_configs()
+
+        self.pnml_options = {'y_space' : 90}
+        self.arcs = {'CT' : [],'D' : [],'R' : [],'RT' : [],'DT' : []}           
+        # append key from config
+        #'A' : [],'C' : [],
+        self.arcs[self._ACTION] = []
+        self.arcs[self._CONDITION] = []
+
         
     def assign_configs(self):
         configManager = ConfigManager(root_path='.');
@@ -357,8 +363,9 @@ class TransformationLogic():
     def draw_arclineDT_C(self,page,store):
         # DT => C
         source_key = 'DT'
-        target_key = 'C'
+        target_key = self._CONDITION
         store_rc = store['R']['C']
+        print('draw_DT_C::=='+json.dumps(self.arcs))
         c_dicts = self.arcs[target_key]        
         #print('\nstore_rc'+json.dumps(store_rc,indent=1))
         #print('\nc_dicts::=='+json.dumps(c_dicts))  
@@ -393,7 +400,7 @@ class TransformationLogic():
     def draw_arclineRT_A(self,page,store):
         # RT => A
         source_key = 'RT'
-        target_key = 'A'              
+        target_key = self._ACTION   
         rt_dicts = self.arcs[source_key]
         a_dicts = self.arcs[target_key]
 
@@ -423,7 +430,7 @@ class TransformationLogic():
                         })
 
     def draw_arclineC_CT(self,page,store):
-        source_key = 'C'
+        source_key = self._CONDITION
         target_key = 'CT'        
         c_dicts = self.arcs[source_key]
         ct_dicts = self.arcs[target_key]

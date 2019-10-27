@@ -37,11 +37,14 @@ class InputValidation():
         raw = utility.read_rawdata(require=config)
 
         # check C
-        has_cond = self.checkLeastOneValue(raw=raw,messages=messages,key_name='C')
+        has_cond = self.checkLeastOneValue(raw=raw,messages=messages,
+                            key_name='C',alias_name=_condition)
         # check A
-        has_action = self.checkLeastOneValue(raw=raw,messages=messages,key_name='A')        
+        has_action = self.checkLeastOneValue(raw=raw,messages=messages,
+                            key_name='A',alias_name=_action)        
         # check R
-        has_rule = self.checkLeastOneValue(raw=raw,messages=messages,key_name='R')        
+        has_rule = self.checkLeastOneValue(raw=raw,messages=messages,
+                            key_name='R',alias_name=_rule)        
 
         if has_cond and has_action and has_rule:
             vals_condition = config['CONDITION']['VALUES']
@@ -87,15 +90,15 @@ class InputValidation():
                             'message' : _messagLeastOneEN                               
                         })
                 
-    def checkLeastOneValue(self,raw,messages, key_name):        
+    def checkLeastOneValue(self,raw,messages, key_name,alias_name):        
                 
         valid_message = None
         if key_name not in raw:         
             _messageNotPK = messages['NOT_PK'] 
-            valid_message = _messageNotPK['MESSAGE']['EN'].replace('{0}',key_name)
+            valid_message = _messageNotPK['MESSAGE']['EN'].replace('{0}',alias_name)
             self.validtors.append({
                 'code': _messageNotPK['CODE'],
-                'field': key_name, 'message': valid_message
+                'field': alias_name, 'message': valid_message
             })
             return False;
         else:
@@ -103,10 +106,10 @@ class InputValidation():
             # print('c_len::=='+str(c_len))
             if c_len == 0:           
                 _messageNotBlank = messages['NOT_BLANK']         
-                _messageNotBlankEN = _messageNotBlank['MESSAGE']['EN'].replace('{0}',key_name)                 
+                _messageNotBlankEN = _messageNotBlank['MESSAGE']['EN'].replace('{0}',alias_name)                 
                 self.validtors.append({
                     'code': _messageNotBlank['CODE'],
-                    'field': key_name, 'message': _messageNotBlankEN
+                    'field': alias_name, 'message': _messageNotBlankEN
                 })
                 return False
             else:
