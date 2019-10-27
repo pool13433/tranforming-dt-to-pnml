@@ -1,15 +1,15 @@
 {
+    "CONDITION": {
+        "ALIAS" : "M",
+        "VALUES" : ["T","F","-"]
+    },
     "ACTION": {
-        "ALIAS" : "A",
+        "ALIAS" : "N",
         "VALUES" : ["X",""]
     },
     "RULE": {
         "ALIAS" : "R",
         "VALUES" : []
-    },
-    "CONDITION": {
-        "ALIAS" : "C",
-        "VALUES" : ["T","F","-"]
     },
     "VARIABLE" : "Variable/Description"
 
