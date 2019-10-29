@@ -1,16 +1,40 @@
 {
-    "CONDITION": {
-        "ALIAS" : "M",
-        "VALUES" : ["T","F","-"]
-    },
-    "ACTION": {
-        "ALIAS" : "N",
-        "VALUES" : ["X",""]
-    },
-    "RULE": {
-        "ALIAS" : "R",
-        "VALUES" : []
-    },
-    "VARIABLE" : "Variable/Description"
-
+  "CONDITION": {
+    "ALIAS": "C",
+    "VALUES": [
+      "T",
+      "F",
+      "-"
+    ]
+  },
+  "ACTION": {
+    "ALIAS": "A",
+    "VALUES": [
+      "X",
+      ""
+    ]
+  },
+  "RULE": {
+    "ALIAS": "R",
+    "VALUES": []
+  },
+  "COLUMNS_JOIN": {
+    "ALIAS": "COLUMNS_ORDER_JOIN",
+    "VALUES": [
+      "Variable1",
+      "Operator1",
+      "Value1",
+      "Logic Gate",
+      "Variable2",
+      "Operator2",
+      "Value2",
+      "XOR Group"
+    ]
+  },
+  "COLUMN_ACTION": {
+    "ALIAS": "",
+    "VALUES": [
+      "Variable1"
+    ]
+  }
 }

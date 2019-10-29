@@ -2,7 +2,7 @@ import pandas as pd
 import logging
 import json
 import sys
-import re 
+import re
 import collections
 
 from datetime import date
@@ -32,7 +32,6 @@ class TransformationLogic():
         self.arcs[self._ACTION] = []
         self.arcs[self._CONDITION] = []
 
-        
     def assign_configs(self):
         configManager = ConfigManager(root_path='.');
         config = configManager.read_configs(json_filename='input.json')
@@ -120,15 +119,15 @@ class TransformationLogic():
             'c' : {'x': '240', 'y': '140'},
             'd' : {'x': '35', 'y': '125'},
             'r' :  {'x': '545', 'y': '50'},
-        }    
-
+        }
         # Place Group "A*"
         place_index = 1
         for a_idx in sorted(store['A']):
             key = a_idx
             values = store['A'][a_idx]
             #print('values ::=='+json.dumps(values))
-            c_desc = values['Variable/Description']
+            #c_desc = values['Variable/Description']
+            c_desc = store['V_JOINS'][key]
             place_text = a_idx
             place_offset,place_index = self.draw_place_ac(page,key,place_offset,c_desc,place_index)
 
@@ -137,15 +136,13 @@ class TransformationLogic():
         for c_idx in sorted(store['C']):
             key = c_idx
             values = store['C'][c_idx]
-            c_desc = values['Variable/Description']
+            #c_desc = values['Variable/Description']
+            c_desc = store['V_JOINS'][key]
             place_text = c_idx
             place_offset,place_index = self.draw_place_ac(page,key,place_offset,c_desc,place_index)
             
         # Place Group D* , R*
-        place_index = {
-            'r' : 1,
-            'd' : 1
-        }
+        place_index = {'r' : 1,'d' : 1}
         store_rc = store['R']['C']
         for r_idx in sorted(store_rc):
             r_values = store_rc[r_idx]
@@ -476,6 +473,7 @@ class TransformationLogic():
             return ext_val[0]
         else:
             return None
+    
     def find_one(self,c_dict,source_key,equal_key):
         #return find(lambda _key: c_dict[_key] == equal_key,c_dict)
         #print('c_dict::=='+json.dumps(c_dict))
@@ -520,51 +518,31 @@ class TransformationLogic():
         start_idx['C'] = start_idx['C']+1  
         return start_idx
 
-
-
-    def draw_decision():
-        pnml = Element('pnml')
-        pnml.set('xmlns', 'http://www.pnml.org/version-2009/grammar/pnml')
-
-        net = SubElement(pnml, 'net', {
-            'id': 'n-3BB8-AC2DF-0',
-            'type': 'http://www.laas.fr/tina/tpn'
-        })
-
-        name = SubElement(net, 'name')
-        SubElement(name, 'text').text = 'buffer1'
-
-        page = SubElement(net, 'page', {'id': 'g-3BB8-AC2EB-1'})
-
-        draw_places(page)
-        self.draw_transitions(page)
-        draw_arcs(page)
-
-        xmlstr = minidom.parseString(tostring(pnml)).toprettyxml(
-            encoding="ISO-8859-1", indent="    ")
-        with open('./tina-result.pnml', "w") as f:
-            f.write(xmlstr)
-
     def concat_unique(self,offet):
         return str(offet['x'])+'-'+str(offet['y'])
 
-    def filter_index(source_dict,_where):
-        idxs = []
-        print('source_dict::=='+json.dumps(source_dict.items(),indent=2, sort_keys=False))
-        for real_value in OrderedDict(source_dict):
-            print('key::=='+str(real_value))         
-            #real_value = source_dict.get(key)
-            '''real_idx = source_dict.keys().index(key)
-            print('real_idx::=='+str(real_idx))
-            print('real_value::=='+str(real_value))
-            #print('key::=='+str(key))
-            if key.find(_where) ==0:
-                idxs.append(real_idx)'''
-        return idxs
+    def find_inhibitor(self,page):
+            target_dict = {}
+            _arcs = page.findall('arc')
+            for arc_idx in _arcs:
+                    # print('arc_idx::=='+json.dumps((arc_idx)))
+                    source = arc_idx.get("source")
+                    target = arc_idx.get("target")
+                    childs = arc_idx.getchildren()
+                    if target not in target_dict:
+                        target_dict[target] = {'all': 0, 'child': 0}
+
+                    target_dict[target]['all'] += 1
+                    if len(childs) > 0:
+                        print('childs ::==' + childs[0].tag)
+                        target_dict[target]['child'] += 1
+
+                    print('name::==' + str(source))
+            print('target_dict::=='+json.dumps(target_dict,indent=1))
 
     def draw_decision_rawdata(self,excellpath,pnmlpath):
         utility = Utility(excellpath)
-        store = utility.read_rawdata(require=self._CONFIG)
+        store = utility.read_rawdata(req_conf=self._CONFIG)
 
         pnml = Element('pnml')
         pnml.set('xmlns', 'http://www.pnml.org/version-2009/grammar/pnml')
@@ -583,7 +561,9 @@ class TransformationLogic():
         self.draw_transitions(page,store)
         self.draw_arcs(page,store)
 
+        self.find_inhibitor(page=page)
+
         xmlstr = minidom.parseString(tostring(pnml)).toprettyxml(
-            encoding="ISO-8859-1", indent="    ")
+            encoding="UTF-8", indent="    ")
         with open(pnmlpath, "w") as f: #'./tina-result.pnml'
             f.write(xmlstr)

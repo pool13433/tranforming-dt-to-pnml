@@ -8,19 +8,15 @@ from datetime import date
 from xml.etree.ElementTree import Element, SubElement, tostring, XML
 from xml.dom import minidom
 from jproperties import Properties
-
+from config_manager import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
-'''today = date.today()
-dailydate = today.strftime("%Y%m%d")
-logging.basicConfig(filename='./logs/transform_'+dailydate+'.log', level=logging.DEBUG,
-                    format='%(asctime)s - %(levelname)s - %(message)s')'''
+
 # C , A , R
 # C = Condition
 # R = Rule
 # A = Action
-
 
 class Utility():
 
@@ -34,48 +30,23 @@ class Utility():
                 raise Exception('Program Error')
         else:
             print('File Excell Not Found !!!')
-    def has_firstsheet(self,filepath):
-        pd_sheets = pd.ExcelFile(filepath)
-        for sheet in pd_sheets.sheet_names:
-            print('sheet::=='+sheet)
 
     @classmethod
-    def read_properties(cls,prop_name):    
+    def read_properties(cls,prop_name):
         p = Properties()
         with open(prop_name, "r+b") as f:
             p.load(f, "utf-8")            
         return p    
 
-    def read_rawdata(self,require):
-        #print('hasattr(self,\'df\')::=='+json.dumps(not hasattr(self,'df')))
-        if not hasattr(self,'df'):     
-            raise Exception('df not found please implement code again.') 
-
-        _rule = require['RULE']['ALIAS']
-        _action = require['ACTION']['ALIAS']
-        _condition = require['CONDITION']['ALIAS'] 
-
-        df_cols = self.df.columns
-        df_rows = self.df.index
-        # "C": ["ID", "Variable/Description", "Operator", "Value", "R1", "R2", "R3", "R4", "R5"]
-        store = {
-            'R': {
-                'C': {},
-                'A': {}
-            },
-            'C': {},
-            'A': {},
-            'CRC_EXTEND': [],
-            'RCR_EXTEND' :{},            
-        }
+    def filter_rules(self,df_cols,df_rows,req_conf,store):
+        _rule = req_conf['RULE']['ALIAS']
+        _action = req_conf['ACTION']['ALIAS']
+        _condition = req_conf['CONDITION']['ALIAS']
         for col_idx in df_cols:
             #print('col_idx::=='+str(col_idx))
             # row [R]
             if str(col_idx).startswith(_rule):
-                modules = {
-                    'C': {},
-                    'A': {}
-                }
+                modules = {'C': {},'A': {}}
                 for c_idx in df_rows:
                     row_val = self.df['ID'][c_idx]
                     col_val = self.df[col_idx][c_idx]
@@ -85,7 +56,11 @@ class Utility():
                         modules['A'][row_val] = col_val
                 store['R']['C'][col_idx] = modules['C']
                 store['R']['A'][col_idx] = modules['A']
-
+    
+    def filter_condact(self,df_cols,df_rows,req_conf,store):
+        _rule = req_conf['RULE']['ALIAS']
+        _action = req_conf['ACTION']['ALIAS']
+        _condition = req_conf['CONDITION']['ALIAS']
         for row_idx in df_rows:
             row_val = self.df['ID'][row_idx]
             modules = {}
@@ -100,6 +75,10 @@ class Utility():
             elif str(row_val).startswith(_action):
                 store['A'][row_val] = modules
         #print('store[\'C\']::=='+json.dumps(store['C']))
+
+    def filter_extends(self,req_conf,store):
+
+        _rule = req_conf['RULE']['ALIAS']
 
         store_rc = store['R']['C']
         for rdash_key in store_rc:
@@ -179,11 +158,120 @@ class Utility():
                     matrY_idx = self.add_extend_idx(matrY_idx,r_key)
 
         store['RCR_EXTEND'] = cr_array
+
+    def filter_expression(self,df_cols,df_rows,req_conf,store):
+
+        _rule = req_conf['RULE']['ALIAS']
+        _action = req_conf['ACTION']['ALIAS']
+        _condition = req_conf['CONDITION']['ALIAS']
+        _columns = req_conf['COLUMNS_JOIN']['VALUES']
+
+        #---------------------H_GROUP---------------------
+        group_h = store['H_GROUP']
+        for group_idx in _columns:
+            #print('group_idx::=='+str(group_idx))
+            sub_group = {_action : {},_condition : {}}
+            for col_idx in df_cols:
+                #print('col_idx::=='+str(col_idx))
+                for row_idx in df_rows:
+                    _id = self.df['ID'][row_idx]
+                    #print('row_idx::=='+str(row_idx))
+                    #print('_id::=='+str(_id))
+                    if col_idx.startswith(group_idx):
+                        col_val = self.df[group_idx][row_idx]
+                        #print('col_val::=='+str(col_val))
+                        if str(_id).startswith(_action):
+                            sub_group[_action][_id] = col_val
+                        elif str(_id).startswith(_condition):
+                            sub_group[_condition][_id] = col_val
+                        else:
+                            print('other _id ::=='+str(_id))
+            group_h[group_idx] = sub_group        
+        #print('group::=='+json.dumps(group,indent=1))
+        #---------------------H_GROUP---------------------
+
+        #---------------------V_GROUP---------------------
+        group_v = store['V_GROUP']
+        for row_idx in df_rows:
+            id_val = self.df['ID'][row_idx]
+            #print('id_val::=='+str(id_val))
+            sub_group = {}
+            for group_idx in _columns:
+                print("col_idx::=="+str(col_idx))
+                for col_idx in df_cols:
+                    if group_idx in self.df:
+                        _value = self.df[group_idx][row_idx]
+                        if str(id_val).startswith(_action):
+                            sub_group[group_idx] = _value
+                        elif str(id_val).startswith(_condition):
+                            sub_group[group_idx] = _value
+                        else:
+                            print('not found group !!')
+                    else:
+                        print('column '+group_idx+' invalid !!')
+            group_v[id_val] =  sub_group   
+        #print('group_v::=='+json.dumps(group_v,indent=1))
+        #---------------------V_GROUP---------------------
+
+        join_v = store['V_JOINS']
+        for v_idx in sorted(group_v):
+            #print('v_idx::=='+str(v_idx))
+            v_dict = group_v[v_idx]
+            #print('v_dict::=='+json.dumps(v_dict))            
+            join_str = self.reduce_joinstr(_columns=_columns,v_dict=v_dict)        
+            print('join_str::=='+join_str)
+            join_v[v_idx] = join_str
+        
+        #print('join_v::=='+json.dumps(join_v))
+
+    def reduce_joinstr(self,_columns,v_dict):
+            join_str = '';
+            for col_idx in _columns:
+                if col_idx in v_dict:
+                    col_val = v_dict[col_idx]
+                    #print('col_val::=='+str(col_val))
+                    #print('col_val isnan::=='+str(pd.isnull(col_val)))
+                    if not pd.isnull(col_val): #pd.np.nan is not col_val or
+                        join_str +=' '+str(col_val)
+            return join_str
+
+    def read_rawdata(self,req_conf):
+        #print('hasattr(self,\'df\')::=='+json.dumps(not hasattr(self,'df')))
+        if not hasattr(self,'df'):     
+            raise Exception('df not found please implement code again.') 
+
+        _rule = req_conf['RULE']['ALIAS']
+        _action = req_conf['ACTION']['ALIAS']
+        _condition = req_conf['CONDITION']['ALIAS']
+
+        #print('_rule::=='+json.dumps(_rule,indent=1))
+
+        df_cols = self.df.columns
+        df_rows = self.df.index
+        # "C": ["ID", "Variable/Description", "Operator", "Value", "R1", "R2", "R3", "R4", "R5"]
+        store = {
+            'R': { 'C': {},'A': {}},
+            'C': {},'A': {},
+            'CRC_EXTEND': [],'RCR_EXTEND' :{},  
+
+            'H_GROUP':{}, #horizontal
+            'V_GROUP':{}, #vertical
+            'V_JOINS': {}
+        }
+
+        self.filter_rules(df_cols=df_cols,df_rows=df_rows,req_conf=req_conf,store=store)
+
+        self.filter_condact(df_cols=df_cols,df_rows=df_rows,req_conf=req_conf,store=store)
+
+        self.filter_extends(req_conf=req_conf,store=store)
+
+        self.filter_expression(df_cols=df_cols,df_rows=df_rows,req_conf=req_conf,store=store)
+                
         #print('store[\'RCR_EXTEND\']::=='+json.dumps(store['RCR_EXTEND'],indent=1))
         #print('matrY_idx::=='+json.dumps(matrY_idx))
         #for f_idx in range(len(c_array)):
         #print('store_c::=='+json.dumps(store_c,indent=1))
-        #print('cr_array::=='+json.dumps(cr_array,indent=1))
+        print('store::=='+json.dumps(store,indent=1))
         return store
     # -----------------------------------------------------------------------------------
     def matrix_logic_boolean(self,len_power,is_reshap=True):
@@ -229,23 +317,25 @@ class Utility():
             else:
                 matrY_idx[r_key] = 1
         return matrY_idx
+
     def get_extend_idx(self,matrY_idx,r_key):
         if r_key in matrY_idx:
             return matrY_idx[r_key]
         else:
             return 0
         return matrY_idx
+
 def main():
-    utility = Utility('./inputs/DTProgram.xlsx')
-    confs = Utility.read_rawdata()
-    print('name::=='+confs.get('name'))
-    '''for x in confs:
-        print('x::=='+str(x)+' conf::=='+json.dumps(confs[x]))'''
+    _path = 'D:/NickWork/tina-transform/'
+    configManager = ConfigManager(root_path=_path);
+    config = configManager.read_configs(json_filename='input.json')
+    #print('config::=='+json.dumps(config,indent=1))
+    utility = Utility(_path+'/inputs/TestData1.xlsx')
+    raw_data = utility.read_rawdata(req_conf=config)
+    print('confs ::=='+json.dumps(raw_data,indent=1))
+
+    with open('./rawdata.json','w') as output:
+        json.dump(raw_data,output)
     
-
-    #store = utility.matrix_logic_boolean(3)
-    #utility.transform_matrix_logic(store)
-    # print('store::=='+json.dumps(store))
-
 if __name__ == '__main__':
     main()

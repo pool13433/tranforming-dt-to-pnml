@@ -1,46 +1,44 @@
 {
-    "NOT_BLANK": {
-        "CODE": "01",
-        "MESSAGE": {
-            "TH": "-",
-            "EN": "NOT Blank {0}"
-        }
-    },
-    "NOT_PK": {
-        "CODE": "02",
-        "MESSAGE": {
-            "TH": "-",
-            "EN": "NOT FOUND {0}"
-        }
-    },
-    "ONLY_VALUES": {
-        "CODE": "03",
-        "MESSAGE": {
-            "TH": "-",
-            "EN": "Only this Values {0}"
-        }
-    },
-    "LEAST_ONE" : {
-        "CODE": "04",
-        "MESSAGE": {
-            "TH": "-",
-            "EN": "at least 1 value"
-        }
-    },
-
-
-    "PROCESS_SUCCESS" : {
-        "CODE": "10",
-        "MESSAGE": {
-            "TH": "-",
-            "EN": "Process Success"
-        }
-    },
-    "PROCESS_ERROR" : {
-        "CODE": "20",
-        "MESSAGE": {
-            "TH": "-",
-            "EN": "Process Error"
-        }
-    }        
+  "NOT_BLANK": {
+    "CODE": "01",
+    "MESSAGE": {
+      "TH": "-",
+      "EN": "NOT Blank {0}"
+    }
+  },
+  "NOT_PK": {
+    "CODE": "02",
+    "MESSAGE": {
+      "TH": "-",
+      "EN": "NOT FOUND {0}"
+    }
+  },
+  "ONLY_VALUES": {
+    "CODE": "03",
+    "MESSAGE": {
+      "TH": "-",
+      "EN": "Only this Values {0}"
+    }
+  },
+  "LEAST_ONE": {
+    "CODE": "04",
+    "MESSAGE": {
+      "TH": "-",
+      "EN": "at least 1 value"
+    }
+  },
+  "PROCESS_SUCCESS": {
+    "CODE": "10",
+    "MESSAGE": {
+      "TH": "-",
+      "EN": "Process Success"
+    }
+  },
+  "PROCESS_ERROR": {
+    "CODE": "20",
+    "MESSAGE": {
+      "TH": "-",
+      "EN": "Process Error"
+    }
+  }
 }

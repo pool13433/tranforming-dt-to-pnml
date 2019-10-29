@@ -34,7 +34,7 @@ class InputValidation():
         _condition = config['CONDITION']['ALIAS']
 
         utility = Utility(xls_filename)
-        raw = utility.read_rawdata(require=config)
+        raw = utility.read_rawdata(req_conf=config)
 
         # check C
         has_cond = self.checkLeastOneValue(raw=raw,messages=messages,
