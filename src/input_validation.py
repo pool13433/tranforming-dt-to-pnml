@@ -38,24 +38,26 @@ class InputValidation():
 
         # check C
         has_cond = self.checkLeastOneValue(raw=raw,messages=messages,
-                            key_name='C',alias_name=_condition)
+                            key_name='CONDITION',alias_name=_condition)
         # check A
         has_action = self.checkLeastOneValue(raw=raw,messages=messages,
-                            key_name='A',alias_name=_action)        
+                            key_name='ACTION',alias_name=_action)        
         # check R
         has_rule = self.checkLeastOneValue(raw=raw,messages=messages,
-                            key_name='R',alias_name=_rule)        
+                            key_name='RULE',alias_name=_rule)        
 
         if has_cond and has_action and has_rule:
             vals_condition = config['CONDITION']['VALUES']
             vals_action = config['ACTION']['VALUES']
-            self.checkValueContaine(raw=raw,messages=messages,key_name='C',values=vals_condition) #['T', 'F', '-']
+            self.checkValueContains(raw=raw,messages=messages,key_name='CONDITION',
+                                    values=vals_condition,rule_alias=_rule) #['T', 'F', '-']
             if "" in vals_action:                
                 vals_action.append(pd.np.nan)
-            self.checkValueContaine(raw=raw,messages=messages,key_name='A',values=vals_action) #['X', pd.np.nan]
+            self.checkValueContains(raw=raw,messages=messages,key_name='ACTION',
+                                    values=vals_action,rule_alias=_rule) #['X', pd.np.nan]
 
             #check least one in rule cols
-            self.checkLeastOneInRule(raw=raw,messages=messages,config=config,key_name='R')
+            self.checkLeastOneInRule(raw=raw,messages=messages,config=config,key_name='RULE')
         else:
             print('invalid input!!')
                 
@@ -66,8 +68,8 @@ class InputValidation():
         vals_required = config['ACTION']['VALUES']
         if key_name in raw:
             _validates = []
-            if 'A' in raw[key_name]:
-                raw_a = raw[key_name]['A']
+            if 'ACTION' in raw[key_name]:
+                raw_a = raw[key_name]['ACTION']
                 len_a = len(raw_a)
                 for r_key in raw_a:
                     print('c_idx::=='+str(r_key))
@@ -116,7 +118,7 @@ class InputValidation():
                 return True
 
 
-    def checkValueContaine(self,raw, messages, key_name, values):              
+    def checkValueContains(self,raw, messages, key_name, values,rule_alias):              
         _messageNotBlank = messages['NOT_BLANK'] 
         #print('_messageNotBlank::=='+json.dumps(_messageNotBlank))
         _messageNotBlankEN = _messageNotBlank['MESSAGE']['EN'].replace('{0}',key_name) 
@@ -141,7 +143,7 @@ class InputValidation():
                     #print('_key1::='+json.dumps(_key1))
                     _val1 = _vals[_key1]
                     #print('_val1::='+json.dumps(_val1))
-                    if str(_key1).startswith('R'):
+                    if str(_key1).startswith(rule_alias):
                         is_exist = _val1 in values
                         if not is_exist:
                             _validates.append({

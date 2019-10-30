@@ -36,5 +36,9 @@
     "VALUES": [
       "Variable1"
     ]
+  },
+  "COLUMN_PRIMARY" : {
+    "ALIAS": "ID",
+    "VALUE": "ID"
   }
 }

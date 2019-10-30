@@ -42,27 +42,31 @@ class Utility():
         _rule = req_conf['RULE']['ALIAS']
         _action = req_conf['ACTION']['ALIAS']
         _condition = req_conf['CONDITION']['ALIAS']
+        _primary = req_conf['COLUMN_PRIMARY']['VALUE']
+
         for col_idx in df_cols:
             #print('col_idx::=='+str(col_idx))
             # row [R]
             if str(col_idx).startswith(_rule):
-                modules = {'C': {},'A': {}}
+                modules = {'CONDITION': {},'ACTION': {}}
                 for c_idx in df_rows:
-                    row_val = self.df['ID'][c_idx]
+                    row_val = self.df[_primary][c_idx]
                     col_val = self.df[col_idx][c_idx]
                     if str(row_val).startswith(_condition):
-                        modules['C'][row_val] = col_val
+                        modules['CONDITION'][row_val] = col_val
                     elif str(row_val).startswith(_action):
-                        modules['A'][row_val] = col_val
-                store['R']['C'][col_idx] = modules['C']
-                store['R']['A'][col_idx] = modules['A']
+                        modules['ACTION'][row_val] = col_val
+                store['RULE']['CONDITION'][col_idx] = modules['CONDITION']
+                store['RULE']['ACTION'][col_idx] = modules['ACTION']
     
     def filter_condact(self,df_cols,df_rows,req_conf,store):
         _rule = req_conf['RULE']['ALIAS']
         _action = req_conf['ACTION']['ALIAS']
         _condition = req_conf['CONDITION']['ALIAS']
+        _primary = req_conf['COLUMN_PRIMARY']['VALUE']
+
         for row_idx in df_rows:
-            row_val = self.df['ID'][row_idx]
+            row_val = self.df[_primary][row_idx]
             modules = {}
             # print('row_val::=='+str(row_val))
             for col_idx in df_cols:
@@ -71,16 +75,16 @@ class Utility():
 
             #print('modules::=='+json.dumps(modules))
             if str(row_val).startswith(_condition):
-                store['C'][row_val] = modules
+                store['CONDITION'][row_val] = modules
             elif str(row_val).startswith(_action):
-                store['A'][row_val] = modules
-        #print('store[\'C\']::=='+json.dumps(store['C']))
+                store['ACTION'][row_val] = modules
+        #print('store[\'C\']::=='+json.dumps(store['CONDITION']))
 
     def filter_extends(self,req_conf,store):
 
         _rule = req_conf['RULE']['ALIAS']
 
-        store_rc = store['R']['C']
+        store_rc = store['RULE']['CONDITION']
         for rdash_key in store_rc:
             extend_data = {'name' : rdash_key,'extends' : {}}
             #print('\nrdash_key::=='+json.dumps(rdash_key))
@@ -114,7 +118,7 @@ class Utility():
             store['CRC_EXTEND'].append(extend_data)
         #print('store[\'CRC_EXTEND\']::==' +json.dumps(store['CRC_EXTEND'], indent=1, sort_keys=True))
 
-        store_c = store['C']        
+        store_c = store['CONDITION']        
         #print('store_c::=='+json.dumps(store_c))         
         cr_array = {}               
         matrY_idx = {}
@@ -165,6 +169,7 @@ class Utility():
         _action = req_conf['ACTION']['ALIAS']
         _condition = req_conf['CONDITION']['ALIAS']
         _columns = req_conf['COLUMNS_JOIN']['VALUES']
+        _primary = req_conf['COLUMN_PRIMARY']['VALUE']
 
         #---------------------H_GROUP---------------------
         group_h = store['H_GROUP']
@@ -174,7 +179,7 @@ class Utility():
             for col_idx in df_cols:
                 #print('col_idx::=='+str(col_idx))
                 for row_idx in df_rows:
-                    _id = self.df['ID'][row_idx]
+                    _id = self.df[_primary][row_idx]
                     #print('row_idx::=='+str(row_idx))
                     #print('_id::=='+str(_id))
                     if col_idx.startswith(group_idx):
@@ -193,22 +198,20 @@ class Utility():
         #---------------------V_GROUP---------------------
         group_v = store['V_GROUP']
         for row_idx in df_rows:
-            id_val = self.df['ID'][row_idx]
+            id_val = self.df[_primary][row_idx]
             #print('id_val::=='+str(id_val))
             sub_group = {}
             for group_idx in _columns:
-                print("col_idx::=="+str(col_idx))
+                #print("col_idx::=="+str(col_idx))
                 for col_idx in df_cols:
                     if group_idx in self.df:
                         _value = self.df[group_idx][row_idx]
                         if str(id_val).startswith(_action):
                             sub_group[group_idx] = _value
                         elif str(id_val).startswith(_condition):
-                            sub_group[group_idx] = _value
-                        else:
-                            print('not found group !!')
-                    else:
-                        print('column '+group_idx+' invalid !!')
+                            sub_group[group_idx] = _value                        
+                    '''else:
+                        print('column '+group_idx+' invalid !!')'''
             group_v[id_val] =  sub_group   
         #print('group_v::=='+json.dumps(group_v,indent=1))
         #---------------------V_GROUP---------------------
@@ -219,7 +222,7 @@ class Utility():
             v_dict = group_v[v_idx]
             #print('v_dict::=='+json.dumps(v_dict))            
             join_str = self.reduce_joinstr(_columns=_columns,v_dict=v_dict)        
-            print('join_str::=='+join_str)
+            #print('join_str::=='+join_str)
             join_v[v_idx] = join_str
         
         #print('join_v::=='+json.dumps(join_v))
@@ -250,8 +253,8 @@ class Utility():
         df_rows = self.df.index
         # "C": ["ID", "Variable/Description", "Operator", "Value", "R1", "R2", "R3", "R4", "R5"]
         store = {
-            'R': { 'C': {},'A': {}},
-            'C': {},'A': {},
+            'RULE': { 'CONDITION': {},'ACTION': {}},
+            'CONDITION': {},'ACTION': {},
             'CRC_EXTEND': [],'RCR_EXTEND' :{},  
 
             'H_GROUP':{}, #horizontal
@@ -267,11 +270,7 @@ class Utility():
 
         self.filter_expression(df_cols=df_cols,df_rows=df_rows,req_conf=req_conf,store=store)
                 
-        #print('store[\'RCR_EXTEND\']::=='+json.dumps(store['RCR_EXTEND'],indent=1))
-        #print('matrY_idx::=='+json.dumps(matrY_idx))
-        #for f_idx in range(len(c_array)):
-        #print('store_c::=='+json.dumps(store_c,indent=1))
-        print('store::=='+json.dumps(store,indent=1))
+        #print('store::=='+json.dumps(store,indent=1))
         return store
     # -----------------------------------------------------------------------------------
     def matrix_logic_boolean(self,len_power,is_reshap=True):
