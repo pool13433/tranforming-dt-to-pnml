@@ -18,7 +18,7 @@ sys.setdefaultencoding('utf-8')
 # R = Rule
 # A = Action
 
-class Utility():
+class DataConverter():
 
     def __init__(self, filepath):
         print('filepath::==', filepath)
@@ -238,6 +238,26 @@ class Utility():
                         join_str +=' '+str(col_val)
             return join_str
 
+    def filter_xors(self,df_cols,df_rows,req_conf,store):
+        _id = req_conf['COLUMN_PRIMARY']['VALUE']
+        _xor = req_conf['COLUMN_XOR']['ALIAS']
+        _xor_val = req_conf['COLUMN_XOR']['VALUE']
+
+        if _xor not in self.df:
+            raise Exception('Not the value column defined :{} in your import file'.format(_xor))
+
+        xor = store['XOR_EXTEND']
+        for row_idx in df_rows:
+            id_val = self.df[_id][row_idx]
+            xor_val = self.df[_xor][row_idx]
+            #print('id_val::=='+str(id_val))
+            #print('xor_val::=='+str(xor_val))
+            if _xor_val == xor_val:
+                print('_xor_val::=='+str(_xor_val))
+                xor[id_val] = xor_val
+        
+        print('store[\'XOR_EXTEND\']::=='+json.dumps(store['XOR_EXTEND']))
+
     def read_rawdata(self,req_conf):
         #print('hasattr(self,\'df\')::=='+json.dumps(not hasattr(self,'df')))
         if not hasattr(self,'df'):     
@@ -259,7 +279,8 @@ class Utility():
 
             'H_GROUP':{}, #horizontal
             'V_GROUP':{}, #vertical
-            'V_JOINS': {}
+            'V_JOINS': {},
+            'XOR_EXTEND' : {}
         }
 
         self.filter_rules(df_cols=df_cols,df_rows=df_rows,req_conf=req_conf,store=store)
@@ -269,6 +290,8 @@ class Utility():
         self.filter_extends(req_conf=req_conf,store=store)
 
         self.filter_expression(df_cols=df_cols,df_rows=df_rows,req_conf=req_conf,store=store)
+
+        self.filter_xors(df_cols=df_cols,df_rows=df_rows,req_conf=req_conf,store=store)
                 
         #print('store::=='+json.dumps(store,indent=1))
         return store
@@ -329,9 +352,9 @@ def main():
     configManager = ConfigManager(root_path=_path);
     config = configManager.read_configs(json_filename='input.json')
     #print('config::=='+json.dumps(config,indent=1))
-    utility = Utility(_path+'/inputs/TestData1.xlsx')
+    utility = DataConverter(_path+'/inputs/TestData1.xlsx')
     raw_data = utility.read_rawdata(req_conf=config)
-    print('confs ::=='+json.dumps(raw_data,indent=1))
+    #print('confs ::=='+json.dumps(raw_data,indent=1))
 
     with open('./rawdata.json','w') as output:
         json.dump(raw_data,output)

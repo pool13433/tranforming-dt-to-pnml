@@ -3,7 +3,7 @@ import codecs
 import pandas as pd
 import os
 
-from utility_v2 import *
+from data_converter import *
 from config_manager import *
 
 
@@ -33,7 +33,7 @@ class InputValidation():
         _action = config['ACTION']['ALIAS']
         _condition = config['CONDITION']['ALIAS']
 
-        utility = Utility(xls_filename)
+        utility = DataConverter(xls_filename)
         raw = utility.read_rawdata(req_conf=config)
 
         # check C

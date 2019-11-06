@@ -40,5 +40,9 @@
   "COLUMN_PRIMARY" : {
     "ALIAS": "ID",
     "VALUE": "ID"
+  },
+  "COLUMN_XOR" :{
+    "ALIAS": "XOR Group",
+    "VALUE": "XOR1"
   }
 }

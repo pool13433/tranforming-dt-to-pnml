@@ -11,7 +11,7 @@ from xml.etree.ElementTree import Element, SubElement, tostring, XML
 from xml.dom import minidom
 from collections import OrderedDict
 
-from utility_v2 import *
+from data_converter import *
 from config_manager import *
 
 reload(sys)
@@ -27,12 +27,24 @@ class TransformationLogic():
 	def __init__(self,root_path):
 		self.assign_configs(root_path=root_path)
 
-		self.pnml_options = {'y_space': 90,'break_space' : 90}
+		self.pnml_options = {'y_space': 90, 'x_space' : 40,'break_space' : 90}
 		self.arcs = {'CT': [], 'D': [], 'R': [], 'RT': [], 'DT': [] , 'BREAK' : []}
 		# append key from config
 		# 'A' : [],'C' : [],
 		self.arcs[self._ACTION] = []
 		self.arcs[self._CONDITION] = []
+
+	def get_location(self):				
+		return {
+			'D': {'x': str(self.cal_location_space(1)), 'y': '125'},
+			'DT': {'x': str(self.cal_location_space(2)), 'y': '125'},
+			'C': {'x': str(self.cal_location_space(3)), 'y': '140'},
+			'X' : {'x': str(self.cal_location_space(4)), 'y': '140'},
+			'CT': {'x': str(self.cal_location_space(5)), 'y': '50'},
+			'R': {'x': str(self.cal_location_space(6)), 'y': '50'},
+			'RT': {'x': str(self.cal_location_space(7)), 'y': '50'},			
+			'A': {'x': str(self.cal_location_space(8)), 'y': '140'},			
+		}
 
 	def assign_configs(self,root_path):
 		configManager = ConfigManager(root_path=root_path);
@@ -41,6 +53,7 @@ class TransformationLogic():
 		self._ACTION = config['ACTION']['ALIAS']
 		self._CONDITION = config['CONDITION']['ALIAS']
 		self._BREAK = 'BREAK'
+		self._XOR = config['COLUMN_XOR']['VALUE']
 		self._CONFIG = config
 
 	def grep_char(self, str):
@@ -114,14 +127,16 @@ class TransformationLogic():
 			arc_data['unique'] = place_dict['unique']
 		self.push_arcs(name_text, arc_data)
 
+	def cal_location_space(self,seq):
+		x_firt = 35
+		x_distance = 105
+		x_space = self.pnml_options['x_space']
+		return (x_space*seq) + ((x_distance*seq) + x_firt)
+
 	def draw_places(self, page, store):
 		# rows = get_decision_rows()
-		place_offset = {
-			'a': {'x': '820', 'y': '140'},
-			'c': {'x': '240', 'y': '140'},
-			'd': {'x': '35', 'y': '125'},
-			'r': {'x': '545', 'y': '50'},
-		}
+
+		place_offset = self.get_location()
 		# Place Group "A*"
 		place_index = 1
 		for a_idx in sorted(store['ACTION']):
@@ -141,10 +156,18 @@ class TransformationLogic():
 			# c_desc = values['Variable/Description']
 			c_desc = store['V_JOINS'][key]
 			place_text = c_idx
+			offset_y = place_offset['C']['y']
 			place_offset, place_index = self.draw_place_ac(page, key, place_offset, c_desc, place_index)
 
+			# xor condition 20191101
+			if c_idx in store['XOR_EXTEND']:				
+				print('c_idx::=='+str(c_idx))
+				key = store['XOR_EXTEND'][c_idx]+key
+				place_offset['X']['y'] = offset_y
+				place_offset, place_index = self.draw_place_ac(page, key, place_offset, c_desc, place_index)
+
 		# Place Group D* , R*
-		place_index = {'r': 1, 'd': 1}
+		place_index = {'R': 1, 'D': 1}
 		store_rc = store['RULE']['CONDITION']
 		for r_idx in sorted(store_rc):
 			r_values = store_rc[r_idx]
@@ -169,8 +192,8 @@ class TransformationLogic():
 
 	def draw_place_d(self, page, key, place_offset, place_index):
 		if str(key).startswith(self._RULE):
-			offset_d = place_offset['d']
-			d_index = place_index['d']
+			offset_d = place_offset['D']
+			d_index = place_index['D']
 			name_text = 'D' + str(d_index)
 			name_id = 'D-' + self.concat_unique(offset_d)
 			self.draw_place(page, {
@@ -181,14 +204,14 @@ class TransformationLogic():
 			offset_d['x'] = str(int(offset_d['x']))
 			offset_d['y'] = str(int(offset_d['y']) + self.pnml_options['y_space'])
 
-			place_index['d'] = place_index['d'] + 1
+			place_index['D'] = place_index['D'] + 1
 
 		return place_offset, place_index
 
 	def draw_place_r(self, page, key, place_offset, place_index):
 		if str(key).startswith(self._RULE):
-			offset_r = place_offset['r']
-			r_index = place_index['r']
+			offset_r = place_offset['R']
+			r_index = place_index['R']
 			self.draw_place(page, {
 				'name': {
 					'text': key, 'id': 'R-' + self.concat_unique(offset_r),
@@ -198,7 +221,7 @@ class TransformationLogic():
 			})
 			offset_r['x'] = str(int(offset_r['x']))
 			offset_r['y'] = str(int(offset_r['y']) + self.pnml_options['y_space'])
-			place_index['r'] = place_index['r'] + 1
+			place_index['R'] = place_index['R'] + 1
 
 		return place_offset, place_index
 
@@ -218,16 +241,24 @@ class TransformationLogic():
 		else:
 			if str(key).startswith(self._CONDITION):
 				
-				offset_c = place_offset['c']
+				offset_c = place_offset['C']
 				graphics['offset'] = offset_c
 				offset_c['x'] = str(int(offset_c['x']))
 				offset_c['y'] = str(int(offset_c['y']) + self.pnml_options['y_space'])
 
 			elif str(key).startswith(self._ACTION):
-				offset_a = place_offset['a']
+				offset_a = place_offset['A']
 				graphics['offset'] = offset_a
 				offset_a['x'] = str(int(offset_a['x']))
 				offset_a['y'] = str(int(offset_a['y']) + self.pnml_options['y_space'])
+			
+			elif str(key).startswith(self._XOR):
+				offset_x = place_offset['X']
+				offset_c = place_offset['C']
+				#offset_x['y'] = offset_c['y'] # position same C
+				graphics['offset'] = offset_x
+				offset_x['x'] = str(int(offset_x['x']))
+				offset_x['y'] = str(int(offset_x['y']) + self.pnml_options['y_space'])
 
 		value_dict['unique'] = key
 		self.draw_place(page, value_dict)
@@ -265,11 +296,8 @@ class TransformationLogic():
 		# columns = get_decision_columns()
 		# rows = get_decision_rows()
 		tran_index = {'CT': 1, 'DT': 1, 'RT': 1}
-		tran_offset = {
-			'CT': {'x': '460', 'y': '50'},
-			'DT': {'x': '125', 'y': '125'},
-			'RT': {'x': '635', 'y': '50'},
-		}
+		tran_offset = self.get_location()
+
 		store_rc = store['RULE']['CONDITION']
 		# print('store_rc::=='+json.dumps(store_rc))
 		for r_key in sorted(store_rc):
@@ -607,7 +635,7 @@ class TransformationLogic():
 			print('not ')
 
 	def draw_decision_rawdata(self, excellpath, pnmlpath):
-		utility = Utility(excellpath)
+		utility = DataConverter(excellpath)
 		store = utility.read_rawdata(req_conf=self._CONFIG)
 
 		pnml = Element('pnml')
@@ -638,7 +666,8 @@ class TransformationLogic():
 def main():
 	path = 'D:/NickWork/tina-transform'
 	logic = TransformationLogic(root_path=path)
-	logic.draw_decision_rawdata(excellpath=path + '/inputs/DTProgram.xlsx',pnmlpath=path + '/outputs/xxxxxxx.pnml')
+	logic.draw_decision_rawdata(excellpath=path + '/inputs/TestData1.xlsx',
+								pnmlpath=path + '/outputs/xxxxxxx.pnml')
 
 if __name__ == "__main__":
 	main()
