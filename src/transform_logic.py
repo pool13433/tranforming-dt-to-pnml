@@ -28,7 +28,7 @@ class TransformationLogic():
 		self.assign_configs(root_path=root_path)
 
 		self.pnml_options = {'y_space': 90, 'x_space' : 40,'break_space' : 90}
-		self.arcs = {'CT': [], 'D': [], 'R': [], 'RT': [], 'DT': [] , 'BREAK' : []}
+		self.arcs = {'CT': [], 'D': [], 'R': [], 'RT': [], 'DT': [] , 'BREAK' : [],'XOR' : []}
 		# append key from config
 		# 'A' : [],'C' : [],
 		self.arcs[self._ACTION] = []
@@ -66,6 +66,7 @@ class TransformationLogic():
 		# print('arc_key ::=='+json.dumps(arc_key))
 		# print('arc_dict ::=='+json.dumps(arc_dict))
 		arc_group, arc_len = self.grep_char(arc_key)
+		print('arc_group::=='+str(arc_group)+' arc_len::=='+str(arc_len))
 		numbers = re.findall('\d+', arc_key.replace('.', ''))
 		sub_numbers = re.findall('\d+', arc_key)
 		# print('numbers ::=='+json.dumps(numbers))
@@ -125,6 +126,8 @@ class TransformationLogic():
 			arc_data['index'] = _name['index']
 		if 'unique' in place_dict:
 			arc_data['unique'] = place_dict['unique']
+		if 'unique_xor' in place_dict:
+			arc_data['unique_xor'] = place_dict['unique_xor']
 		self.push_arcs(name_text, arc_data)
 
 	def cal_location_space(self,seq):
@@ -146,7 +149,10 @@ class TransformationLogic():
 			# c_desc = values['Variable/Description']
 			c_desc = store['V_JOINS'][key]
 			place_text = a_idx
-			place_offset, place_index = self.draw_place_ac(page, key, place_offset, c_desc, place_index)
+			place_offset, place_index = self.draw_place_ac(page, key, 
+											place_offset=place_offset, 
+											place_text=c_desc, 
+											place_index=place_index)
 
 		# Place Group "C*"
 		place_index = 1
@@ -157,14 +163,21 @@ class TransformationLogic():
 			c_desc = store['V_JOINS'][key]
 			place_text = c_idx
 			offset_y = place_offset['C']['y']
-			place_offset, place_index = self.draw_place_ac(page, key, place_offset, c_desc, place_index)
+			place_offset, place_index = self.draw_place_ac(page, key, 
+										place_offset=place_offset, 
+										place_text=c_desc, 
+										place_index=place_index)
 
 			# xor condition 20191101
 			if c_idx in store['XOR_EXTEND']:				
 				print('c_idx::=='+str(c_idx))
-				key = store['XOR_EXTEND'][c_idx]+key
+				key_new = store['XOR_EXTEND'][c_idx]+key
 				place_offset['X']['y'] = offset_y
-				place_offset, place_index = self.draw_place_ac(page, key, place_offset, c_desc, place_index)
+				place_offset, place_index = self.draw_place_ac(page, key_new, 
+											place_offset=place_offset, 
+											place_text='', 
+											place_index=place_index,
+											xor_dict={'unique_xor' : key})
 
 		# Place Group D* , R*
 		place_index = {'R': 1, 'D': 1}
@@ -225,10 +238,10 @@ class TransformationLogic():
 
 		return place_offset, place_index
 
-	def draw_place_ac(self, page, key, place_offset, place_text, place_index):
+	def draw_place_ac(self, page, key, place_offset, place_text, place_index,xor_dict=None):
 		value_dict = {
 			'name': {'text': key, 'id': 'ac-3BB8-AC2', 'offset': {'x': '0', 'y': '-10'}},
-			'label': {'text': place_text, 'offset': {'x': '10', 'y': '-10'}},
+			'label': {'text': place_text, 'offset': {'x': '10', 'y': '100'}},
 			'graphics': {'offset': {}}
 		}
 		graphics = value_dict['graphics']
@@ -259,7 +272,12 @@ class TransformationLogic():
 				graphics['offset'] = offset_x
 				offset_x['x'] = str(int(offset_x['x']))
 				offset_x['y'] = str(int(offset_x['y']) + self.pnml_options['y_space'])
-
+				if xor_dict is not None:					
+					value_dict['unique_xor'] = xor_dict['unique_xor']
+					#value_dict['label']['offset']['y'] = '100'
+					#'label': {'text': place_text, 'offset': {'x': '10', 'y': '-10'}},
+		print('value_dict[\'label\'][\'offset\'][\'y\'] ::=='
+							+str(value_dict['label']['offset']['y']))
 		value_dict['unique'] = key
 		self.draw_place(page, value_dict)
 		return place_offset, place_index
@@ -470,19 +488,46 @@ class TransformationLogic():
 		target_key = 'CT'
 		c_dicts = self.arcs[source_key]
 		ct_dicts = self.arcs[target_key]
+		xor_dicts = self.arcs['XOR']
 		store_RCR_EXT = store['RCR_EXTEND']
 		# print("store_RCR_EXT::=="+json.dumps(store_RCR_EXT))
 		# print('c_dicts::=='+json.dumps(c_dicts))
 		# print('ct_dicts::=='+json.dumps(ct_dicts))
+		print('self.arcs::=='+json.dumps(self.arcs))
 
 		for c_key in sorted(store_RCR_EXT):
-			# print('c_key::=='+json.dumps(c_key))
+			#print('c_key::=='+json.dumps(c_key))
 			c_values = store_RCR_EXT[c_key]
+
+			xor_list = filter(lambda _dict: _dict['unique_xor'] == c_key,xor_dicts)
+			xor_exist = len(xor_list) > 0 and xor_list[0]  or None
 			# print('r_values::=='+json.dumps(r_values))
+			#print('xor_list::=='+json.dumps(xor_list))
+			print('xor_exist::=='+json.dumps(xor_exist))
+
 			arcC_dicts = filter(lambda _dict: _dict['unique'] == c_key, c_dicts)
-			if len(arcC_dicts) > 0:
+			if len(arcC_dicts) > 0:				
 				c_dict = arcC_dicts[0]
 				c_id = c_dict['id']
+
+				# ************** xor ****************
+				if xor_exist is not None:
+					print('c => xor')
+					xor_id = xor_exist['id']
+					xor_key = xor_exist['id']
+					xor_key = xor_exist['unique']
+					arc_data = {
+						'c_key': xor_key, #'ext_key': ext_key,
+						'id': xor_key + '-' + xor_key + c_id + '-' + xor_id,
+						'source': c_id, 'target': xor_id
+					}
+					self.draw_arc(page, arc_data)
+
+					print('xor => ct')				
+					c_id = xor_id
+				# ************** not xor ************
+
+				#print('c_id ::=='+str(c_id))
 				for r_key in c_values:
 					# print('r_key::=='+json.dumps(r_key))
 					r_vals = c_values[r_key]
@@ -494,6 +539,7 @@ class TransformationLogic():
 						if len(arcCT_dicts) > 0:
 							for ct_dict in arcCT_dicts:
 								# print('ct_dict::=='+json.dumps(ct_dict))
+
 								ct_id = ct_dict['id']
 								ct_key = ct_dict['id']
 								arc_data = {
@@ -505,6 +551,7 @@ class TransformationLogic():
 								if 'F' == ext_val:
 									arc_data['type'] = 'inhibitor'
 								self.draw_arc(page, arc_data)
+
 
 	def find_name(self, ext_dict, ext_key):
 		ext_val = filter(lambda _dict: _dict['name'] == ext_key, ext_dict)
@@ -608,8 +655,10 @@ class TransformationLogic():
 				key = alias_key+' '+ctrt_data['text'] #
 				place_offset[alias_key] =  ctrt_data['offset']
 				place_text = ctrt_data['text']
-				place_offset, place_index = self.draw_place_ac(page, key, place_offset, 
-												'', place_index)
+				place_offset, place_index = self.draw_place_ac(page, key, 
+												place_offset=place_offset, 
+												place_text='', 
+												place_index=place_index)
 				# draw condition break line
 				break_list = self.arcs[alias_key]
 				if len(break_list) > 0:
