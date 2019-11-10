@@ -27,8 +27,7 @@
       "Logic Gate",
       "Variable2",
       "Operator2",
-      "Value2",
-      "XOR Group"
+      "Value2"      
     ]
   },
   "COLUMN_ACTION": {
@@ -43,6 +42,22 @@
   },
   "COLUMN_XOR" :{
     "ALIAS": "XOR Group",
-    "VALUE": "XOR1"
+    "VALUE": "XOR"
+  },
+  "DISTANCE" :{
+    "ALIAS" : "SPACE OBJECT",
+    "VALUES" : {
+      "Y" : 110,
+      "X" : 40,
+      "BREAK" : 90
+    }
+  },
+  "POSITION" : {
+    "ALIAS" : "POSITION XML TAG START",
+    "VALUES" : {
+      "RULE" : 125,
+			"CONACT" : 220,
+			"RULE_DASH" : 50
+    }
   }
 }

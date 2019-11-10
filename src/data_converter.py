@@ -252,9 +252,15 @@ class DataConverter():
             xor_val = self.df[_xor][row_idx]
             #print('id_val::=='+str(id_val))
             #print('xor_val::=='+str(xor_val))
-            if _xor_val == xor_val:
+            if pd.notnull(xor_val):
+                print('xor_val::=='+xor_val)
+                if xor_val in xor:
+                    xor[xor_val].append(id_val)
+                else:
+                    xor[xor_val] = [id_val] 
+            '''if _xor_val == xor_val:
                 print('_xor_val::=='+str(_xor_val))
-                xor[id_val] = xor_val
+                xor[id_val] = xor_val'''
         
         print('store[\'XOR_EXTEND\']::=='+json.dumps(store['XOR_EXTEND']))
 

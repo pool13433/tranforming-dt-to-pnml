@@ -58,9 +58,26 @@ class InputValidation():
 
             #check least one in rule cols
             self.checkLeastOneInRule(raw=raw,messages=messages,config=config,key_name='RULE')
+
+
+            #check xor group not have one value
+            self.checkXorGroupNotHaveOneValue(raw=raw,messages=messages,config=config);
         else:
             print('invalid input!!')
-                
+
+    def checkXorGroupNotHaveOneValue(self,raw,messages,config):
+        _messageThanOne = messages['XOR_THAN1']
+        _messageThanOneEN = _messageThanOne['MESSAGE']['EN']
+        xors = raw['XOR_EXTEND']
+        for xor_key in xors:
+            #print('xor_key::=='+str(xor_key))
+            xor_values = xors[xor_key]
+            #print('xor_values::=='+str(xor_values))
+            if len(xor_values) == 1:
+               self.validtors.append({
+                    'code': _messageThanOne['CODE'],
+                    'field': 'XOR', 'message': _messageThanOneEN
+                })         
             
     def checkLeastOneInRule(self,raw,messages,config,key_name):
         _messageLeastOne = messages['LEAST_ONE']
@@ -190,7 +207,7 @@ class InputValidation():
 
 def main():
     validate = InputValidation(root_path="D:/NickWork/tina-transform")
-    validate.runValidateInput(xls_filename="D:/NickWork/tina-transform/inputs/DTProgram.xlsx")
+    validate.runValidateInput(xls_filename="D:/NickWork/tina-transform/inputs/TestData1.xlsx")
     validators = validate.getValidtors()
     print('validators ::=='+json.dumps(validators, indent=1))    
 
