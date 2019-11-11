@@ -18,6 +18,16 @@
     "ALIAS": "R",
     "VALUES": []
   },
+  "COLUMNS_REQUIRED" : {
+    "ALIAS" :  "",
+    "VALUES" : [
+      "ID",
+      "Variable1","Operator1","Value1",
+      "Logic Gate",
+      "Variable2","Operator2","Value2",
+      "XOR Group","R1"
+    ]
+  },
   "COLUMNS_JOIN": {
     "ALIAS": "COLUMNS_ORDER_JOIN",
     "VALUES": [
@@ -49,7 +59,7 @@
     "VALUES" : {
       "Y" : 110,
       "X" : 40,
-      "BREAK" : 90
+      "BREAK" : 70
     }
   },
   "POSITION" : {

@@ -31,39 +31,66 @@ class InputValidation():
 
         _rule = config['RULE']['ALIAS']
         _action = config['ACTION']['ALIAS']
-        _condition = config['CONDITION']['ALIAS']
+        _condition = config['CONDITION']['ALIAS']        
 
         utility = DataConverter(xls_filename)
         raw = utility.read_rawdata(req_conf=config)
+        meta = utility.read_metadata()
 
-        # check C
-        has_cond = self.checkLeastOneValue(raw=raw,messages=messages,
-                            key_name='CONDITION',alias_name=_condition)
-        # check A
-        has_action = self.checkLeastOneValue(raw=raw,messages=messages,
-                            key_name='ACTION',alias_name=_action)        
-        # check R
-        has_rule = self.checkLeastOneValue(raw=raw,messages=messages,
-                            key_name='RULE',alias_name=_rule)        
+        # first priority check columns required
+        is_passed = self.checkColumnsRequired(meta=meta,messages=messages,
+                            config=config)
+        print('is_passed::=='+json.dumps(is_passed))
+        if is_passed:
+            # check C
+            has_cond = self.checkLeastOneValue(raw=raw,messages=messages,
+                                key_name='CONDITION',alias_name=_condition)
+            # check A
+            has_action = self.checkLeastOneValue(raw=raw,messages=messages,
+                                key_name='ACTION',alias_name=_action)        
+            # check R
+            has_rule = self.checkLeastOneValue(raw=raw,messages=messages,
+                                key_name='RULE',alias_name=_rule)        
 
-        if has_cond and has_action and has_rule:
-            vals_condition = config['CONDITION']['VALUES']
-            vals_action = config['ACTION']['VALUES']
-            self.checkValueContains(raw=raw,messages=messages,key_name='CONDITION',
-                                    values=vals_condition,rule_alias=_rule) #['T', 'F', '-']
-            if "" in vals_action:                
-                vals_action.append(pd.np.nan)
-            self.checkValueContains(raw=raw,messages=messages,key_name='ACTION',
-                                    values=vals_action,rule_alias=_rule) #['X', pd.np.nan]
+            if has_cond and has_action and has_rule:
+                vals_condition = config['CONDITION']['VALUES']
+                vals_action = config['ACTION']['VALUES']
+                self.checkValueContains(raw=raw,messages=messages,key_name='CONDITION',
+                                        values=vals_condition,rule_alias=_rule) #['T', 'F', '-']
+                if "" in vals_action:                
+                    vals_action.append(pd.np.nan)
+                self.checkValueContains(raw=raw,messages=messages,key_name='ACTION',
+                                        values=vals_action,rule_alias=_rule) #['X', pd.np.nan]
 
-            #check least one in rule cols
-            self.checkLeastOneInRule(raw=raw,messages=messages,config=config,key_name='RULE')
+                #check least one in rule cols
+                self.checkLeastOneInRule(raw=raw,messages=messages,config=config,key_name='RULE')
 
 
-            #check xor group not have one value
-            self.checkXorGroupNotHaveOneValue(raw=raw,messages=messages,config=config);
-        else:
-            print('invalid input!!')
+                #check xor group not have one value
+                self.checkXorGroupNotHaveOneValue(raw=raw,messages=messages,config=config);
+            else:
+                print('invalid input!!')
+    
+    def checkColumnsRequired(self,meta,messages,config):
+        columns = meta['columns']
+        #columns.remove('Operator1')
+        print('columns::=='+json.dumps(columns))
+        required = config['COLUMNS_REQUIRED']['VALUES']        
+        #required.append('required')
+        print('required::=='+json.dumps(required))
+        is_same = all(elem in columns for elem in required)
+        #is_same = all(elem in required for elem in columns)
+        print('is_same ::=='+json.dumps(is_same))
+        if not is_same:
+            _messageRequired = messages['REQUIRE_COLUMNS']
+            _messageRequiredEN = _messageRequired['MESSAGE']['EN']
+            self.validtors.append({
+                'code': _messageRequired['CODE'],
+                'field': json.dumps(required), 
+                'message': _messageRequiredEN
+            }) 
+        return is_same
+            
 
     def checkXorGroupNotHaveOneValue(self,raw,messages,config):
         _messageThanOne = messages['XOR_THAN1']

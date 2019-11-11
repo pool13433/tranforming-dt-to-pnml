@@ -353,17 +353,29 @@ class DataConverter():
             return 0
         return matrY_idx
 
+    def read_metadata(self):        
+        return {
+            'columns' :  list(self.df.columns),
+            'head' : self.df.head() 
+        }
+
 def main():
     _path = 'D:/NickWork/tina-transform/'
     configManager = ConfigManager(root_path=_path);
     config = configManager.read_configs(json_filename='input.json')
     #print('config::=='+json.dumps(config,indent=1))
     utility = DataConverter(_path+'/inputs/TestData1.xlsx')
-    raw_data = utility.read_rawdata(req_conf=config)
+    #raw_data = utility.read_rawdata(req_conf=config)
+    meta_data = utility.read_metadata();
+    print('meta_data::=='+json.dumps(meta_data))
     #print('confs ::=='+json.dumps(raw_data,indent=1))
 
-    with open('./rawdata.json','w') as output:
-        json.dump(raw_data,output)
+    try:
+        with open('./rawdata.json','w') as output:
+            json.dump(raw_data,output)
+    except NameError:
+        print('Error')
+    
     
 if __name__ == '__main__':
     main()

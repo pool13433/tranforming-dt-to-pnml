@@ -89,7 +89,7 @@ class TransformationLogic():
 
 	def push_arcs(self, arc_key, arc_dict):
 		#debug_print('arc_key ::=='+json.dumps(arc_key))
-		# debug_print('arc_dict ::=='+json.dumps(arc_dict))
+		#print('\narc_dictarc_dictarc_dict ::=='+json.dumps(arc_dict)+'\n')
 		arc_group, arc_len = self.grep_char(arc_key)
 		#debug_print('\narc_group::=='+str(arc_group)+' arc_len::=='+str(arc_len)+'\n')
 		numbers = re.findall('\d+', arc_key.replace('.', ''))
@@ -104,6 +104,7 @@ class TransformationLogic():
 				# debug_print('arc_key ::=='+str(arc_key)+'\n')
 				if 'index' not in arc_dict:
 					arc_dict['index'] = int(arc_index)
+				#print('\n arc_dict<><>arc_dict ::=='+json.dumps(arc_dict)+'\n')
 				self.arcs[arc_group].append(arc_dict)
 
 	def draw_place(self, page, place_dict):
@@ -147,13 +148,14 @@ class TransformationLogic():
 		position = SubElement(graphics, 'position', graphics_offset)
 
 		# debug_print('uuid ::=='+uuid+' name_text::=='+name_text+'\n')
-		arc_data = {'id': uuid}
+		#arc_data = {'id': uuid}
+		arc_data = dict({'id': uuid},**place_dict)
 		if 'index' in _name:
 			arc_data['index'] = _name['index']
-		if 'unique' in place_dict:
+		'''if 'unique' in place_dict:
 			arc_data['unique'] = place_dict['unique']
 		if 'unique_xor' in place_dict:
-			arc_data['unique_xor'] = place_dict['unique_xor']
+			arc_data['unique_xor'] = place_dict['unique_xor']'''
 		self.push_arcs(name_text, arc_data)
 
 	def cal_location_space(self,seq):
@@ -200,13 +202,15 @@ class TransformationLogic():
 			for xor_key in store['XOR_EXTEND']:
 				#debug_print('xor_key::=='+xor_key)
 				xor_values = store['XOR_EXTEND'][xor_key]
+				#print('xor_values::=='+json.dumps(xor_values))
 				if len(xor_values) > 1:
 					if c_idx in xor_values:
 						# xml = <transition/>
 						key_new = 'T'
 						ctrt_data = {
 							'unique': key_new, 'unique_ext': key_new,'dash_key' : key_new,
-							'unique_xor' : c_idx}		
+							'unique_xor' : c_idx, 'xor_group' : xor_values 
+						}		
 						place_offset['T']['y'] = offset_y
 						place_offset, tran_index = self.draw_transition_ctrt(page=page, 
 													ctrt_data=ctrt_data, 
@@ -286,8 +290,8 @@ class TransformationLogic():
 		if str(key).startswith(self._BREAK):
 			offset_a = place_offset[self._BREAK]
 			_offset = offset_a.copy()
-			offset_a['x'] = str(int(offset_a['x']) - self.pnml_options['break_space'])
-			offset_a['y'] = str(int(offset_a['y'])) # + self.pnml_options['break_space'])
+			_offset['x'] = str(int(_offset['x']) + self.pnml_options['break_space'])
+			_offset['y'] = str(int(_offset['y']) + self.pnml_options['break_space'])
 		else:
 			if str(key).startswith(self._CONDITION):
 				
@@ -325,6 +329,9 @@ class TransformationLogic():
 
 	def draw_transition(self, page, transition_dict):
 		#debug_print('draw transition <transition/>')
+		#print('\ntransition_dict::=='+json.dumps(transition_dict)+'\n\n')
+		arc_data = dict({},**transition_dict) # merge dict
+		#print('\n\narc_data::=='+json.dumps(arc_data)+'\n\n')
 		if 'name' in transition_dict:
 			name_text = transition_dict['name']['text']
 			name_id = transition_dict['name']['id']
@@ -338,7 +345,8 @@ class TransformationLogic():
 			graphics = SubElement(name, 'graphics')
 			SubElement(graphics, 'offset', name_offset)
 			
-			arc_data = dict({'id': name_id},**transition_dict) # merge dict
+			arc_data['id']  = name_id
+			
 			'''if 'unique' in transition_dict:
 				arc_data['unique'] = transition_dict['unique']
 			if 'unique_ext' in transition_dict:
@@ -428,6 +436,7 @@ class TransformationLogic():
 				arc_data['unique_ext'] = ctrt_data['unique_ext']  # 'unique_ext'
 			if 'unique_xor' in ctrt_data:
 				arc_data['unique_xor'] = ctrt_data['unique_xor']  # 'unique_ext' '''
+			#print('\narc_data::=='+json.dumps(arc_data)+'\n')
 			self.draw_transition(page, arc_data)
 
 			offset['x'] = str(int(offset['x']))
@@ -539,7 +548,8 @@ class TransformationLogic():
 		xort_dicts = self.arcs['T']
 		store_RCR_EXT = store['RCR_EXTEND']
 		# debug_print("store_RCR_EXT::=="+json.dumps(store_RCR_EXT))
-		# debug_print('c_dicts::=='+json.dumps(c_dicts))
+		#debug_print('xorp_dicts::=='+json.dumps(xorp_dicts))
+		#debug_print('xort_dicts::=='+json.dumps(xort_dicts))
 		# debug_print('ct_dicts::=='+json.dumps(ct_dicts))
 		#debug_print('\nself.arcs::=='+json.dumps(self.arcs)+'\n')		
 		for c_key in sorted(store_RCR_EXT):
@@ -580,6 +590,7 @@ class TransformationLogic():
 								self.draw_arc(page, arc_data)
 
 		# draw <place/> diagonal
+		#print('xorp_dicts ::=='+json.dumps(xorp_dicts))
 		for c_key in sorted(store_RCR_EXT):
 			c_dict = self.find_one(c_dicts, 'unique', c_key)
 			#debug_print('c_dict::=='+json.dumps(c_dict))
@@ -594,19 +605,24 @@ class TransformationLogic():
 							#debug_print('xort_dicts[xort_idx]::=='+json.dumps(xort_dicts[xort_idx]))
 							xor_dict = xort_dicts[xort_idx]	
 							#print('\nxor_dict:=='+json.dumps(xor_dict)+'\n')
-							arc_dict = xor_dict['arc']									
-							#inhibitor
-							#t_source = arc_dict['source']
-							t_target = arc_dict['target']
-							t_key = arc_dict['c_key']
-							arc_data = {
-								'c_key': t_key, #'ext_key': ext_key,
-								'id': t_key + '-' + t_key + c_id + '-' + t_key+str(xort_idx),
-								'source': c_id, 'target': t_target,
-								'type' : 'inhibitor'
-							}	
-							#debug_print('arc_data::=='+json.dumps(arc_data))
-							self.draw_arc(page, arc_data)
+							arc_dict = xor_dict['arc']		
+							xor_group = xor_dict['xor_group']
+
+							# check xor group
+							if c_key in xor_group:
+								print('xor_group ::=='+json.dumps(xor_group))
+								#inhibitor
+								#t_source = arc_dict['source']
+								t_target = arc_dict['target']
+								t_key = arc_dict['c_key']
+								arc_data = {
+									'c_key': t_key, #'ext_key': ext_key,
+									'id': t_key + '-' + t_key + c_id + '-' + t_key+str(xort_idx),
+									'source': c_id, 'target': t_target,
+									'type' : 'inhibitor'
+								}	
+								#debug_print('arc_data::=='+json.dumps(arc_data))
+								self.draw_arc(page, arc_data)
 
 	def find_unique_idx(self,xor_dicts,xor_key):
 		#print('xor_key::=='+str(xor_key))
@@ -622,6 +638,7 @@ class TransformationLogic():
 		#t_exist = t_dictc[xor_idx]		
 		#debug_print('xor_exist::=='+json.dumps(xor_exist))
 		#debug_print('t_exist::=='+json.dumps(t_exist))
+		#print('xorp_dict::=='+json.dumps(xorp_dict))
 
 		# draw arc <arc/> <transition/>
 		t_id = xort_dict['id']
@@ -631,6 +648,7 @@ class TransformationLogic():
 			'id': t_key + '-' + t_key + c_id + '-' + t_key,
 			'source': c_id, 'target': t_id
 		}
+		#print('arc_data::=='+json.dumps(arc_data))
 		xort_dict['arc'] = arc_data		
 		self.draw_arc(page, arc_data)
 
@@ -736,6 +754,7 @@ class TransformationLogic():
 		return {}
 
 
+	# break all false condition
 	def draw_inhibitor(self, page):
 		alias_key = self._BREAK
 		inhibitors = self.find_inhibitor(page=page)
@@ -762,7 +781,7 @@ class TransformationLogic():
 					place_id = break_dict['id']
 					break_lines = {
 						'forward' : {'source' : inh_idx , 'target' : place_id},
-						'turnback' : {'source' : place_id , 'target' : inh_idx},					
+						'turnback' : {'source' : place_id , 'target' : inh_idx,'type' : 'inhibitor'},					
 					}
 					for line_key in break_lines:
 						_break = break_lines[line_key]
@@ -770,11 +789,14 @@ class TransformationLogic():
 						source_id = _break['source']
 						target_key = _break['target']
 						target_id = _break['target']
-						self.draw_arc(page, {
+						break_data = {
 							'id': source_key + '-' + target_key + source_id + '-' + target_id,
 							'source': source_id,
 							'target': target_id
-						})
+						}
+						if 'type' in _break:
+							break_data['type']  = _break['type']
+						self.draw_arc(page, break_data)
 		'''else:
 			debug_print('not ')'''
 
