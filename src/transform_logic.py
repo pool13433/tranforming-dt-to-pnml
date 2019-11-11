@@ -634,8 +634,7 @@ class TransformationLogic():
 		return None;
 
 	def draw_arclineXor(self,page,xorp_dict,xort_dict,c_id):
-		#xor_exist = xor_dicts[xor_idx]
-		#t_exist = t_dictc[xor_idx]		
+		#xor_exist = xor_dicts[xor_idx]		
 		#debug_print('xor_exist::=='+json.dumps(xor_exist))
 		#debug_print('t_exist::=='+json.dumps(t_exist))
 		#print('xorp_dict::=='+json.dumps(xorp_dict))
