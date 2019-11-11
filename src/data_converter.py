@@ -25,7 +25,11 @@ class DataConverter():
         if filepath is not None:
             #self.has_firstsheet(filepath)
             try:
-                self.df = pd.read_excel(filepath, sheet_name=0) # read sheet first tab
+                self.df = pd.read_excel(filepath, 
+                sheet_name=0,header=0,
+                #converters={'Value2':str}
+                dtype=str
+                ) # read sheet first tab
             except:
                 raise Exception('Program Error')
         else:
