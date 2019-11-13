@@ -58,7 +58,7 @@
     "ALIAS" : "SPACE OBJECT",
     "VALUES" : {
       "Y" : 110,
-      "X" : 40,
+      "X" : 70,
       "BREAK" : 70
     }
   },
@@ -67,7 +67,7 @@
     "VALUES" : {
       "RULE" : 125,
 			"CONACT" : 220,
-			"RULE_DASH" : 50
+			"RULE_DASH" : 120
     }
   }
 }

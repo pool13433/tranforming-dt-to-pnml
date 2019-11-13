@@ -160,7 +160,7 @@ class TransformationLogic():
 
 	def cal_location_space(self,seq):
 		x_firt = 35
-		x_distance = 105
+		x_distance = 130
 		x_space = self.pnml_options['x_space']
 		return (x_space*seq) + ((x_distance*seq) + x_firt)
 
@@ -233,8 +233,11 @@ class TransformationLogic():
 			r_values = store_rc[r_idx]
 			# debug_print('r_values::=='+str(r_values))
 			key = r_idx
+			
 			# child D
-			place_offset, place_index = self.draw_place_d(page, key, place_offset, place_index)
+			# hide code for v.1.0.0
+			#place_offset, place_index = self.draw_place_d(page, key, place_offset, place_index) 
+
 			# debug_print('r_idx::=='+str(r_idx))
 			dashs = self.find_dash(r_values)
 			# debug_print('len_dashs::=='+str(dashs))
@@ -405,8 +408,9 @@ class TransformationLogic():
 
 			# child1 [DT]
 			# dt_index = transition_index['dt']
-			ctrt_data['dash_key'] = 'DT' + str(tran_index['DT'])
-			tran_offset, tran_index = self.draw_transition_ctrt(page, ctrt_data, tran_offset, tran_index)
+			'''ctrt_data['dash_key'] = 'DT' + str(tran_index['DT'])
+			# hide code for v.1.0.0
+			tran_offset, tran_index = self.draw_transition_ctrt(page, ctrt_data, tran_offset, tran_index)'''
 
 	def draw_transition_ctrt(self, page, ctrt_data, trans_offset, trans_idx):
 		key = ctrt_data['dash_key']
@@ -687,7 +691,8 @@ class TransformationLogic():
 		store_rc = store['RULE']['CONDITION']
 		store_c = store['CONDITION']
 
-		self.draw_arcline(page, 'D', 'DT')
+		# hide code for v.1.0.0
+		#self.draw_arcline(page, 'D', 'DT') # hide code for v. 1.0.0
 		self.draw_arcline(page, 'CT', 'R')
 		self.draw_arcline(page, 'R', 'RT')
 		self.draw_arclineDT_C(page, store)
@@ -762,9 +767,11 @@ class TransformationLogic():
 			place_offset = {alias_key: {'x': '0', 'y': '0'},}
 			# Place Group "A*"
 			place_index = 1
-			for inh_idx in inhibitors:
+			for inh_idx,ctrt_key in enumerate(inhibitors):
+				print('inh_idx::=='+json.dumps(inh_idx))
+				print('ctrt_key::=='+json.dumps(ctrt_key))
 				# draw condition break object
-				ctrt_data = inhibitors[inh_idx]				
+				ctrt_data = inhibitors[ctrt_key]				
 				key = alias_key+' '+ctrt_data['text'] #
 				place_offset[alias_key] =  ctrt_data['offset']
 				place_text = ctrt_data['text']
@@ -774,13 +781,15 @@ class TransformationLogic():
 												place_index=place_index)
 				# draw condition break line
 				break_list = self.arcs[alias_key]
+				#print('break_list:::=='+json.dumps(break_list))
+				print('len(break_list)::=='+str(len(break_list)))
 				if len(break_list) > 0:
-					break_dict = break_list[0]
-					#debug_print('break_dict::=='+json.dumps(break_dict))
+					break_dict = break_list[inh_idx]
+					print('break_dict::=='+json.dumps(break_dict))
 					place_id = break_dict['id']
 					break_lines = {
-						'forward' : {'source' : inh_idx , 'target' : place_id},
-						'turnback' : {'source' : place_id , 'target' : inh_idx,'type' : 'inhibitor'},					
+						'forward' : {'source' : ctrt_key , 'target' : place_id},
+						'turnback' : {'source' : place_id , 'target' : ctrt_key,'type' : 'inhibitor'},					
 					}
 					for line_key in break_lines:
 						_break = break_lines[line_key]
