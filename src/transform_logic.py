@@ -59,16 +59,25 @@ class TransformationLogic():
 		y_conact = str(y_place['conact_place'])
 		y_dash = str(y_place['rule_dash_place'])
 		return {
-			'D': {'x': str(self.cal_location_space(1)), 'y': y_rule},
-			'DT': {'x': str(self.cal_location_space(2)), 'y': y_rule},
-			'C': {'x': str(self.cal_location_space(3)), 'y': y_conact},
-			'T' : {'x': str(self.cal_location_space(4)), 'y': y_conact},
-			'XORP' : {'x': str(self.cal_location_space(5)), 'y': y_conact},
-			'CT': {'x': str(self.cal_location_space(6)), 'y': y_dash},
-			'R': {'x': str(self.cal_location_space(7)), 'y': y_dash},
-			'RT': {'x': str(self.cal_location_space(8)), 'y': y_dash},			
-			'A': {'x': str(self.cal_location_space(9)), 'y': y_conact},			
-		}
+			'D': {'x': str(self.cal_location_space(1)), 'y': y_rule , 'alias' : 'D'},
+			'DT': {'x': str(self.cal_location_space(2)), 'y': y_rule , 'alias' : 'dt'},
+			'C': {'x': str(self.cal_location_space(3)), 'y': y_conact , 'alias' : 'C'},
+			'T' : {'x': str(self.cal_location_space(4)), 'y': y_conact , 'alias' : 'xt'},
+			'XORP' : {'x': str(self.cal_location_space(5)), 'y': y_conact , 'alias' : 'XORP'},
+			'CT': {'x': str(self.cal_location_space(6)), 'y': y_dash , 'alias' : 'it'},
+			'R': {'x': str(self.cal_location_space(7)), 'y': y_dash , 'alias' : 'D'},
+			'RT': {'x': str(self.cal_location_space(8)), 'y': y_dash , 'alias' : 'ot'},			
+			'A': {'x': str(self.cal_location_space(9)), 'y': y_conact , 'alias' : 'A'},			
+		}		
+	def get_label(self,source_key):
+		labels = self.get_location()
+		if source_key in labels:
+			locs = labels[source_key]
+			if locs is not None:
+				return locs['alias']
+			return source_key
+		else:
+			return source_key
 
 	def assign_configs(self,root_path):
 		configManager = ConfigManager(root_path=root_path);
@@ -85,6 +94,12 @@ class TransformationLogic():
 		chars = re.findall('[a-zA-Z]+', str)
 		if len(chars) > 0:
 			return chars[0], len(chars)
+		return '', 0
+	
+	def grep_number(self,str):
+		numbers = re.findall(r'[0-9]+', str)
+		if len(numbers) > 0:
+			return numbers[0], len(numbers)
 		return '', 0
 
 	def push_arcs(self, arc_key, arc_dict):
@@ -107,6 +122,17 @@ class TransformationLogic():
 				#print('\n arc_dict<><>arc_dict ::=='+json.dumps(arc_dict)+'\n')
 				self.arcs[arc_group].append(arc_dict)
 
+
+	def label_handle(self,name_text):
+		#print('name_text::=='+name_text)
+		char_name,len_char = self.grep_char(name_text)
+		#print('len_char::=='+str(len_char))
+		num_name ,len_num = self.grep_number(name_text)
+		if len_char > 1:
+			return name_text
+		else:
+			return self.get_label(char_name)+str(num_name)
+
 	def draw_place(self, page, place_dict):
 		#debug_print('draw place <place/>')
 		_name = place_dict['name']
@@ -121,7 +147,8 @@ class TransformationLogic():
 		# child0
 		name = SubElement(place, 'name')
 		text = SubElement(name, 'text')
-		text.text = name_text
+		
+		text.text = self.label_handle(name_text)
 		graphics = SubElement(name, 'graphics')
 		offset = SubElement(graphics, 'offset', name_offset)
 
@@ -185,7 +212,9 @@ class TransformationLogic():
 											place_index=place_index)
 
 		# Place Group "C*"
-		place_index = 1
+		place_index = 1	
+		xor_idx = 0
+		xor_name = None
 		for c_idx in sorted(store['CONDITION']):
 			key = c_idx
 			values = store['CONDITION'][c_idx]
@@ -198,14 +227,14 @@ class TransformationLogic():
 										place_text=c_desc, 
 										place_index=place_index)
 
-			# xor condition 20191101
+			# xor condition 20191101			
 			for xor_key in store['XOR_EXTEND']:
 				#debug_print('xor_key::=='+xor_key)
 				xor_values = store['XOR_EXTEND'][xor_key]
 				#print('xor_values::=='+json.dumps(xor_values))
 				if len(xor_values) > 1:
 					if c_idx in xor_values:
-						# xml = <transition/>
+						# xml = <transition/>						
 						key_new = 'T'
 						ctrt_data = {
 							'unique': key_new, 'unique_ext': key_new,'dash_key' : key_new,
@@ -218,13 +247,22 @@ class TransformationLogic():
 													trans_idx=tran_index)
 
 						# xml => <place/>			
-						key_new = xor_key+key
+						if (xor_name is None) or (xor_name != xor_key): 
+							xor_name = xor_key	
+							xor_idx+=1			
+						#key_seq,len_seq = self.grep_number(key)
+						#print('key_seq::=='+str(key_seq))
+						key_new = "XOR"+str(xor_idx)+key
+						#print('key_new::=='+str(key_new))
 						place_offset['XORP']['y'] = offset_y
+						#print('place_index::=='+str(place_index))
 						place_offset, place_index = self.draw_place_ac(page, key_new, 
 													place_offset=place_offset, 
 													place_text='', 
 													place_index=place_index,
 													xor_dict={'unique_xor' : key})
+						
+						#print('xor_name::=='+str(xor_name))									
 
 		# Place Group D* , R*
 		place_index = {'R': 1, 'D': 1}
@@ -344,7 +382,7 @@ class TransformationLogic():
 			transition = SubElement(page, 'transition', {'id': name_id})
 			name = SubElement(transition, 'name')
 			text = SubElement(name, 'text')
-			text.text = name_text
+			text.text = self.label_handle(name_text)
 			graphics = SubElement(name, 'graphics')
 			SubElement(graphics, 'offset', name_offset)
 			
@@ -614,7 +652,7 @@ class TransformationLogic():
 
 							# check xor group
 							if c_key in xor_group:
-								print('xor_group ::=='+json.dumps(xor_group))
+								#print('xor_group ::=='+json.dumps(xor_group))
 								#inhibitor
 								#t_source = arc_dict['source']
 								t_target = arc_dict['target']
@@ -768,8 +806,8 @@ class TransformationLogic():
 			# Place Group "A*"
 			place_index = 1
 			for inh_idx,ctrt_key in enumerate(inhibitors):
-				print('inh_idx::=='+json.dumps(inh_idx))
-				print('ctrt_key::=='+json.dumps(ctrt_key))
+				#print('inh_idx::=='+json.dumps(inh_idx))
+				#print('ctrt_key::=='+json.dumps(ctrt_key))
 				# draw condition break object
 				ctrt_data = inhibitors[ctrt_key]				
 				key = alias_key+' '+ctrt_data['text'] #

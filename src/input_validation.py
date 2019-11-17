@@ -67,7 +67,7 @@ class InputValidation():
 
 
                 #check xor group not have one value
-                self.checkXorGroupNotHaveOneValue(raw=raw,messages=messages,config=config);
+                #self.checkXorGroupNotHaveOneValue(raw=raw,messages=messages,config=config);
             else:
                 print('invalid input!!')
     

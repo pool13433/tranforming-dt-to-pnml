@@ -257,7 +257,7 @@ class DataConverter():
             #print('id_val::=='+str(id_val))
             #print('xor_val::=='+str(xor_val))
             if pd.notnull(xor_val):
-                print('xor_val::=='+xor_val)
+                #print('xor_val::=='+xor_val)
                 if xor_val in xor:
                     xor[xor_val].append(id_val)
                 else:
@@ -266,7 +266,7 @@ class DataConverter():
                 print('_xor_val::=='+str(_xor_val))
                 xor[id_val] = xor_val'''
         
-        print('store[\'XOR_EXTEND\']::=='+json.dumps(store['XOR_EXTEND']))
+        #print('store[\'XOR_EXTEND\']::=='+json.dumps(store['XOR_EXTEND']))
 
     def read_rawdata(self,req_conf):
         #print('hasattr(self,\'df\')::=='+json.dumps(not hasattr(self,'df')))
@@ -369,10 +369,12 @@ def main():
     config = configManager.read_configs(json_filename='input.json')
     #print('config::=='+json.dumps(config,indent=1))
     utility = DataConverter(_path+'/inputs/TestData1.xlsx')
-    #raw_data = utility.read_rawdata(req_conf=config)
-    meta_data = utility.read_metadata();
-    print('meta_data::=='+json.dumps(meta_data))
-    #print('confs ::=='+json.dumps(raw_data,indent=1))
+    raw_data = utility.read_rawdata(req_conf=config)
+    #print('raw_data ::=='+json.dumps(raw_data))
+
+    #meta_data = utility.read_metadata();
+    #print('meta_data::=='+json.dumps(meta_data))
+    
 
     try:
         with open('./rawdata.json','w') as output:
