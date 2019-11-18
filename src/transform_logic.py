@@ -65,7 +65,7 @@ class TransformationLogic():
 			'T' : {'x': str(self.cal_location_space(4)), 'y': y_conact , 'alias' : 'xt'},
 			'XORP' : {'x': str(self.cal_location_space(5)), 'y': y_conact , 'alias' : 'XORP'},
 			'CT': {'x': str(self.cal_location_space(6)), 'y': y_dash , 'alias' : 'it'},
-			'R': {'x': str(self.cal_location_space(7)), 'y': y_dash , 'alias' : 'D'},
+			'R': {'x': str(self.cal_location_space(7)), 'y': y_dash , 'alias' : 'R'},
 			'RT': {'x': str(self.cal_location_space(8)), 'y': y_dash , 'alias' : 'ot'},			
 			'A': {'x': str(self.cal_location_space(9)), 'y': y_conact , 'alias' : 'A'},			
 		}		
@@ -96,10 +96,10 @@ class TransformationLogic():
 			return chars[0], len(chars)
 		return '', 0
 	
-	def grep_number(self,str):
+	def grep_number(self,str,str_idx=0):
 		numbers = re.findall(r'[0-9]+', str)
 		if len(numbers) > 0:
-			return numbers[0], len(numbers)
+			return numbers[str_idx], len(numbers)
 		return '', 0
 
 	def push_arcs(self, arc_key, arc_dict):
@@ -124,14 +124,20 @@ class TransformationLogic():
 
 
 	def label_handle(self,name_text):
-		#print('name_text::=='+name_text)
+		#print('\nname_text::=='+name_text)
 		char_name,len_char = self.grep_char(name_text)
-		#print('len_char::=='+str(len_char))
+		#print('char_name::=='+str(char_name)+' len_char::=='+str(len_char))
 		num_name ,len_num = self.grep_number(name_text)
+		#print('num_name::=='+str(num_name)+' len_num ::=='+str(len_num))
 		if len_char > 1:
 			return name_text
 		else:
-			return self.get_label(char_name)+str(num_name)
+			if(len_num > 1):
+				decimal_name ,len_num = self.grep_number(name_text,str_idx=1)
+				#print('decimal_name::=='+str(decimal_name)+' len_num ::=='+str(len_num))
+				return self.get_label(char_name)+str(num_name)+'.'+str(decimal_name)		
+			else:
+				return self.get_label(char_name)+str(num_name)		
 
 	def draw_place(self, page, place_dict):
 		#debug_print('draw place <place/>')
@@ -283,8 +289,8 @@ class TransformationLogic():
 			if len_dashs > 0:
 				len_dash_power = pow(2, len_dashs)
 				for x in range(len_dash_power):
-					place_offset, place_index = self.draw_place_r(page, key + '.' + str(x + 1), place_offset,
-														 place_index)
+					place_offset, place_index = self.draw_place_r(page, key + '.' + str(x + 1), 
+												place_offset,place_index)
 			else:
 				place_offset, place_index = self.draw_place_r(page, key, place_offset, place_index)
 
@@ -878,8 +884,8 @@ class TransformationLogic():
 def main():
 	path = 'D:/NickWork/tina-transform'
 	logic = TransformationLogic(root_path=path)
-	logic.draw_decision_rawdata(excellpath=path + '/inputs/TestData1.xlsx',
-								pnmlpath=path + '/outputs/xxxxxxx.pnml')
+	logic.draw_decision_rawdata(excellpath=path + '/inputs/TestCase.xlsx',
+								pnmlpath=path + '/outputs/TestCase-Output.pnml')
 
 if __name__ == "__main__":
 	main()

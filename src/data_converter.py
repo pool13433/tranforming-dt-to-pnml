@@ -193,8 +193,8 @@ class DataConverter():
                             sub_group[_action][_id] = col_val
                         elif str(_id).startswith(_condition):
                             sub_group[_condition][_id] = col_val
-                        else:
-                            print('other _id ::=='+str(_id))
+                        '''else:
+                            #print('other _id ::=='+str(_id))'''
             group_h[group_idx] = sub_group        
         #print('group::=='+json.dumps(group,indent=1))
         #---------------------H_GROUP---------------------
@@ -368,7 +368,7 @@ def main():
     configManager = ConfigManager(root_path=_path);
     config = configManager.read_configs(json_filename='input.json')
     #print('config::=='+json.dumps(config,indent=1))
-    utility = DataConverter(_path+'/inputs/TestData1.xlsx')
+    utility = DataConverter(_path+'/inputs/TestData1 (1).xlsx')
     raw_data = utility.read_rawdata(req_conf=config)
     #print('raw_data ::=='+json.dumps(raw_data))
 
@@ -377,7 +377,7 @@ def main():
     
 
     try:
-        with open('./rawdata.json','w') as output:
+        with open('./rawdata-JSON2.json','w') as output:
             json.dump(raw_data,output)
     except NameError:
         print('Error')
