@@ -34,7 +34,7 @@ class TransformationUI(Frame):
 		self.makeLabelChoose(0, 0)
 
 		twin_frame = Frame(self)
-		twin_frame.grid(row=0, column=1, sticky=W)
+		twin_frame.grid(row=0, column=1, sticky=W)		
 
 		choose_frame = Frame(twin_frame)
 		choose_frame.grid(row=0, column=0, sticky=W, pady=5, padx=10)
@@ -210,7 +210,7 @@ class TransformationUI(Frame):
 
 	def makeBtnExit(self, row, column):
 		exit_program = Button(self, font=self.fontFamily)
-		exit_program["text"] = "Exit Program."
+		exit_program["text"] = "Exit Program"
 		exit_program["fg"] = "#ffffff"
 		exit_program['bg'] = '#fa3e3e'
 		exit_program['width'] = 15
@@ -316,14 +316,17 @@ def disableWindowClose():
 
 def setupApplication():
 	root = Tk()
-	root.title('Transformation Data to Tina tools')
+	root.wm_iconbitmap('./images/dtnet.ico')
+	root.title('Transforming a Decision Table into Petri Nets')
 	root.geometry("1200x600")
 	root.resizable(width=False, height=False)
 	root.protocol("WM_DELETE_WINDOW", disableWindowClose)
+	#root.configure(bg='#c6ff00')
 
 	# app = Application(master=root)
 	app = TransformationUI()
 	app.__init__(master=root)
+	#app.configure(bg='#c6ff00')
 
 	app.mainloop()
 

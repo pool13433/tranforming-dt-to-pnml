@@ -132,12 +132,11 @@ class TransformationLogic():
 		if len_char > 1:
 			return name_text
 		else:
+			label_name = self.get_label(char_name)+str(num_name)	
 			if(len_num > 1):
 				decimal_name ,len_num = self.grep_number(name_text,str_idx=1)
-				#print('decimal_name::=='+str(decimal_name)+' len_num ::=='+str(len_num))
-				return self.get_label(char_name)+str(num_name)+'.'+str(decimal_name)		
-			else:
-				return self.get_label(char_name)+str(num_name)		
+				label_name+= '.'+str(decimal_name)		
+			return label_name
 
 	def draw_place(self, page, place_dict):
 		#debug_print('draw place <place/>')
