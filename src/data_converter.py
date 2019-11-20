@@ -267,6 +267,58 @@ class DataConverter():
                 xor[id_val] = xor_val'''
         
         #print('store[\'XOR_EXTEND\']::=='+json.dumps(store['XOR_EXTEND']))
+    def filter_var1_group(self, df_cols,df_rows,req_conf,store):
+        xor_colname = req_conf['COLUMN_XOR']['ALIAS']
+        pk_colname = req_conf['COLUMN_PRIMARY']['VALUE']   
+        pk_prefix = req_conf['CONDITION']['ALIAS']
+        rule_prefix = req_conf['RULE']['ALIAS']
+
+        group = {}
+        for row_idx in df_rows:
+            val_pk = self.df[pk_colname][row_idx]
+            #print('val_pk::=='+val_pk)
+            val_col = self.df[xor_colname][row_idx]            
+            if str(val_pk).startswith(pk_prefix):
+                #print('val_col::=='+json.dumps(val_col))                
+
+                # loop find R*
+                for col_idx in df_cols:
+                    # has R name
+                    if str(col_idx).startswith(rule_prefix):
+                        val_rule = self.df[col_idx][row_idx]
+                        #print('col_idx::=='+str(col_idx)+' val_rule::=='+str(val_rule))
+                        '''dict_rule = {col_idx : val_rule}
+                        if val_col in group:
+                            if val_pk in group[val_col]:
+                                if col_idx in group[val_col][val_pk]:
+                                    group[val_col][val_pk][col_idx] = val_rule
+                                else:
+                                    group[val_col][val_pk] = dict(dict_rule,
+                                        **group[val_col][val_pk])
+                            else:
+                                group[val_col] = dict({val_pk : dict_rule},
+                                            **group[val_col])
+                        else:
+                            group = dict({val_col : {val_pk : dict_rule}},**group)'''
+
+                        if val_col in group:
+                            if col_idx in group[val_col]:
+                                group[val_col][col_idx].append(val_rule)
+                            else:
+                                group[val_col] = dict({
+                                        col_idx : [val_rule]},
+                                        **group[val_col])
+                        else:
+                            group = dict({val_col : {
+                                col_idx : [val_rule]
+                            }},**group)
+        #print('group::=='+json.dumps(group))
+        store['VAR1_GROUP'] = group
+
+
+        #print('group::=='+json.dumps(group,sort_keys=True))
+                    
+
 
     def read_rawdata(self,req_conf):
         #print('hasattr(self,\'df\')::=='+json.dumps(not hasattr(self,'df')))
@@ -290,7 +342,8 @@ class DataConverter():
             'H_GROUP':{}, #horizontal
             'V_GROUP':{}, #vertical
             'V_JOINS': {},
-            'XOR_EXTEND' : {}
+            'XOR_EXTEND' : {},
+            'VAR1_GROUP' : {}
         }
 
         self.filter_rules(df_cols=df_cols,df_rows=df_rows,req_conf=req_conf,store=store)
@@ -302,6 +355,8 @@ class DataConverter():
         self.filter_expression(df_cols=df_cols,df_rows=df_rows,req_conf=req_conf,store=store)
 
         self.filter_xors(df_cols=df_cols,df_rows=df_rows,req_conf=req_conf,store=store)
+
+        self.filter_var1_group(df_cols=df_cols,df_rows=df_rows,req_conf=req_conf,store=store)
                 
         #print('store::=='+json.dumps(store,indent=1))
         return store

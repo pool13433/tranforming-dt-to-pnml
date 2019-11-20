@@ -17,14 +17,14 @@
     "CODE": "03",
     "MESSAGE": {
       "TH": "-",
-      "EN": "Only this Values {0}"
+      "EN": "Please specify only {0} in {1}"
     }
   },
   "LEAST_ONE": {
     "CODE": "04",
     "MESSAGE": {
       "TH": "-",
-      "EN": "at least 1 value"
+      "EN": "Please enter at least 1 value in {0} stub."
     }
   },
   "XOR_THAN1": {
@@ -32,6 +32,13 @@
     "MESSAGE": {
       "TH": "-",
       "EN": "xor group should not be greater than 1 value"
+    }
+  },
+  "XOR_UNIQUE": {
+    "CODE": "06",
+    "MESSAGE": {
+      "TH": "-",
+      "EN": "Please specify only ' T ' and ' F ' on rule with the same variable (XOR-relationship) on condition stub and specify only one ' T ' in the same variable per a rule."
     }
   },
   "REQUIRE_COLUMNS": {
