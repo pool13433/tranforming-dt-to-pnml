@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+    <net id="n-3BB8-AC2DF-0" type="http://www.laas.fr/tina/tpn">
+        <name>
+            <text>buffer1</text>
+        </name>
+        <page id="g-3BB8-AC2EB-1">
+            <place id="ac-3BB8-AC2A1">
+                <name>
+                    <text>A1</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <label>
+                    <text> Action1</text>
+                    <graphics>
+                        <offset x="10" y="100"/>
+                    </graphics>
+                </label>
+                <graphics>
+                    <position alias="A" x="1835" y="220"/>
+                </graphics>
+            </place>
+            <place id="ac-3BB8-AC2A2">
+                <name>
+                    <text>A2</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <label>
+                    <text> Action2</text>
+                    <graphics>
+                        <offset x="10" y="100"/>
+                    </graphics>
+                </label>
+                <graphics>
+                    <position alias="A" x="1835" y="330"/>
+                </graphics>
+            </place>
+            <place id="ac-3BB8-AC2A3">
+                <name>
+                    <text>A3</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <label>
+                    <text> Action3</text>
+                    <graphics>
+                        <offset x="10" y="100"/>
+                    </graphics>
+                </label>
+                <graphics>
+                    <position alias="A" x="1835" y="440"/>
+                </graphics>
+            </place>
+            <place id="ac-3BB8-AC2C1">
+                <name>
+                    <text>C1</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <label>
+                    <text> Variable1 &gt; Value1</text>
+                    <graphics>
+                        <offset x="10" y="100"/>
+                    </graphics>
+                </label>
+                <graphics>
+                    <position alias="C" x="635" y="220"/>
+                </graphics>
+            </place>
+            <place id="ac-3BB8-AC2C2">
+                <name>
+                    <text>C2</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <label>
+                    <text> Variable2 &gt;= Value2-1 and Variable2 &lt; Value2-2</text>
+                    <graphics>
+                        <offset x="10" y="100"/>
+                    </graphics>
+                </label>
+                <graphics>
+                    <position alias="C" x="635" y="330"/>
+                </graphics>
+            </place>
+            <place id="R-1435-120R1.1">
+                <name>
+                    <text>R1.1</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position alias="R" x="1435" y="120"/>
+                </graphics>
+            </place>
+            <place id="R-1435-230R1.2">
+                <name>
+                    <text>R1.2</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position alias="R" x="1435" y="230"/>
+                </graphics>
+            </place>
+            <place id="R-1435-340R2">
+                <name>
+                    <text>R2</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position alias="R" x="1435" y="340"/>
+                </graphics>
+            </place>
+            <place id="R-1435-450R3">
+                <name>
+                    <text>R3</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position alias="R" x="1435" y="450"/>
+                </graphics>
+            </place>
+            <transition id="CT1235-120-1CT">
+                <name>
+                    <text>it1</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position alias="it" x="1235" y="120"/>
+                </graphics>
+            </transition>
+            <transition id="RT1635-120-1RT">
+                <name>
+                    <text>ot1</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position alias="ot" x="1635" y="120"/>
+                </graphics>
+            </transition>
+            <transition id="CT1235-230-2CT">
+                <name>
+                    <text>it2</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position alias="it" x="1235" y="230"/>
+                </graphics>
+            </transition>
+            <transition id="RT1635-230-2RT">
+                <name>
+                    <text>ot2</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position alias="ot" x="1635" y="230"/>
+                </graphics>
+            </transition>
+            <transition id="CT1235-340-3CT">
+                <name>
+                    <text>it3</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position alias="it" x="1235" y="340"/>
+                </graphics>
+            </transition>
+            <transition id="RT1635-340-3RT">
+                <name>
+                    <text>ot3</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position alias="ot" x="1635" y="340"/>
+                </graphics>
+            </transition>
+            <transition id="CT1235-450-4CT">
+                <name>
+                    <text>it4</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position alias="it" x="1235" y="450"/>
+                </graphics>
+            </transition>
+            <transition id="RT1635-450-4RT">
+                <name>
+                    <text>ot4</text>
+                    <graphics>
+                        <offset x="0" y="0"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position alias="ot" x="1635" y="450"/>
+                </graphics>
+            </transition>
+            <arc id="CT-RCT1235-120-1CT-R-1435-120R1.1" source="CT1235-120-1CT" target="R-1435-120R1.1"/>
+            <arc id="CT-RCT1235-230-2CT-R-1435-230R1.2" source="CT1235-230-2CT" target="R-1435-230R1.2"/>
+            <arc id="CT-RCT1235-340-3CT-R-1435-340R2" source="CT1235-340-3CT" target="R-1435-340R2"/>
+            <arc id="CT-RCT1235-450-4CT-R-1435-450R3" source="CT1235-450-4CT" target="R-1435-450R3"/>
+            <arc id="R-RTR-1435-120R1.1-RT1635-120-1RT" source="R-1435-120R1.1" target="RT1635-120-1RT"/>
+            <arc id="R-RTR-1435-230R1.2-RT1635-230-2RT" source="R-1435-230R1.2" target="RT1635-230-2RT"/>
+            <arc id="R-RTR-1435-340R2-RT1635-340-3RT" source="R-1435-340R2" target="RT1635-340-3RT"/>
+            <arc id="R-RTR-1435-450R3-RT1635-450-4RT" source="R-1435-450R3" target="RT1635-450-4RT"/>
+            <arc id="RT-ART1635-120-1RT-ac-3BB8-AC2A1" source="RT1635-120-1RT" target="ac-3BB8-AC2A1"/>
+            <arc id="RT-ART1635-120-1RT-ac-3BB8-AC2A3" source="RT1635-120-1RT" target="ac-3BB8-AC2A3"/>
+            <arc id="RT-ART1635-120-1RT-ac-3BB8-AC2A2" source="RT1635-120-1RT" target="ac-3BB8-AC2A2"/>
+            <arc id="RT-ART1635-230-2RT-ac-3BB8-AC2A1" source="RT1635-230-2RT" target="ac-3BB8-AC2A1"/>
+            <arc id="RT-ART1635-230-2RT-ac-3BB8-AC2A3" source="RT1635-230-2RT" target="ac-3BB8-AC2A3"/>
+            <arc id="RT-ART1635-230-2RT-ac-3BB8-AC2A2" source="RT1635-230-2RT" target="ac-3BB8-AC2A2"/>
+            <arc id="RT-ART1635-340-3RT-ac-3BB8-AC2A1" source="RT1635-340-3RT" target="ac-3BB8-AC2A1"/>
+            <arc id="RT-ART1635-450-4RT-ac-3BB8-AC2A3" source="RT1635-450-4RT" target="ac-3BB8-AC2A3"/>
+            <arc id="RT-ART1635-450-4RT-ac-3BB8-AC2A2" source="RT1635-450-4RT" target="ac-3BB8-AC2A2"/>
+            <arc id="C1-CT1235-120-1CTac-3BB8-AC2C1-CT1235-120-1CT" source="ac-3BB8-AC2C1" target="CT1235-120-1CT"/>
+            <arc id="C1-CT1235-230-2CTac-3BB8-AC2C1-CT1235-230-2CT" source="ac-3BB8-AC2C1" target="CT1235-230-2CT"/>
+            <arc id="C1-CT1235-340-3CTac-3BB8-AC2C1-CT1235-340-3CT" source="ac-3BB8-AC2C1" target="CT1235-340-3CT">
+                <type value="inhibitor"/>
+            </arc>
+            <arc id="C1-CT1235-450-4CTac-3BB8-AC2C1-CT1235-450-4CT" source="ac-3BB8-AC2C1" target="CT1235-450-4CT">
+                <type value="inhibitor"/>
+            </arc>
+            <arc id="C2-CT1235-120-1CTac-3BB8-AC2C2-CT1235-120-1CT" source="ac-3BB8-AC2C2" target="CT1235-120-1CT"/>
+            <arc id="C2-CT1235-230-2CTac-3BB8-AC2C2-CT1235-230-2CT" source="ac-3BB8-AC2C2" target="CT1235-230-2CT">
+                <type value="inhibitor"/>
+            </arc>
+            <arc id="C2-CT1235-340-3CTac-3BB8-AC2C2-CT1235-340-3CT" source="ac-3BB8-AC2C2" target="CT1235-340-3CT"/>
+            <arc id="C2-CT1235-450-4CTac-3BB8-AC2C2-CT1235-450-4CT" source="ac-3BB8-AC2C2" target="CT1235-450-4CT">
+                <type value="inhibitor"/>
+            </arc>
+            <place id="ac-3BB8-AC2BREAK it4">
+                <name>
+                    <text>BREAK it4</text>
+                    <graphics>
+                        <offset x="0" y="-10"/>
+                    </graphics>
+                </name>
+                <label>
+                    <text/>
+                    <graphics>
+                        <offset x="10" y="100"/>
+                    </graphics>
+                </label>
+                <graphics>
+                    <position alias="it" text="it4" x="1305" y="520"/>
+                </graphics>
+            </place>
+            <arc id="CT1235-450-4CT-ac-3BB8-AC2BREAK it4CT1235-450-4CT-ac-3BB8-AC2BREAK it4" source="CT1235-450-4CT" target="ac-3BB8-AC2BREAK it4"/>
+            <arc id="ac-3BB8-AC2BREAK it4-CT1235-450-4CTac-3BB8-AC2BREAK it4-CT1235-450-4CT" source="ac-3BB8-AC2BREAK it4" target="CT1235-450-4CT">
+                <type value="inhibitor"/>
+            </arc>
+        </page>
+    </net>
+</pnml>

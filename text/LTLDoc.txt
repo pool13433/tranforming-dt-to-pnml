@@ -1,0 +1,19 @@
+--Verify R1.1 : Specify Token in C1,C2
+--LTL 
+<>{R1.1};
+<>(A1/\A2/\A3);
+
+--Verify R1.2 : Specify Token in C1
+--LTL 
+<>R{1.2};
+<>(A1/\A2/\A3);
+
+--Verify R2 : Specify Token in C2
+--LTL 
+<>R2;
+<>A1;
+
+--Verify R3 : Not Specify Token
+--LTL 
+<>R3;
+<>(A2/\A3);

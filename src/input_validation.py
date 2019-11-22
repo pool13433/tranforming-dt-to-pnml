@@ -92,21 +92,22 @@ class InputValidation():
             if len_group > 1:
                 counter = {}
                 for primary_key in group_vals:
-                    bool_vals = map(lambda boo: boo.upper(),group_vals[primary_key])
-                    count_T = bool_vals.count('T')
-                    count_F = bool_vals.count('F')
-                    #print('primary_key::=='+primary_key+' count_T ::=='+str(count_T)+'  count_F::=='+str(count_F))
-                    # case T > 1
-                    if count_T != 1:
-                        self.validtors.append({
-                            'code': _messageThanOne['CODE'],
-                            'xls': {
-                                'rule': primary_key,
-                                'varable': group_key,
-                            },
-                            'source': group_key,
-                            'message': _messageThanOneEN
-                        })
+                    if len(group_vals) > 0:
+                        bool_vals = map(lambda boo: str(boo).upper(),group_vals[primary_key])
+                        count_T = bool_vals.count('T')
+                        count_F = bool_vals.count('F')
+                        #print('primary_key::=='+primary_key+' count_T ::=='+str(count_T)+'  count_F::=='+str(count_F))
+                        # case T > 1
+                        if count_T != 1:
+                            self.validtors.append({
+                                'code': _messageThanOne['CODE'],
+                                'xls': {
+                                    'rule': primary_key,
+                                    'varable': group_key,
+                                },
+                                'source': group_key,
+                                'message': _messageThanOneEN
+                            })
 
     def checkColumnsRequired(self, meta, messages, config):
         columns = meta['columns']
@@ -144,7 +145,8 @@ class InputValidation():
 
     def checkLeastOneInRule(self, raw, messages, config, key_name):
         _messageLeastOne = messages['LEAST_ONE']
-        _messagLeastOneEN = _messageLeastOne['MESSAGE']['EN']
+        _messagLeastOneEN = _messageLeastOne['MESSAGE']['EN'].replace(
+                '{0}', key_name)
         vals_required = config['ACTION']['VALUES']
         if key_name in raw:
             _validates = []

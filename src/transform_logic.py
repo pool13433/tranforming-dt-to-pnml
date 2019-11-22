@@ -14,6 +14,7 @@ from inspect import currentframe
 
 from data_converter import *
 from config_manager import *
+from transform_writer import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -879,12 +880,19 @@ class TransformationLogic():
 		with open(pnmlpath, "w") as f:  # './tina-result.pnml'
 			f.write(xmlstr)
 
+		try:
+			writer = TransformWriter();
+			writer.build_document(store=store)
+			writer.write_document(pnmlpath.replace('.pnml','.txt'))
+			print('write text file successfully.')
+		except:
+			raise Exception("cannot wrtie text file !!")
 
 def main():
 	path = 'D:/NickWork/tina-transform'
 	logic = TransformationLogic(root_path=path)
-	logic.draw_decision_rawdata(excellpath=path + '/inputs/TestCase.xlsx',
-								pnmlpath=path + '/outputs/TestCase-Output.pnml')
+	logic.draw_decision_rawdata(excellpath=path + '/inputs/TestCase-ForWirteTxt.xlsx',
+								pnmlpath=path + '/outputs/TestCase-ForWirteTxt.pnml')
 
 if __name__ == "__main__":
 	main()

@@ -9,6 +9,7 @@ from xml.etree.ElementTree import Element, SubElement, tostring, XML
 from xml.dom import minidom
 from jproperties import Properties
 from config_manager import *
+from transform_writer import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -119,7 +120,7 @@ class DataConverter():
                 extend_data['extends'] = extends_data
             else:
                 extend_data['extends'] = {rdash_key : vals}
-            store['CRC_EXTEND'].append(extend_data)
+            #store['CRC_EXTEND'].append(extend_data)
         #print('store[\'CRC_EXTEND\']::==' +json.dumps(store['CRC_EXTEND'], indent=1, sort_keys=True))
 
         store_c = store['CONDITION']        
@@ -317,6 +318,20 @@ class DataConverter():
 
 
         #print('group::=='+json.dumps(group,sort_keys=True))
+
+    def filter_ltl(self,df_cols,df_rows,req_conf,store):
+        pk_colname = req_conf['COLUMN_PRIMARY']['VALUE']
+        rule_prefix = req_conf['RULE']['ALIAS']
+
+        ltl = []
+        for col_idx in df_cols:            
+            if str(col_idx).startswith(rule_prefix):                
+                print('|-->col-Idx::=='+str(col_idx))            
+                for row_idx in df_rows:
+                    id_val = self.df[pk_colname][row_idx]
+                    col_val = self.df[col_idx][row_idx]
+                    print('|  |-->id_val::=='+str(id_val))
+                    print('|  |-->cocol_val::=='+str(col_val))
                     
 
 
@@ -337,7 +352,8 @@ class DataConverter():
         store = {
             'RULE': { 'CONDITION': {},'ACTION': {}},
             'CONDITION': {},'ACTION': {},
-            'CRC_EXTEND': [],'RCR_EXTEND' :{},  
+            #'CRC_EXTEND': [],
+            'RCR_EXTEND' :{},  
 
             'H_GROUP':{}, #horizontal
             'V_GROUP':{}, #vertical
@@ -357,6 +373,8 @@ class DataConverter():
         self.filter_xors(df_cols=df_cols,df_rows=df_rows,req_conf=req_conf,store=store)
 
         self.filter_var1_group(df_cols=df_cols,df_rows=df_rows,req_conf=req_conf,store=store)
+
+        #self.filter_ltl(df_cols=df_cols,df_rows=df_rows,req_conf=req_conf,store=store)
                 
         #print('store::=='+json.dumps(store,indent=1))
         return store
@@ -423,16 +441,20 @@ def main():
     configManager = ConfigManager(root_path=_path);
     config = configManager.read_configs(json_filename='input.json')
     #print('config::=='+json.dumps(config,indent=1))
-    utility = DataConverter(_path+'/inputs/TestData1 (1).xlsx')
+    utility = DataConverter(_path+'/inputs/TestCase-ForWirteTxt.xlsx')
     raw_data = utility.read_rawdata(req_conf=config)
     #print('raw_data ::=='+json.dumps(raw_data))
 
     #meta_data = utility.read_metadata();
     #print('meta_data::=='+json.dumps(meta_data))
+
+    writer = TransformWriter();
+    writer.build_document(store=raw_data)
+    writer.write_document(_path+'/outputs/ltl-0000001.txt')
     
 
     try:
-        with open('./rawdata-JSON2.json','w') as output:
+        with open('./rawdata-ltl-0001.json','w') as output:
             json.dump(raw_data,output)
     except NameError:
         print('Error')

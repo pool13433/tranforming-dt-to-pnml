@@ -1,1 +1,896 @@
-{"RCR_EXTEND": {"C3": {"R4": [{"R4.0": "t"}], "R5": [{"R5.0": "T"}], "R6": [{"R6.0": "F"}], "R1": [{"R1.0": "T"}], "R2": [{"R2.0": "F"}], "R3": [{"R3.0": "F"}]}, "C2": {"R4": [{"R4.0": "F"}], "R5": [{"R5.0": "F"}], "R6": [{"R6.0": "T"}], "R1": [{"R1.0": "F"}], "R2": [{"R2.0": "F"}], "R3": [{"R3.0": "F"}]}, "C1": {"R4": [{"R4.0": "T"}], "R5": [{"R5.0": "T"}], "R6": [{"R6.0": "F"}], "R1": [{"R1.0": "t"}], "R2": [{"R2.0": "T"}], "R3": [{"R3.0": "T"}]}, "C6": {"R4": [{"R4.0": "F"}], "R5": [{"R5.0": "F"}], "R6": [{"R6.0": "F"}], "R1": [{"R1.0": "F"}], "R2": [{"R2.0": "T"}], "R3": [{"R3.0": "T"}]}, "C5": {"R4": [{"R4.0": "F"}], "R5": [{"R5.0": "F"}], "R6": [{"R6.0": "F"}], "R1": [{"R1.0": "F"}], "R2": [{"R2.0": "T"}], "R3": [{"R3.0": "T"}]}, "C4": {"R4": [{"R4.0": "F"}], "R5": [{"R5.0": "F"}], "R6": [{"R6.0": "T"}], "R1": [{"R1.0": "F"}], "R2": [{"R2.0": "F"}], "R3": [{"R3.0": "F"}]}}, "H_GROUP": {"Operator2": {"A": {"A1": NaN, "A3": NaN, "A2": NaN, "A5": NaN, "A4": NaN}, "C": {"C3": NaN, "C2": NaN, "C1": "<", "C6": NaN, "C5": NaN, "C4": NaN}}, "Variable1": {"A": {"A1": "No Receive", "A3": "Receive 5%", "A2": "Receive 3%", "A5": "Extra 1%", "A4": "Receive10%"}, "C": {"C3": "Gender", "C2": "Salary", "C1": "Salary", "C6": "Child", "C5": "Gender", "C4": "Gender"}}, "Variable2": {"A": {"A1": NaN, "A3": NaN, "A2": NaN, "A5": NaN, "A4": NaN}, "C": {"C3": NaN, "C2": NaN, "C1": "Salary", "C6": NaN, "C5": NaN, "C4": NaN}}, "Operator1": {"A": {"A1": NaN, "A3": NaN, "A2": NaN, "A5": NaN, "A4": NaN}, "C": {"C3": "=", "C2": ">=", "C1": ">", "C6": "=", "C5": "=", "C4": "="}}, "Logic Gate": {"A": {"A1": NaN, "A3": NaN, "A2": NaN, "A5": NaN, "A4": NaN}, "C": {"C3": NaN, "C2": NaN, "C1": "and", "C6": NaN, "C5": NaN, "C4": NaN}}, "Value1": {"A": {"A1": NaN, "A3": NaN, "A2": NaN, "A5": NaN, "A4": NaN}, "C": {"C3": "Male", "C2": "3", "C1": "20000", "C6": "Female", "C5": "Female", "C4": "Female"}}, "Value2": {"A": {"A1": NaN, "A3": NaN, "A2": NaN, "A5": NaN, "A4": NaN}, "C": {"C3": NaN, "C2": NaN, "C1": "50000", "C6": NaN, "C5": NaN, "C4": NaN}}}, "CONDITION": {"C3": {"R4": "t", "R5": "T", "R6": "F", "Operator2": NaN, "R1": "T", "R2": "F", "R3": "F", "Variable1": "Gender", "Variable2": NaN, "Operator1": "=", "Logic Gate": NaN, "Value1": "Male", "ID": "C3", "Value2": NaN}, "C2": {"R4": "F", "R5": "F", "R6": "T", "Operator2": NaN, "R1": "F", "R2": "F", "R3": "F", "Variable1": "Salary", "Variable2": NaN, "Operator1": ">=", "Logic Gate": NaN, "Value1": "3", "ID": "C2", "Value2": NaN}, "C1": {"R4": "T", "R5": "T", "R6": "F", "Operator2": "<", "R1": "t", "R2": "T", "R3": "T", "Variable1": "Salary", "Variable2": "Salary", "Operator1": ">", "Logic Gate": "and", "Value1": "20000", "ID": "C1", "Value2": "50000"}, "C6": {"R4": "F", "R5": "F", "R6": "F", "Operator2": NaN, "R1": "F", "R2": "T", "R3": "T", "Variable1": "Child", "Variable2": NaN, "Operator1": "=", "Logic Gate": NaN, "Value1": "Female", "ID": "C6", "Value2": NaN}, "C5": {"R4": "F", "R5": "F", "R6": "F", "Operator2": NaN, "R1": "F", "R2": "T", "R3": "T", "Variable1": "Gender", "Variable2": NaN, "Operator1": "=", "Logic Gate": NaN, "Value1": "Female", "ID": "C5", "Value2": NaN}, "C4": {"R4": "F", "R5": "F", "R6": "T", "Operator2": NaN, "R1": "F", "R2": "F", "R3": "F", "Variable1": "Gender", "Variable2": NaN, "Operator1": "=", "Logic Gate": NaN, "Value1": "Female", "ID": "C4", "Value2": NaN}}, "V_JOINS": {"A1": " No Receive", "A3": " Receive 5%", "A2": " Receive 3%", "A5": " Extra 1%", "A4": " Receive10%", "C3": " Gender = Male", "C2": " Salary >= 3", "C1": " Salary > 20000 and Salary < 50000", "C6": " Child = Female", "C5": " Gender = Female", "C4": " Gender = Female"}, "ACTION": {"A1": {"R4": NaN, "R5": NaN, "R6": "X", "Operator2": NaN, "R1": NaN, "R2": NaN, "R3": NaN, "Variable1": "No Receive", "Variable2": NaN, "Operator1": NaN, "Logic Gate": NaN, "Value1": NaN, "ID": "A1", "Value2": NaN}, "A3": {"R4": NaN, "R5": "X", "R6": NaN, "Operator2": NaN, "R1": NaN, "R2": NaN, "R3": NaN, "Variable1": "Receive 5%", "Variable2": NaN, "Operator1": NaN, "Logic Gate": NaN, "Value1": NaN, "ID": "A3", "Value2": NaN}, "A2": {"R4": NaN, "R5": NaN, "R6": NaN, "Operator2": NaN, "R1": "X", "R2": "X", "R3": NaN, "Variable1": "Receive 3%", "Variable2": NaN, "Operator1": NaN, "Logic Gate": NaN, "Value1": NaN, "ID": "A2", "Value2": NaN}, "A5": {"R4": "X", "R5": NaN, "R6": NaN, "Operator2": NaN, "R1": NaN, "R2": NaN, "R3": NaN, "Variable1": "Extra 1%", "Variable2": NaN, "Operator1": NaN, "Logic Gate": NaN, "Value1": NaN, "ID": "A5", "Value2": NaN}, "A4": {"R4": "X", "R5": NaN, "R6": NaN, "Operator2": NaN, "R1": NaN, "R2": NaN, "R3": "X", "Variable1": "Receive10%", "Variable2": NaN, "Operator1": NaN, "Logic Gate": NaN, "Value1": NaN, "ID": "A4", "Value2": NaN}}, "VAR1_GROUP": {"Salary": {"R4": ["T", "F"], "R5": ["T", "F"], "R6": ["F", "T"], "R1": ["t", "F"], "R2": ["T", "F"], "R3": ["T", "F"]}, "Gender": {"R4": ["t", "F", "F"], "R5": ["T", "F", "F"], "R6": ["F", "T", "F"], "R1": ["T", "F", "F"], "R2": ["F", "F", "T"], "R3": ["F", "F", "T"]}, "Child": {"R4": ["F"], "R5": ["F"], "R6": ["F"], "R1": ["F"], "R2": ["T"], "R3": ["T"]}}, "CRC_EXTEND": [{"extends": {"R4": {"C3": "t", "C2": "F", "C1": "T", "C6": "F", "C5": "F", "C4": "F"}}, "name": "R4"}, {"extends": {"R5": {"C3": "T", "C2": "F", "C1": "T", "C6": "F", "C5": "F", "C4": "F"}}, "name": "R5"}, {"extends": {"R6": {"C3": "F", "C2": "T", "C1": "F", "C6": "F", "C5": "F", "C4": "T"}}, "name": "R6"}, {"extends": {"R1": {"C3": "T", "C2": "F", "C1": "t", "C6": "F", "C5": "F", "C4": "F"}}, "name": "R1"}, {"extends": {"R2": {"C3": "F", "C2": "F", "C1": "T", "C6": "T", "C5": "T", "C4": "F"}}, "name": "R2"}, {"extends": {"R3": {"C3": "F", "C2": "F", "C1": "T", "C6": "T", "C5": "T", "C4": "F"}}, "name": "R3"}], "XOR_EXTEND": {"Salary": ["C1", "C2"], "Receive10%": ["A4"], "No Receive": ["A1"], "Gender": ["C3", "C4", "C5"], "Extra 1%": ["A5"], "Receive 3%": ["A2"], "Child": ["C6"], "Receive 5%": ["A3"]}, "V_GROUP": {"A1": {"Operator2": NaN, "Variable1": "No Receive", "Variable2": NaN, "Operator1": NaN, "Logic Gate": NaN, "Value1": NaN, "Value2": NaN}, "A3": {"Operator2": NaN, "Variable1": "Receive 5%", "Variable2": NaN, "Operator1": NaN, "Logic Gate": NaN, "Value1": NaN, "Value2": NaN}, "A2": {"Operator2": NaN, "Variable1": "Receive 3%", "Variable2": NaN, "Operator1": NaN, "Logic Gate": NaN, "Value1": NaN, "Value2": NaN}, "A5": {"Operator2": NaN, "Variable1": "Extra 1%", "Variable2": NaN, "Operator1": NaN, "Logic Gate": NaN, "Value1": NaN, "Value2": NaN}, "A4": {"Operator2": NaN, "Variable1": "Receive10%", "Variable2": NaN, "Operator1": NaN, "Logic Gate": NaN, "Value1": NaN, "Value2": NaN}, "C3": {"Operator2": NaN, "Variable1": "Gender", "Variable2": NaN, "Operator1": "=", "Logic Gate": NaN, "Value1": "Male", "Value2": NaN}, "C2": {"Operator2": NaN, "Variable1": "Salary", "Variable2": NaN, "Operator1": ">=", "Logic Gate": NaN, "Value1": "3", "Value2": NaN}, "C1": {"Operator2": "<", "Variable1": "Salary", "Variable2": "Salary", "Operator1": ">", "Logic Gate": "and", "Value1": "20000", "Value2": "50000"}, "C6": {"Operator2": NaN, "Variable1": "Child", "Variable2": NaN, "Operator1": "=", "Logic Gate": NaN, "Value1": "Female", "Value2": NaN}, "C5": {"Operator2": NaN, "Variable1": "Gender", "Variable2": NaN, "Operator1": "=", "Logic Gate": NaN, "Value1": "Female", "Value2": NaN}, "C4": {"Operator2": NaN, "Variable1": "Gender", "Variable2": NaN, "Operator1": "=", "Logic Gate": NaN, "Value1": "Female", "Value2": NaN}}, "RULE": {"ACTION": {"R4": {"A1": NaN, "A3": NaN, "A2": NaN, "A5": "X", "A4": "X"}, "R5": {"A1": NaN, "A3": "X", "A2": NaN, "A5": NaN, "A4": NaN}, "R6": {"A1": "X", "A3": NaN, "A2": NaN, "A5": NaN, "A4": NaN}, "R1": {"A1": NaN, "A3": NaN, "A2": "X", "A5": NaN, "A4": NaN}, "R2": {"A1": NaN, "A3": NaN, "A2": "X", "A5": NaN, "A4": NaN}, "R3": {"A1": NaN, "A3": NaN, "A2": NaN, "A5": NaN, "A4": "X"}}, "CONDITION": {"R4": {"C3": "t", "C2": "F", "C1": "T", "C6": "F", "C5": "F", "C4": "F"}, "R5": {"C3": "T", "C2": "F", "C1": "T", "C6": "F", "C5": "F", "C4": "F"}, "R6": {"C3": "F", "C2": "T", "C1": "F", "C6": "F", "C5": "F", "C4": "T"}, "R1": {"C3": "T", "C2": "F", "C1": "t", "C6": "F", "C5": "F", "C4": "F"}, "R2": {"C3": "F", "C2": "F", "C1": "T", "C6": "T", "C5": "T", "C4": "F"}, "R3": {"C3": "F", "C2": "F", "C1": "T", "C6": "T", "C5": "T", "C4": "F"}}}}
+{
+    "RCR_EXTEND": {
+        "C3": {
+            "R4": [
+                {
+                    "R4.0": "t"
+                }
+            ],
+            "R5": [
+                {
+                    "R5.0": "T"
+                }
+            ],
+            "R6": [
+                {
+                    "R6.0": "F"
+                }
+            ],
+            "R1": [
+                {
+                    "R1.0": "T"
+                }
+            ],
+            "R2": [
+                {
+                    "R2.0": "F"
+                }
+            ],
+            "R3": [
+                {
+                    "R3.0": "F"
+                }
+            ]
+        },
+        "C2": {
+            "R4": [
+                {
+                    "R4.0": "F"
+                }
+            ],
+            "R5": [
+                {
+                    "R5.0": "F"
+                }
+            ],
+            "R6": [
+                {
+                    "R6.0": "T"
+                }
+            ],
+            "R1": [
+                {
+                    "R1.0": "F"
+                }
+            ],
+            "R2": [
+                {
+                    "R2.0": "F"
+                }
+            ],
+            "R3": [
+                {
+                    "R3.0": "F"
+                }
+            ]
+        },
+        "C1": {
+            "R4": [
+                {
+                    "R4.0": "T"
+                }
+            ],
+            "R5": [
+                {
+                    "R5.0": "T"
+                }
+            ],
+            "R6": [
+                {
+                    "R6.0": "F"
+                }
+            ],
+            "R1": [
+                {
+                    "R1.0": "t"
+                }
+            ],
+            "R2": [
+                {
+                    "R2.0": "T"
+                }
+            ],
+            "R3": [
+                {
+                    "R3.0": "T"
+                }
+            ]
+        },
+        "C6": {
+            "R4": [
+                {
+                    "R4.0": "F"
+                }
+            ],
+            "R5": [
+                {
+                    "R5.0": "F"
+                }
+            ],
+            "R6": [
+                {
+                    "R6.0": "F"
+                }
+            ],
+            "R1": [
+                {
+                    "R1.0": "F"
+                }
+            ],
+            "R2": [
+                {
+                    "R2.0": "T"
+                }
+            ],
+            "R3": [
+                {
+                    "R3.0": "T"
+                }
+            ]
+        },
+        "C5": {
+            "R4": [
+                {
+                    "R4.0": "F"
+                }
+            ],
+            "R5": [
+                {
+                    "R5.0": "F"
+                }
+            ],
+            "R6": [
+                {
+                    "R6.0": "F"
+                }
+            ],
+            "R1": [
+                {
+                    "R1.0": "F"
+                }
+            ],
+            "R2": [
+                {
+                    "R2.0": "T"
+                }
+            ],
+            "R3": [
+                {
+                    "R3.0": "T"
+                }
+            ]
+        },
+        "C4": {
+            "R4": [
+                {
+                    "R4.0": "F"
+                }
+            ],
+            "R5": [
+                {
+                    "R5.0": "F"
+                }
+            ],
+            "R6": [
+                {
+                    "R6.0": "T"
+                }
+            ],
+            "R1": [
+                {
+                    "R1.0": "F"
+                }
+            ],
+            "R2": [
+                {
+                    "R2.0": "F"
+                }
+            ],
+            "R3": [
+                {
+                    "R3.0": "F"
+                }
+            ]
+        }
+    },
+    "H_GROUP": {
+        "Operator2": {
+            "A": {
+                "A1": NaN,
+                "A3": NaN,
+                "A2": NaN,
+                "A5": NaN,
+                "A4": NaN
+            },
+            "C": {
+                "C3": NaN,
+                "C2": NaN,
+                "C1": "<",
+                "C6": NaN,
+                "C5": NaN,
+                "C4": NaN
+            }
+        },
+        "Variable1": {
+            "A": {
+                "A1": "No Receive",
+                "A3": "Receive 5%",
+                "A2": "Receive 3%",
+                "A5": "Extra 1%",
+                "A4": "Receive10%"
+            },
+            "C": {
+                "C3": "Gender",
+                "C2": "Salary",
+                "C1": "Salary",
+                "C6": "Child",
+                "C5": "Gender",
+                "C4": "Gender"
+            }
+        },
+        "Variable2": {
+            "A": {
+                "A1": NaN,
+                "A3": NaN,
+                "A2": NaN,
+                "A5": NaN,
+                "A4": NaN
+            },
+            "C": {
+                "C3": NaN,
+                "C2": NaN,
+                "C1": "Salary",
+                "C6": NaN,
+                "C5": NaN,
+                "C4": NaN
+            }
+        },
+        "Operator1": {
+            "A": {
+                "A1": NaN,
+                "A3": NaN,
+                "A2": NaN,
+                "A5": NaN,
+                "A4": NaN
+            },
+            "C": {
+                "C3": "=",
+                "C2": ">=",
+                "C1": ">",
+                "C6": "=",
+                "C5": "=",
+                "C4": "="
+            }
+        },
+        "Logic Gate": {
+            "A": {
+                "A1": NaN,
+                "A3": NaN,
+                "A2": NaN,
+                "A5": NaN,
+                "A4": NaN
+            },
+            "C": {
+                "C3": NaN,
+                "C2": NaN,
+                "C1": "and",
+                "C6": NaN,
+                "C5": NaN,
+                "C4": NaN
+            }
+        },
+        "Value1": {
+            "A": {
+                "A1": NaN,
+                "A3": NaN,
+                "A2": NaN,
+                "A5": NaN,
+                "A4": NaN
+            },
+            "C": {
+                "C3": "Male",
+                "C2": "3",
+                "C1": "20000",
+                "C6": "Female",
+                "C5": "Female",
+                "C4": "Female"
+            }
+        },
+        "Value2": {
+            "A": {
+                "A1": NaN,
+                "A3": NaN,
+                "A2": NaN,
+                "A5": NaN,
+                "A4": NaN
+            },
+            "C": {
+                "C3": NaN,
+                "C2": NaN,
+                "C1": "50000",
+                "C6": NaN,
+                "C5": NaN,
+                "C4": NaN
+            }
+        }
+    },
+    "CONDITION": {
+        "C3": {
+            "R4": "t",
+            "R5": "T",
+            "R6": "F",
+            "Operator2": NaN,
+            "R1": "T",
+            "R2": "F",
+            "R3": "F",
+            "Variable1": "Gender",
+            "Variable2": NaN,
+            "Operator1": "=",
+            "Logic Gate": NaN,
+            "Value1": "Male",
+            "ID": "C3",
+            "Value2": NaN
+        },
+        "C2": {
+            "R4": "F",
+            "R5": "F",
+            "R6": "T",
+            "Operator2": NaN,
+            "R1": "F",
+            "R2": "F",
+            "R3": "F",
+            "Variable1": "Salary",
+            "Variable2": NaN,
+            "Operator1": ">=",
+            "Logic Gate": NaN,
+            "Value1": "3",
+            "ID": "C2",
+            "Value2": NaN
+        },
+        "C1": {
+            "R4": "T",
+            "R5": "T",
+            "R6": "F",
+            "Operator2": "<",
+            "R1": "t",
+            "R2": "T",
+            "R3": "T",
+            "Variable1": "Salary",
+            "Variable2": "Salary",
+            "Operator1": ">",
+            "Logic Gate": "and",
+            "Value1": "20000",
+            "ID": "C1",
+            "Value2": "50000"
+        },
+        "C6": {
+            "R4": "F",
+            "R5": "F",
+            "R6": "F",
+            "Operator2": NaN,
+            "R1": "F",
+            "R2": "T",
+            "R3": "T",
+            "Variable1": "Child",
+            "Variable2": NaN,
+            "Operator1": "=",
+            "Logic Gate": NaN,
+            "Value1": "Female",
+            "ID": "C6",
+            "Value2": NaN
+        },
+        "C5": {
+            "R4": "F",
+            "R5": "F",
+            "R6": "F",
+            "Operator2": NaN,
+            "R1": "F",
+            "R2": "T",
+            "R3": "T",
+            "Variable1": "Gender",
+            "Variable2": NaN,
+            "Operator1": "=",
+            "Logic Gate": NaN,
+            "Value1": "Female",
+            "ID": "C5",
+            "Value2": NaN
+        },
+        "C4": {
+            "R4": "F",
+            "R5": "F",
+            "R6": "T",
+            "Operator2": NaN,
+            "R1": "F",
+            "R2": "F",
+            "R3": "F",
+            "Variable1": "Gender",
+            "Variable2": NaN,
+            "Operator1": "=",
+            "Logic Gate": NaN,
+            "Value1": "Female",
+            "ID": "C4",
+            "Value2": NaN
+        }
+    },
+    "V_JOINS": {
+        "A1": " No Receive",
+        "A3": " Receive 5%",
+        "A2": " Receive 3%",
+        "A5": " Extra 1%",
+        "A4": " Receive10%",
+        "C3": " Gender = Male",
+        "C2": " Salary >= 3",
+        "C1": " Salary > 20000 and Salary < 50000",
+        "C6": " Child = Female",
+        "C5": " Gender = Female",
+        "C4": " Gender = Female"
+    },
+    "ACTION": {
+        "A1": {
+            "R4": NaN,
+            "R5": NaN,
+            "R6": "X",
+            "Operator2": NaN,
+            "R1": NaN,
+            "R2": NaN,
+            "R3": NaN,
+            "Variable1": "No Receive",
+            "Variable2": NaN,
+            "Operator1": NaN,
+            "Logic Gate": NaN,
+            "Value1": NaN,
+            "ID": "A1",
+            "Value2": NaN
+        },
+        "A3": {
+            "R4": NaN,
+            "R5": "X",
+            "R6": NaN,
+            "Operator2": NaN,
+            "R1": NaN,
+            "R2": NaN,
+            "R3": NaN,
+            "Variable1": "Receive 5%",
+            "Variable2": NaN,
+            "Operator1": NaN,
+            "Logic Gate": NaN,
+            "Value1": NaN,
+            "ID": "A3",
+            "Value2": NaN
+        },
+        "A2": {
+            "R4": NaN,
+            "R5": NaN,
+            "R6": NaN,
+            "Operator2": NaN,
+            "R1": NaN,
+            "R2": "X",
+            "R3": NaN,
+            "Variable1": "Receive 3%",
+            "Variable2": NaN,
+            "Operator1": NaN,
+            "Logic Gate": NaN,
+            "Value1": NaN,
+            "ID": "A2",
+            "Value2": NaN
+        },
+        "A5": {
+            "R4": "X",
+            "R5": NaN,
+            "R6": NaN,
+            "Operator2": NaN,
+            "R1": NaN,
+            "R2": NaN,
+            "R3": NaN,
+            "Variable1": "Extra 1%",
+            "Variable2": NaN,
+            "Operator1": NaN,
+            "Logic Gate": NaN,
+            "Value1": NaN,
+            "ID": "A5",
+            "Value2": NaN
+        },
+        "A4": {
+            "R4": "X",
+            "R5": NaN,
+            "R6": NaN,
+            "Operator2": NaN,
+            "R1": NaN,
+            "R2": NaN,
+            "R3": "X",
+            "Variable1": "Receive10%",
+            "Variable2": NaN,
+            "Operator1": NaN,
+            "Logic Gate": NaN,
+            "Value1": NaN,
+            "ID": "A4",
+            "Value2": NaN
+        }
+    },
+    "VAR1_GROUP": {
+        "Salary": {
+            "R4": [
+                "T",
+                "F"
+            ],
+            "R5": [
+                "T",
+                "F"
+            ],
+            "R6": [
+                "F",
+                "T"
+            ],
+            "R1": [
+                "t",
+                "F"
+            ],
+            "R2": [
+                "T",
+                "F"
+            ],
+            "R3": [
+                "T",
+                "F"
+            ]
+        },
+        "Gender": {
+            "R4": [
+                "t",
+                "F",
+                "F"
+            ],
+            "R5": [
+                "T",
+                "F",
+                "F"
+            ],
+            "R6": [
+                "F",
+                "T",
+                "F"
+            ],
+            "R1": [
+                "T",
+                "F",
+                "F"
+            ],
+            "R2": [
+                "F",
+                "F",
+                "T"
+            ],
+            "R3": [
+                "F",
+                "F",
+                "T"
+            ]
+        },
+        "Child": {
+            "R4": [
+                "F"
+            ],
+            "R5": [
+                "F"
+            ],
+            "R6": [
+                "F"
+            ],
+            "R1": [
+                "F"
+            ],
+            "R2": [
+                "T"
+            ],
+            "R3": [
+                "T"
+            ]
+        }
+    },
+    "CRC_EXTEND": [
+        {
+            "extends": {
+                "R4": {
+                    "C3": "t",
+                    "C2": "F",
+                    "C1": "T",
+                    "C6": "F",
+                    "C5": "F",
+                    "C4": "F"
+                }
+            },
+            "name": "R4"
+        },
+        {
+            "extends": {
+                "R5": {
+                    "C3": "T",
+                    "C2": "F",
+                    "C1": "T",
+                    "C6": "F",
+                    "C5": "F",
+                    "C4": "F"
+                }
+            },
+            "name": "R5"
+        },
+        {
+            "extends": {
+                "R6": {
+                    "C3": "F",
+                    "C2": "T",
+                    "C1": "F",
+                    "C6": "F",
+                    "C5": "F",
+                    "C4": "T"
+                }
+            },
+            "name": "R6"
+        },
+        {
+            "extends": {
+                "R1": {
+                    "C3": "T",
+                    "C2": "F",
+                    "C1": "t",
+                    "C6": "F",
+                    "C5": "F",
+                    "C4": "F"
+                }
+            },
+            "name": "R1"
+        },
+        {
+            "extends": {
+                "R2": {
+                    "C3": "F",
+                    "C2": "F",
+                    "C1": "T",
+                    "C6": "T",
+                    "C5": "T",
+                    "C4": "F"
+                }
+            },
+            "name": "R2"
+        },
+        {
+            "extends": {
+                "R3": {
+                    "C3": "F",
+                    "C2": "F",
+                    "C1": "T",
+                    "C6": "T",
+                    "C5": "T",
+                    "C4": "F"
+                }
+            },
+            "name": "R3"
+        }
+    ],
+    "XOR_EXTEND": {
+        "Salary": [
+            "C1",
+            "C2"
+        ],
+        "Receive10%": [
+            "A4"
+        ],
+        "No Receive": [
+            "A1"
+        ],
+        "Gender": [
+            "C3",
+            "C4",
+            "C5"
+        ],
+        "Extra 1%": [
+            "A5"
+        ],
+        "Receive 3%": [
+            "A2"
+        ],
+        "Child": [
+            "C6"
+        ],
+        "Receive 5%": [
+            "A3"
+        ]
+    },
+    "V_GROUP": {
+        "A1": {
+            "Operator2": NaN,
+            "Variable1": "No Receive",
+            "Variable2": NaN,
+            "Operator1": NaN,
+            "Logic Gate": NaN,
+            "Value1": NaN,
+            "Value2": NaN
+        },
+        "A3": {
+            "Operator2": NaN,
+            "Variable1": "Receive 5%",
+            "Variable2": NaN,
+            "Operator1": NaN,
+            "Logic Gate": NaN,
+            "Value1": NaN,
+            "Value2": NaN
+        },
+        "A2": {
+            "Operator2": NaN,
+            "Variable1": "Receive 3%",
+            "Variable2": NaN,
+            "Operator1": NaN,
+            "Logic Gate": NaN,
+            "Value1": NaN,
+            "Value2": NaN
+        },
+        "A5": {
+            "Operator2": NaN,
+            "Variable1": "Extra 1%",
+            "Variable2": NaN,
+            "Operator1": NaN,
+            "Logic Gate": NaN,
+            "Value1": NaN,
+            "Value2": NaN
+        },
+        "A4": {
+            "Operator2": NaN,
+            "Variable1": "Receive10%",
+            "Variable2": NaN,
+            "Operator1": NaN,
+            "Logic Gate": NaN,
+            "Value1": NaN,
+            "Value2": NaN
+        },
+        "C3": {
+            "Operator2": NaN,
+            "Variable1": "Gender",
+            "Variable2": NaN,
+            "Operator1": "=",
+            "Logic Gate": NaN,
+            "Value1": "Male",
+            "Value2": NaN
+        },
+        "C2": {
+            "Operator2": NaN,
+            "Variable1": "Salary",
+            "Variable2": NaN,
+            "Operator1": ">=",
+            "Logic Gate": NaN,
+            "Value1": "3",
+            "Value2": NaN
+        },
+        "C1": {
+            "Operator2": "<",
+            "Variable1": "Salary",
+            "Variable2": "Salary",
+            "Operator1": ">",
+            "Logic Gate": "and",
+            "Value1": "20000",
+            "Value2": "50000"
+        },
+        "C6": {
+            "Operator2": NaN,
+            "Variable1": "Child",
+            "Variable2": NaN,
+            "Operator1": "=",
+            "Logic Gate": NaN,
+            "Value1": "Female",
+            "Value2": NaN
+        },
+        "C5": {
+            "Operator2": NaN,
+            "Variable1": "Gender",
+            "Variable2": NaN,
+            "Operator1": "=",
+            "Logic Gate": NaN,
+            "Value1": "Female",
+            "Value2": NaN
+        },
+        "C4": {
+            "Operator2": NaN,
+            "Variable1": "Gender",
+            "Variable2": NaN,
+            "Operator1": "=",
+            "Logic Gate": NaN,
+            "Value1": "Female",
+            "Value2": NaN
+        }
+    },
+    "RULE": {
+        "ACTION": {
+            "R4": {
+                "A1": NaN,
+                "A3": NaN,
+                "A2": NaN,
+                "A5": "X",
+                "A4": "X"
+            },
+            "R5": {
+                "A1": NaN,
+                "A3": "X",
+                "A2": NaN,
+                "A5": NaN,
+                "A4": NaN
+            },
+            "R6": {
+                "A1": "X",
+                "A3": NaN,
+                "A2": NaN,
+                "A5": NaN,
+                "A4": NaN
+            },
+            "R1": {
+                "A1": NaN,
+                "A3": NaN,
+                "A2": NaN,
+                "A5": NaN,
+                "A4": NaN
+            },
+            "R2": {
+                "A1": NaN,
+                "A3": NaN,
+                "A2": "X",
+                "A5": NaN,
+                "A4": NaN
+            },
+            "R3": {
+                "A1": NaN,
+                "A3": NaN,
+                "A2": NaN,
+                "A5": NaN,
+                "A4": "X"
+            }
+        },
+        "CONDITION": {
+            "R4": {
+                "C3": "t",
+                "C2": "F",
+                "C1": "T",
+                "C6": "F",
+                "C5": "F",
+                "C4": "F"
+            },
+            "R5": {
+                "C3": "T",
+                "C2": "F",
+                "C1": "T",
+                "C6": "F",
+                "C5": "F",
+                "C4": "F"
+            },
+            "R6": {
+                "C3": "F",
+                "C2": "T",
+                "C1": "F",
+                "C6": "F",
+                "C5": "F",
+                "C4": "T"
+            },
+            "R1": {
+                "C3": "T",
+                "C2": "F",
+                "C1": "t",
+                "C6": "F",
+                "C5": "F",
+                "C4": "F"
+            },
+            "R2": {
+                "C3": "F",
+                "C2": "F",
+                "C1": "T",
+                "C6": "T",
+                "C5": "T",
+                "C4": "F"
+            },
+            "R3": {
+                "C3": "F",
+                "C2": "F",
+                "C1": "T",
+                "C6": "T",
+                "C5": "T",
+                "C4": "F"
+            }
+        }
+    }
+}
