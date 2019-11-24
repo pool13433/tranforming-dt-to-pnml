@@ -153,6 +153,8 @@ class InputValidation():
                     is_same,same_key = self.is_same_condition1_and_2(
                             cond_groups=id_dict,
                             source_cond=cond_dict,soure_key=cond_key)  
+                    print('is_same::=='+str(is_same))
+                    print('same_key::=='+str(same_key))
                     if is_same == True and (same_key is not None):
                         _messageValidateAndENReplace = _messageValidateAndEN.replace('{0}', cond_key)
                         self.validtors.append({
@@ -209,13 +211,19 @@ class InputValidation():
         #print('same_var::=='+str(same_var))
         #print('same_oper::=='+str(same_oper))
         #print('same_value::=='+str(same_value))
+        print('cond_groups::=='+json.dumps(cond_groups))
+        print('len(cond_groups)::=='+str(len(cond_groups)))
+        if len(cond_groups) > 1:
+            is_same_group,same_group_key = self.is_same_condition1(
+                                cond_groups=cond_groups,
+                                source_cond=source_cond,soure_key=soure_key)
+        else:
+            is_same_group,same_group_key = True , soure_key
 
-        is_same_group,same_group_key = self.is_same_condition1(
-                            cond_groups=cond_groups,
-                            source_cond=source_cond,soure_key=soure_key)
-
+        print('same_group_key::=='+str(same_group_key))
         if 'AND' == str(source_gate).upper():      
             is_same_gate = (same_var and (same_oper_right or same_oper_left) and same_value)
+            print('is_same_gate::=='+str(is_same_gate))
             if is_same_gate or is_same_group:                
                 return True , same_group_key
             else:

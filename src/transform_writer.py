@@ -64,11 +64,11 @@ class TransformWriter():
         print('doc_data::=='+json.dumps(doc_data,sort_keys=True))
 
         for line_key in sorted(doc_data):
-            print('line_key::=='+line_key)
+            #print('line_key::=='+line_key)
             num1,num2 = self.grep_numbers(line_key)
             #print('num1::'+str(num1)+' num2::=='+str(num2))
             line_data = doc_data[line_key]
-            print('doc_data::=='+json.dumps(line_data))
+            #print('doc_data::=='+json.dumps(line_data))
             lines = []
             data_T = self.filter_sorted_keys(line_data['0'])
             if len(data_T) > 0:
