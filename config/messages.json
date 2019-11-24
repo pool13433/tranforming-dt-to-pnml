@@ -73,7 +73,7 @@
     "CODE": "011",
     "MESSAGE": {
       "TH": "-",
-      "EN" : "Please specify only '=', '>' or '<' in Operator1."
+      "EN" : "Please specify only '=', '>' or '>=' in Operator1."
     }
   },  
   "OPER_ALLOWED_ELSE": {

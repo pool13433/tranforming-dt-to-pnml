@@ -167,7 +167,8 @@ class InputValidation():
                             opers_if = opers_allow['IF']
                             opers_else = opers_allow['ELSE']                       
                             #Please specify only '=', '>' or '<' in Operator1.
-                            if cond_left['OPER'] not in opers_if:                        
+                            print('cond_left[\'OPER\']::=='+str(self.ignore_ascii(cond_left['OPER'])))
+                            if self.ignore_ascii(cond_left['OPER']) not in opers_if:                        
                                 self.validtors.append({
                                     'code': _messageAllowIf['CODE'],
                                     'row': self.ignore_ascii(cond_key),
@@ -179,7 +180,6 @@ class InputValidation():
                                                                         opers=opers_else)                                
                                 is_greater_equal = self.is_numberic_handler(source_cond=cond_dict,
                                                                                 handler="GREATER_EQUAL")
-
                                 if (is_operallowed is False ) or (is_greater_equal is False): 
                                     _messageOpers = ' or '.join(opers_else[cond_left['OPER']])                       
                                     self.validtors.append({
@@ -316,7 +316,8 @@ class InputValidation():
 
 
     def ifnull_than(self,val):                          
-        return "" if pd.isnull(val) else val
+        return "" if pd.isnull(val) else self.ignore_ascii(val)
+    
     def map_config(self,config):
         values = config['VALUES']
         return map(lambda x: values[x],values)
