@@ -59,6 +59,7 @@ class TransformationUI(Frame):
 		self.makeTxtbFileOut(5, 1)
 
 		self.makeTxtbConsole(6, 1)
+		self.makeBtnClearConsole(6,2)
 
 		self.makeBtnExit(7, 1)
 
@@ -147,7 +148,7 @@ class TransformationUI(Frame):
 
 	def makeTxtbConsole(self, row, column):
 		self.textbox_console = Text(self, font=self.fontFamily)
-		self.textbox_console['width'] = 120
+		self.textbox_console['width'] = 110
 		self.textbox_console['height'] = 9
 		self.textbox_console['bg'] = '#eff0f1'
 		# textbox_console.pack({"side": "left"})
@@ -155,15 +156,19 @@ class TransformationUI(Frame):
 
 	def appendTxtbConsole(self, text, level='info'):
 		date_time = datetime.now().strftime("[%Y/%m/%d-%H:%M:%S]")
-		# print('isinstance(text)::=='+str(type(text)))
-		if isinstance(text, str):
-			self.textbox_console.insert(END, date_time + '-' + level + ': ' + text + '\n')
-		elif isinstance(text, list):
-			self.textbox_console.insert(END, date_time + '-' + level + ':')
-			for idx in range(len(text)):
-				_text = text[idx]
-				self.textbox_console.insert(END, _text + '\n')
-		self.textbox_console.see(END)
+		print('isinstance(text)::=='+str(type(text)))
+		if '' == text:
+			self.textbox_console.delete('1.0', END)			
+		else:
+			self.textbox_console.see(END)
+			if isinstance(text, str):
+				self.textbox_console.insert(END, date_time + '-' + level + ': ' + text + '\n')
+			elif isinstance(text, list):
+				self.textbox_console.insert(END, date_time + '-' + level + ':')
+				for idx in range(len(text)):
+					_text = text[idx]
+					self.textbox_console.insert(END, _text + '\n')
+			
 
 	def makeTxtbChoose(self, _self, width=50):
 		self.textbox_choose = Entry(_self, font=self.fontFamily)
@@ -185,6 +190,18 @@ class TransformationUI(Frame):
 	# ****************** Textbox *******************
 
 	# ****************** Button *******************
+	def makeBtnClearConsole(self,row, column):
+		clear_txt = Button(self, font=self.fontFamily)
+		clear_txt["text"] = "Clear"
+		clear_txt["fg"] = "#000000"
+		clear_txt['bg'] = '#dddddd'
+		#choose_file['width'] = width
+		clear_txt['height'] = 1
+		clear_txt["command"] = self.commandClearConsle
+		#choose_file.pack({"side": TOP, "anchor": W, 'fill': 'x'})
+		clear_txt.grid(row=row, column=column, sticky=W+E+S, pady=2)
+
+
 	def makeBtnChoose(self, _self, width=50):
 		choose_file = Button(_self, font=self.fontFamily)
 		choose_file["text"] = "Choose file from directory"
@@ -231,6 +248,9 @@ class TransformationUI(Frame):
 	# download.grid(row = row, column = column,sticky=W, pady = 2)
 
 	# ****************** Button *******************
+
+	def commandClearConsle(self):
+		self.appendTxtbConsole('',level='clear')
 
 	def commandExitProgram(self):
 		result = dialog.askyesno("Confirm Sign out?", "Do you want to confirm logging out?")
@@ -332,3 +352,6 @@ def setupApplication():
 
 	root.destroy()
 	return app
+
+if __name__ == "__main__":
+	setupApplication()
