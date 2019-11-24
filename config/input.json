@@ -70,5 +70,16 @@
 			"CONACT" : 220,
 			"RULE_DASH" : 120
     }
+  },
+  "OPER_ALLOW" : {
+    "ALIAS" : "OPERATION ALLOW In Conidtion",
+    "VALUES" : {
+        "IF" : ["=",">",">="],
+        "ELSE" : {
+          "=" : ["<","<="],
+          ">" : ["=","<","<="],
+          ">=" : ["=","<","<="]        
+        }
+    }
   }
 }

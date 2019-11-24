@@ -1,76 +1,97 @@
 {
   "NOT_BLANK": {
-    "CODE": "01",
+    "CODE": "001",
     "MESSAGE": {
       "TH": "-",
       "EN": "NOT Blank {0}"
     }
   },
   "NOT_PK": {
-    "CODE": "02",
+    "CODE": "002",
     "MESSAGE": {
       "TH": "-",
       "EN": "NOT FOUND {0}"
     }
   },
   "ONLY_VALUES": {
-    "CODE": "03",
+    "CODE": "003",
     "MESSAGE": {
       "TH": "-",
       "EN": "Please specify only {0} in {1}"
     }
   },
   "LEAST_ONE": {
-    "CODE": "04",
+    "CODE": "004",
     "MESSAGE": {
       "TH": "-",
       "EN": "Please enter at least 1 value in {0} stub."
     }
   },
   "XOR_THAN1": {
-    "CODE": "05",
+    "CODE": "005",
     "MESSAGE": {
       "TH": "-",
       "EN": "xor group should not be greater than 1 value"
     }
   },
   "XOR_UNIQUE": {
-    "CODE": "06",
+    "CODE": "006",
     "MESSAGE": {
       "TH": "-",
       "EN": "Please specify only ' T ' and ' F ' on rule with the same variable (XOR-relationship) on condition stub and specify only one ' T ' in the same variable per a rule."
     }
   },
   "REQUIRE_COLUMNS": {
-    "CODE": "07",
+    "CODE": "007",
     "MESSAGE": {
       "TH": "-",
       "EN": "columns name invalid"
     }
   },
   "CONDITION_VALIDATE": {
-    "CODE": "08",
+    "CODE": "008",
     "MESSAGE": {
       "TH": "-",
       "EN": "Please check the proposition of condition {0} ."
     }
   },
   "CONDITION_VALIDATE_AND": {
-    "CODE": "09",
+    "CODE": "009",
     "MESSAGE": {
       "TH": "-",
       "EN" : "Please check the proposition of condition {0} and {1}."
     }
   },  
+  "OPER_ALLOWED": {
+    "CODE": "010",
+    "MESSAGE": {
+      "TH": "-",
+      "EN" : "Operation is not allow in {0}"
+    }
+  },  
+  "OPER_ALLOWED_IF": {
+    "CODE": "011",
+    "MESSAGE": {
+      "TH": "-",
+      "EN" : "Please specify only '=', '>' or '<' in Operator1."
+    }
+  },  
+  "OPER_ALLOWED_ELSE": {
+    "CODE": "012",
+    "MESSAGE": {
+      "TH": "-",
+      "EN" : "Please specify only {0} in Operator2 or Value2 greater than or equal to Value1"
+    }
+  },  
   "PROCESS_SUCCESS": {
-    "CODE": "10",
+    "CODE": "100",
     "MESSAGE": {
       "TH": "-",
       "EN": "Process Success"
     }
   },
   "PROCESS_ERROR": {
-    "CODE": "20",
+    "CODE": "101",
     "MESSAGE": {
       "TH": "-",
       "EN": "Process Error"

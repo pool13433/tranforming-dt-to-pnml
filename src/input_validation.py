@@ -135,6 +135,13 @@ class InputValidation():
 
         _messageValidateAnd = messages['CONDITION_VALIDATE_AND']
         _messageValidateAndEN = _messageValidateAnd['MESSAGE']['EN']
+
+        _messageAllowIf = messages['OPER_ALLOWED_IF']
+        _messageAllowIfEN = _messageAllowIf['MESSAGE']['EN']
+
+        _messageAllowElse = messages['OPER_ALLOWED_ELSE']
+        _messageAllowElseEN = _messageAllowElse['MESSAGE']['EN']
+        
         
         for dup_key in conditions:
             #print('\n|==dup_key::=='+str(dup_key))
@@ -147,30 +154,71 @@ class InputValidation():
                 #print('==|==|==cond_dict::=='+json.dumps(cond_dict))
                 cond_left = cond_dict['LEFT']
                 cond_gate = cond_dict['GATE']
-                print('\ncond_key::=='+json.dumps(cond_key))
-                if 'RIGHT' in cond_dict:                    
-                    cond_right = cond_dict['RIGHT']
-                    is_same,same_key = self.is_same_condition1_and_2(
-                            cond_groups=id_dict,
-                            source_cond=cond_dict,soure_key=cond_key)  
-                    print('is_same::=='+str(is_same))
-                    print('same_key::=='+str(same_key))
-                    if is_same == True and (same_key is not None):
-                        _messageValidateAndENReplace = _messageValidateAndEN.replace('{0}', cond_key)
-                        self.validtors.append({
-                            'code': _messageValidateAnd['CODE'],
-                            'row': json.dumps(cond_key),
-                            'message': _messageValidateAndENReplace.replace('{1}', same_key)
-                        })     
+                #print('\ncond_key::=='+json.dumps(cond_key))
+                if 'RIGHT' in cond_dict:     
+                    cond_right = cond_dict['RIGHT']  
+                    is_numberic = self.is_numberic_handler(source_cond=cond_dict,
+                                                            handler="IS_NUMBERIC")                    
+                    print('\n|-->condition::=='+json.dumps(cond_dict))
+                    print('|--|-->is_numberic::=='+str(is_numberic))
+                    if is_numberic:                         
+                        if ('AND' == str(cond_gate).upper()):
+                            opers_allow = config['OPER_ALLOW']['VALUES']
+                            opers_if = opers_allow['IF']
+                            opers_else = opers_allow['ELSE']                       
+                            #Please specify only '=', '>' or '<' in Operator1.
+                            if cond_right['OPER'] not in opers_if:                        
+                                self.validtors.append({
+                                    'code': _messageAllowIf['CODE'],
+                                    'row': self.ignore_ascii(cond_key),
+                                    'message': _messageAllowIfEN
+                                }) 
+                            else:          
+                                # Please specify only {0} in Operator2 or Value2 greater than or equal to Value1
+                                is_operallowed = self.is_oper_allowed(source_cond=cond_dict,
+                                                                        opers=opers_else)                                
+                                is_greater_equal = self.is_numberic_handler(source_cond=cond_dict,
+                                                                                handler="GREATER_EQUAL")
+
+                                if (is_operallowed is False ) or (is_greater_equal is False): 
+                                    _messageOpers = ' or '.join(opers_else[cond_left['OPER']])                       
+                                    self.validtors.append({
+                                        'code': _messageAllowElse['CODE'],
+                                        'row': self.ignore_ascii(cond_key),
+                                        'value' : {       
+                                            'actual': {
+                                                'left' : self.ignore_ascii(cond_left['OPER']),
+                                                'right' : self.ignore_ascii(cond_right['OPER']),
+                                            },
+                                            'expected': {
+                                                'right' :  _messageOpers
+                                            }
+                                        },
+                                        'message': _messageAllowElseEN.replace('{0}', _messageOpers)
+                                    })  
+                    else:
+                        # Please specify only {0} in Operator2 or Value2 greater than or equal to Value1
+                        is_same,same_key = self.is_same_condition1_and_2(
+                                cond_groups=id_dict,
+                                source_cond=cond_dict,soure_key=cond_key)  
+                        #print('is_same::=='+str(is_same))
+                        #print('same_key::=='+str(same_key))
+                        if is_same == True and (same_key is not None):
+                            _messageValidateAndENReplace = _messageValidateAndEN.replace('{0}', cond_key)
+                            self.validtors.append({
+                                'code': _messageValidateAnd['CODE'],
+                                'row': self.ignore_ascii(cond_key),
+                                'message': _messageValidateAndENReplace.replace('{1}', same_key)
+                            })     
                 else:               
                     is_same,same_key = self.is_same_condition1(
                                 cond_groups=id_dict,
                                 source_cond=cond_dict,soure_key=cond_key)
-                    print('is_same::=='+str(is_same))
+                    #print('is_same::=='+str(is_same))
                     if is_same == True:
                         self.validtors.append({
                             'code': _messageValidate['CODE'],
-                            'row': json.dumps(cond_key),
+                            'row': self.ignore_ascii(cond_key),
                             'message': _messageValidateENReplace
                         })                        
 
@@ -193,7 +241,42 @@ class InputValidation():
             if soure_key != cond_key and (same_oper and same_value):
                 return True , cond_key
                         
-        return False , None
+        return False , None    
+
+    def is_numberic_handler(self,source_cond,handler):
+        #print('source_cond::=='+json.dumps(source_cond))
+        source_left = source_cond['LEFT']
+        source_gate = source_cond['GATE']
+        source_right = source_cond['RIGHT']
+        if 'IS_NUMBERIC' == handler:
+            if str(source_right['VALUE']).isdigit() and str(source_right['VALUE']).isdigit():
+                return True
+            else:
+                return False
+        elif 'GREATER_EQUAL' == handler:
+            if source_right['VALUE'] >= source_left['VALUE']:
+                return True
+            else:
+                return False
+        else:
+            return False            
+
+    def ignore_ascii(self,str):
+        if str is None:
+            return ""
+        else:
+            return str.encode('ascii', 'ignore')
+
+    def is_oper_allowed(self,source_cond,opers):        
+        source_left = source_cond['LEFT']
+        source_gate = source_cond['GATE']
+        source_right = source_cond['RIGHT']
+        oper = opers[source_left['OPER']]
+        #print('oper::=='+str(oper))
+        if source_right['OPER'] in oper:
+            return True
+        else:
+            return False
 
     def is_same_condition1_and_2(self,cond_groups,source_cond,soure_key):        
         opers = ['=','<>']
@@ -211,8 +294,8 @@ class InputValidation():
         #print('same_var::=='+str(same_var))
         #print('same_oper::=='+str(same_oper))
         #print('same_value::=='+str(same_value))
-        print('cond_groups::=='+json.dumps(cond_groups))
-        print('len(cond_groups)::=='+str(len(cond_groups)))
+        #print('cond_groups::=='+json.dumps(cond_groups))
+        #print('len(cond_groups)::=='+str(len(cond_groups)))
         if len(cond_groups) > 1:
             is_same_group,same_group_key = self.is_same_condition1(
                                 cond_groups=cond_groups,
@@ -220,10 +303,10 @@ class InputValidation():
         else:
             is_same_group,same_group_key = True , soure_key
 
-        print('same_group_key::=='+str(same_group_key))
+        #print('same_group_key::=='+str(same_group_key))
         if 'AND' == str(source_gate).upper():      
             is_same_gate = (same_var and (same_oper_right or same_oper_left) and same_value)
-            print('is_same_gate::=='+str(is_same_gate))
+            #print('is_same_gate::=='+str(is_same_gate))
             if is_same_gate or is_same_group:                
                 return True , same_group_key
             else:
