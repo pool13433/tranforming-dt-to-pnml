@@ -37,6 +37,10 @@
       "VALUE2": "Value2"      
     }
   },
+  "COLUMNS_JOIN" :{
+    "ALIAS" :  "COLUMN CONDITION LTL",
+    "VALUES" : ["VAR1","OPER1","VALUE1","GATE","VAR2","OPER2","VALUE2"]
+  },
   "COLUMN_ACTION": {
     "ALIAS": "",
     "VALUES": [

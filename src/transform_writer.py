@@ -65,6 +65,8 @@ class TransformWriter():
 
         for line_key in sorted(doc_data):
             print('line_key::=='+line_key)
+            num1,num2 = self.grep_numbers(line_key)
+            #print('num1::'+str(num1)+' num2::=='+str(num2))
             line_data = doc_data[line_key]
             print('doc_data::=='+json.dumps(line_data))
             lines = []
@@ -75,9 +77,16 @@ class TransformWriter():
                 condition = "Not Specify Token "
             lines.append('--Verify '+line_key+' : '+condition)
             lines.append('--LTL')
-            lines.append('<>{'+line_key+'};')
-            action = "/\\".join(self.filter_sorted_keys(line_data['3']))
-            lines.append('<>('+action+');')
+            if num2 is not None:
+                lines.append('<>{'+line_key+'};')
+            else:    
+                lines.append('<>'+line_key+';')
+            data_X = self.filter_sorted_keys(line_data['3'])
+            action = "/\\".join(data_X)
+            if len(data_X) > 1:                
+                lines.append('<>('+action+');')
+            else:
+                lines.append('<>'+action+';')
 
             line = "\n".join(lines)
             documents.append(line)
@@ -101,7 +110,10 @@ class TransformWriter():
     
     def grep_numbers(self,source_str):
         numbers = re.findall(r'\d+', source_str)
-        return numbers[0],numbers[1]
+        if len(numbers) > 1:
+            return numbers[0],numbers[1]
+        else:
+            return numbers[0],None
 
     def grep_char(self, str):
 		chars = re.findall('[a-zA-Z]+', str)

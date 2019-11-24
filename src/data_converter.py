@@ -178,7 +178,10 @@ class DataConverter():
         _condition = req_conf['CONDITION']['ALIAS']
         joins = req_conf['COLUMNS_LTL']['VALUES']
         #print('joins::=='+json.dumps(joins))
-        _columns =  map(lambda x: joins[x], joins)#req_conf['COLUMNS_JOIN']['VALUES']
+
+        columns_key = req_conf['COLUMNS_JOIN']['VALUES']
+        _columns =  map(lambda x: joins[x], columns_key)#req_conf['COLUMNS_JOIN']['VALUES']
+
         #print('_columns::=='+json.dumps(_columns))
         _primary = req_conf['COLUMN_PRIMARY']['VALUE']
 

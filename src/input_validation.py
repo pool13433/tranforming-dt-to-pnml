@@ -153,7 +153,7 @@ class InputValidation():
                     is_same,same_key = self.is_same_condition1_and_2(
                             cond_groups=id_dict,
                             source_cond=cond_dict,soure_key=cond_key)  
-                    if is_same == True:
+                    if is_same == True and (same_key is not None):
                         _messageValidateAndENReplace = _messageValidateAndEN.replace('{0}', cond_key)
                         self.validtors.append({
                             'code': _messageValidateAnd['CODE'],
