@@ -42,12 +42,26 @@
     }
   },
   "REQUIRE_COLUMNS": {
-    "CODE": "06",
+    "CODE": "07",
     "MESSAGE": {
       "TH": "-",
       "EN": "columns name invalid"
     }
   },
+  "CONDITION_VALIDATE": {
+    "CODE": "08",
+    "MESSAGE": {
+      "TH": "-",
+      "EN": "Please check the proposition of condition {0} ."
+    }
+  },
+  "CONDITION_VALIDATE_AND": {
+    "CODE": "09",
+    "MESSAGE": {
+      "TH": "-",
+      "EN" : "Please check the proposition of condition {0} and {1}."
+    }
+  },  
   "PROCESS_SUCCESS": {
     "CODE": "10",
     "MESSAGE": {

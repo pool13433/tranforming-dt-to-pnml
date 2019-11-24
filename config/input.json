@@ -20,25 +20,22 @@
   },
   "COLUMNS_REQUIRED" : {
     "ALIAS" :  "",
-    "VALUES" : [
-      "ID",
-      "Variable1","Operator1","Value1",
-      "Logic Gate",
-      "Variable2","Operator2","Value2",
-      "R1"
-    ]
+    "VALUES" : {
+      "ID" : "ID",
+      "RULE" : "R1"
+    }
   },
-  "COLUMNS_JOIN": {
-    "ALIAS": "COLUMNS_ORDER_JOIN",
-    "VALUES": [
-      "Variable1",
-      "Operator1",
-      "Value1",
-      "Logic Gate",
-      "Variable2",
-      "Operator2",
-      "Value2"      
-    ]
+  "COLUMNS_LTL" : {
+    "ALIAS" :  "COLUMN CONDITION LTL",
+    "VALUES" :{    
+      "VAR1" : "Variable1/Description",
+      "OPER1" : "Operator1",
+      "VALUE1":"Value1",
+      "GATE":"Logic Gate",
+      "VAR2" : "Variable2/Description",
+      "OPER2" : "Operator2",
+      "VALUE2": "Value2"      
+    }
   },
   "COLUMN_ACTION": {
     "ALIAS": "",
@@ -51,7 +48,7 @@
     "VALUE": "ID"
   },
   "COLUMN_XOR" :{
-    "ALIAS": "Variable1",
+    "ALIAS": "Variable1/Description",
     "VALUE": "XOR"
   },
   "DISTANCE" :{

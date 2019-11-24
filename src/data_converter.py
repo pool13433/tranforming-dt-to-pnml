@@ -43,6 +43,9 @@ class DataConverter():
             p.load(f, "utf-8")            
         return p    
 
+    def read_dataframe(self):
+        return self.df
+
     def filter_rules(self,df_cols,df_rows,req_conf,store):
         _rule = req_conf['RULE']['ALIAS']
         _action = req_conf['ACTION']['ALIAS']
@@ -173,7 +176,10 @@ class DataConverter():
         _rule = req_conf['RULE']['ALIAS']
         _action = req_conf['ACTION']['ALIAS']
         _condition = req_conf['CONDITION']['ALIAS']
-        _columns = req_conf['COLUMNS_JOIN']['VALUES']
+        joins = req_conf['COLUMNS_LTL']['VALUES']
+        #print('joins::=='+json.dumps(joins))
+        _columns =  map(lambda x: joins[x], joins)#req_conf['COLUMNS_JOIN']['VALUES']
+        #print('_columns::=='+json.dumps(_columns))
         _primary = req_conf['COLUMN_PRIMARY']['VALUE']
 
         #---------------------H_GROUP---------------------

@@ -35,14 +35,14 @@ class InputValidation():
         _condition = config['CONDITION']['ALIAS']
 
         utility = DataConverter(xls_filename)
-        raw = utility.read_rawdata(req_conf=config)
         meta = utility.read_metadata()
-
+        
         # first priority check columns required
         is_passed = self.checkColumnsRequired(meta=meta, messages=messages,
                                               config=config)
         # print('is_passed::=='+json.dumps(is_passed))
         if is_passed:
+            raw = utility.read_rawdata(req_conf=config)
             # check C
             has_cond = self.checkLeastOneValue(raw=raw, messages=messages,
                                                key_name='CONDITION', alias_name=_condition)
@@ -72,10 +72,163 @@ class InputValidation():
                 self.checkXorCanOnlyHaveOneValue(
                     raw=raw, messages=messages, config=config)
 
+                self.checkConditionConstant(
+                    raw=raw, messages=messages, config=config)
+
                 # check xor group not have one value
                 # self.checkXorGroupNotHaveOneValue(raw=raw,messages=messages,config=config);
             else:
                 print('invalid input!!')
+    
+    def checkConditionConstant(self, raw, messages, config):
+        #print('checkConditionConstant')
+        groups = raw['V_GROUP']
+        prefix_cond = config["CONDITION"]['ALIAS']
+        cols_ltl = config['COLUMNS_LTL']['VALUES']
+        #print('cols_ltl ::=='+json.dumps(cols_ltl))
+
+        cond_pk = cols_ltl["VAR1"]
+        conditions = {}
+        for cond_key in groups:
+            #print('cond_key::=='+cond_key)
+            # case C (condition)
+            cond_vals = groups[cond_key]
+            if str(cond_key).startswith(prefix_cond):
+                var1 = self.ifnull_than(cond_vals[cond_pk])
+                oper1 = self.ifnull_than(cond_vals[cols_ltl["OPER1"]])
+                value1 = self.ifnull_than(cond_vals[cols_ltl["VALUE1"]])
+                gate = self.ifnull_than(cond_vals[cols_ltl["GATE"]])
+                var2 = self.ifnull_than(cond_vals[cols_ltl["VAR2"]])
+                oper2 = self.ifnull_than(cond_vals[cols_ltl["OPER2"]])
+                value2 = self.ifnull_than(cond_vals[cols_ltl["VALUE2"]])
+
+                #print('var1::=='+str(var1))
+                #print('oper1::=='+str(oper1))
+                #print('value1::=='+str(value1))
+                #print('gate::=='+str(gate))
+                #print('var2::=='+str(var2))
+                #print('oper2::=='+str(oper2))
+                #print('value2::=='+str(value2))
+
+                data_dict = {
+                    'LEFT' : {'VAR' : var1,'OPER' : oper1,'VALUE' : value1},
+                    'GATE' : gate,
+                }
+                if "" != var2:
+                    data_dict['RIGHT'] = {'VAR' : var2,'OPER' : oper2,'VALUE' : value2} 
+
+                con1_key = var1+oper1+value1
+                con2_key = var2+oper2+value2
+
+                if var1 in conditions:
+                    if cond_key in conditions[var1]:
+                        conditions[var1][cond_key] = data_dict
+                    else:
+                        conditions[var1] = dict({cond_key : data_dict},**conditions[var1])
+                else:
+                    conditions = dict({
+                        var1 : { cond_key:data_dict}
+                    },**conditions)
+
+        _messageValidate = messages['CONDITION_VALIDATE']        
+        _messageValidateEN = _messageValidate['MESSAGE']['EN']
+
+        _messageValidateAnd = messages['CONDITION_VALIDATE_AND']
+        _messageValidateAndEN = _messageValidateAnd['MESSAGE']['EN']
+        
+        for dup_key in conditions:
+            #print('\n|==dup_key::=='+str(dup_key))
+            id_dict = conditions[dup_key]
+            #print(' ==|==id_dict::=='+json.dumps(id_dict))
+            for cond_key in sorted(id_dict):
+                _messageValidateENReplace = _messageValidateEN.replace('{0}', cond_key)                
+                cond_dict = id_dict[cond_key]
+                #print('==|==|==cond_key::=='+json.dumps(cond_key))
+                #print('==|==|==cond_dict::=='+json.dumps(cond_dict))
+                cond_left = cond_dict['LEFT']
+                cond_gate = cond_dict['GATE']
+                print('\ncond_key::=='+json.dumps(cond_key))
+                if 'RIGHT' in cond_dict:                    
+                    cond_right = cond_dict['RIGHT']
+                    is_same,same_key = self.is_same_condition1_and_2(
+                            cond_groups=id_dict,
+                            source_cond=cond_dict,soure_key=cond_key)  
+                    if is_same == True:
+                        _messageValidateAndENReplace = _messageValidateAndEN.replace('{0}', cond_key)
+                        self.validtors.append({
+                            'code': _messageValidateAnd['CODE'],
+                            'row': json.dumps(cond_key),
+                            'message': _messageValidateAndENReplace.replace('{1}', same_key)
+                        })     
+                else:               
+                    is_same,same_key = self.is_same_condition1(
+                                cond_groups=id_dict,
+                                source_cond=cond_dict,soure_key=cond_key)
+                    print('is_same::=='+str(is_same))
+                    if is_same == True:
+                        self.validtors.append({
+                            'code': _messageValidate['CODE'],
+                            'row': json.dumps(cond_key),
+                            'message': _messageValidateENReplace
+                        })                        
+
+        #print('conditions::=='+json.dumps(conditions))
+                
+    def is_same_condition1(self,cond_groups,source_cond,soure_key):        
+        
+        source_left = source_cond['LEFT']
+        source_gate = source_cond['GATE']
+        for cond_key in cond_groups:
+            #print('cond_key::=='+str(cond_key))
+            cond_dict = cond_groups[cond_key]
+            #print('cond_dict::=='+json.dumps(cond_dict))
+            cond_left = cond_dict['LEFT']
+            cond_gate = cond_dict['GATE']
+            if 'RIGHT' in cond_dict:
+                cond_right = cond_dict['RIGHT']
+            same_oper = cond_left['OPER'] == source_left['OPER']
+            same_value = cond_left['VALUE'] == source_left['VALUE']
+            if soure_key != cond_key and (same_oper and same_value):
+                return True , cond_key
+                        
+        return False , None
+
+    def is_same_condition1_and_2(self,cond_groups,source_cond,soure_key):        
+        opers = ['=','<>']
+        source_left = source_cond['LEFT']
+        source_gate = source_cond['GATE']
+        source_right = source_cond['RIGHT']
+        same_oper = source_right['OPER'] == source_left['OPER']
+        same_oper_right = source_right['OPER'] in opers
+        same_oper_left = source_left['OPER'] in opers
+
+        same_value = source_right['VALUE'] == source_left['VALUE']
+        same_var = source_right['VAR'] == source_left['VAR']
+
+        #print('opers ::=='+str((source_right['OPER'] in opers)))
+        #print('same_var::=='+str(same_var))
+        #print('same_oper::=='+str(same_oper))
+        #print('same_value::=='+str(same_value))
+
+        is_same_group,same_group_key = self.is_same_condition1(
+                            cond_groups=cond_groups,
+                            source_cond=source_cond,soure_key=soure_key)
+
+        if 'AND' == str(source_gate).upper():      
+            is_same_gate = (same_var and (same_oper_right or same_oper_left) and same_value)
+            if is_same_gate or is_same_group:                
+                return True , same_group_key
+            else:
+                return False , None
+        else:
+            return False , None
+
+
+    def ifnull_than(self,val):                          
+        return "" if pd.isnull(val) else val
+    def map_config(self,config):
+        values = config['VALUES']
+        return map(lambda x: values[x],values)
 
     def checkXorCanOnlyHaveOneValue(self, raw, messages, config):
         _messageThanOne = messages['XOR_UNIQUE']
@@ -113,7 +266,8 @@ class InputValidation():
         columns = meta['columns']
         # columns.remove('Operator1')
         # print('columns::=='+json.dumps(columns))
-        required = config['COLUMNS_REQUIRED']['VALUES']
+        required = self.map_config(config['COLUMNS_REQUIRED']) + self.map_config(config['COLUMNS_LTL'])        
+        #print('required::=='+json.dumps(required))
         # required.append('required')
         # print('required::=='+json.dumps(required))
         is_same = all(elem in columns for elem in required)
