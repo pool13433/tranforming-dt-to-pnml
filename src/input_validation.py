@@ -167,7 +167,7 @@ class InputValidation():
                             opers_if = opers_allow['IF']
                             opers_else = opers_allow['ELSE']                       
                             #Please specify only '=', '>' or '<' in Operator1.
-                            if cond_right['OPER'] not in opers_if:                        
+                            if cond_left['OPER'] not in opers_if:                        
                                 self.validtors.append({
                                     'code': _messageAllowIf['CODE'],
                                     'row': self.ignore_ascii(cond_key),
