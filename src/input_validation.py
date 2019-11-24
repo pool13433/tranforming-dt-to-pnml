@@ -254,7 +254,7 @@ class InputValidation():
             else:
                 return False
         elif 'GREATER_EQUAL' == handler:
-            if source_right['VALUE'] >= source_left['VALUE']:
+            if source_right['VALUE'] > source_left['VALUE']:
                 return True
             else:
                 return False
@@ -313,7 +313,6 @@ class InputValidation():
                 return False , None
         else:
             return False , None
-
 
     def ifnull_than(self,val):                          
         return "" if pd.isnull(val) else self.ignore_ascii(val)

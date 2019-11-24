@@ -80,7 +80,7 @@
     "CODE": "012",
     "MESSAGE": {
       "TH": "-",
-      "EN" : "Please specify only {0} in Operator2 or Value2 greater than or equal to Value1"
+      "EN" : "Please specify only {0} in Operator2 or Value2 greater than Value1"
     }
   },  
   "PROCESS_SUCCESS": {
