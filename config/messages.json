@@ -3,7 +3,7 @@
     "CODE": "001",
     "MESSAGE": {
       "TH": "-",
-      "EN": "NOT Blank {0}"
+      "EN": "Please define at least 1 {0} stub in decision table."
     }
   },
   "NOT_PK": {
@@ -17,14 +17,14 @@
     "CODE": "003",
     "MESSAGE": {
       "TH": "-",
-      "EN": "Please specify only {0} in {1}"
+      "EN" : "Please specify only {0} for each condition in condition entries (rules)."
     }
   },
   "LEAST_ONE": {
     "CODE": "004",
     "MESSAGE": {
       "TH": "-",
-      "EN": "Please enter at least 1 value in {0} stub."
+      "EN" : "Please define at least 1 preformed action {0} in action entries of the rule."
     }
   },
   "XOR_THAN1": {
@@ -81,6 +81,13 @@
     "MESSAGE": {
       "TH": "-",
       "EN" : "Please specify only {0} in Operator2 or Value2 greater than Value1"
+    }
+  },  
+  "OPER_CONTROL_IF": {
+    "CODE": "013",
+    "MESSAGE": {
+      "TH": "-",
+      "EN" : "If Value1 or Value2 are string, please specify operator as {0} only. "
     }
   },  
   "PROCESS_SUCCESS": {

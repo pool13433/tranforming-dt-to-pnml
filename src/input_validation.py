@@ -64,14 +64,15 @@ class InputValidation():
                 self.checkValueContains(raw=raw, messages=messages, key_name='ACTION',
                                         values=vals_action, rule_alias=_rule)  # ['X', pd.np.nan]
 
-                # check least one in rule cols
+                # row A Must have at least 1 X at least
                 self.checkLeastOneInRule(
                     raw=raw, messages=messages, config=config, key_name='RULE')
 
-                # check xor Can only have one value
+                # If there is the same variable as XOR, only T will be given under R.
                 self.checkXorCanOnlyHaveOneValue(
                     raw=raw, messages=messages, config=config)
 
+                #
                 self.checkConditionConstant(
                     raw=raw, messages=messages, config=config)
 
@@ -80,7 +81,7 @@ class InputValidation():
             else:
                 print('invalid input!!')
     
-    def checkConditionConstant(self, raw, messages, config):
+    def mapDataConstant(self,raw,config):
         #print('checkConditionConstant')
         groups = raw['V_GROUP']
         prefix_cond = config["CONDITION"]['ALIAS']
@@ -102,14 +103,6 @@ class InputValidation():
                 oper2 = self.ifnull_than(cond_vals[cols_ltl["OPER2"]])
                 value2 = self.ifnull_than(cond_vals[cols_ltl["VALUE2"]])
 
-                #print('var1::=='+str(var1))
-                #print('oper1::=='+str(oper1))
-                #print('value1::=='+str(value1))
-                #print('gate::=='+str(gate))
-                #print('var2::=='+str(var2))
-                #print('oper2::=='+str(oper2))
-                #print('value2::=='+str(value2))
-
                 data_dict = {
                     'LEFT' : {'VAR' : var1,'OPER' : oper1,'VALUE' : value1},
                     'GATE' : gate,
@@ -130,6 +123,12 @@ class InputValidation():
                         var1 : { cond_key:data_dict}
                     },**conditions)
 
+        return conditions
+
+    def checkConditionConstant(self, raw, messages, config):
+        
+        conditions = self.mapDataConstant(raw=raw,config=config)
+
         _messageValidate = messages['CONDITION_VALIDATE']        
         _messageValidateEN = _messageValidate['MESSAGE']['EN']
 
@@ -141,12 +140,20 @@ class InputValidation():
 
         _messageAllowElse = messages['OPER_ALLOWED_ELSE']
         _messageAllowElseEN = _messageAllowElse['MESSAGE']['EN']
-        
+
+        _messageControl = messages['OPER_CONTROL_IF']
+        _messageControlEN = _messageControl['MESSAGE']['EN']
+
+        opers_allow = config['OPER_ALLOW']['VALUES']
+        print('opers_allow::=='+json.dumps(opers_allow))
+        opers_if = opers_allow['NUMBER_IF']
+        opers_else = opers_allow['NUMBER_ELSE']
+        opers_str_if = opers_allow['STRING_IF']
         
         for dup_key in conditions:
             #print('\n|==dup_key::=='+str(dup_key))
             id_dict = conditions[dup_key]
-            #print(' ==|==id_dict::=='+json.dumps(id_dict))
+            print(' ==|==id_dict::=='+json.dumps(id_dict))
             for cond_key in sorted(id_dict):
                 _messageValidateENReplace = _messageValidateEN.replace('{0}', cond_key)                
                 cond_dict = id_dict[cond_key]
@@ -154,20 +161,19 @@ class InputValidation():
                 #print('==|==|==cond_dict::=='+json.dumps(cond_dict))
                 cond_left = cond_dict['LEFT']
                 cond_gate = cond_dict['GATE']
-                #print('\ncond_key::=='+json.dumps(cond_key))
+                
                 if 'RIGHT' in cond_dict:     
-                    cond_right = cond_dict['RIGHT']  
                     is_numberic = self.is_numberic_handler(source_cond=cond_dict,
-                                                            handler="IS_NUMBERIC")                    
-                    print('\n|-->condition::=='+json.dumps(cond_dict))
-                    print('|--|-->is_numberic::=='+str(is_numberic))
+                                                            handler="IS_NUMBERIC") 
+                    #self.eval_logic(source_cond=cond_dict)
+                    cond_right = cond_dict['RIGHT']                                        
+                    #print('\n|-->condition::=='+json.dumps(cond_dict))
+                    #print('|--|-->is_numberic::=='+str(is_numberic))
                     if is_numberic:                         
-                        if ('AND' == str(cond_gate).upper()):
-                            opers_allow = config['OPER_ALLOW']['VALUES']
-                            opers_if = opers_allow['IF']
-                            opers_else = opers_allow['ELSE']                       
-                            #Please specify only '=', '>' or '<' in Operator1.
-                            print('cond_left[\'OPER\']::=='+str(self.ignore_ascii(cond_left['OPER'])))
+                        if str(cond_gate).upper() in ["AND","OR"]:                            
+                            # Please specify only '=', '>' or '<' in Operator1.
+                            # oper left not  ("=",">",">=")
+                            #print('cond_left[\'OPER\']::=='+str(self.ignore_ascii(cond_left['OPER'])))
                             if self.ignore_ascii(cond_left['OPER']) not in opers_if:                        
                                 self.validtors.append({
                                     'code': _messageAllowIf['CODE'],
@@ -176,11 +182,13 @@ class InputValidation():
                                 }) 
                             else:          
                                 # Please specify only {0} in Operator2 or Value2 greater than or equal to Value1
+                                # oper left not relation oper right
+                                ''' "=" : ["<","<="],
+                                ">" : ["=","<","<="],
+                                ">=" : ["=","<","<="]   '''
                                 is_operallowed = self.is_oper_allowed(source_cond=cond_dict,
-                                                                        opers=opers_else)                                
-                                is_greater_equal = self.is_numberic_handler(source_cond=cond_dict,
-                                                                                handler="GREATER_EQUAL")
-                                if (is_operallowed is False ) or (is_greater_equal is False): 
+                                                                        opers=opers_else)                                   
+                                if (is_operallowed is False ): 
                                     _messageOpers = ' or '.join(opers_else[cond_left['OPER']])                       
                                     self.validtors.append({
                                         'code': _messageAllowElse['CODE'],
@@ -196,21 +204,56 @@ class InputValidation():
                                         },
                                         'message': _messageAllowElseEN.replace('{0}', _messageOpers)
                                     })  
+                                
+                                # value right > value left
+                                is_greater_equal = self.is_numberic_handler(source_cond=cond_dict,
+                                                                                handler="GREATER_EQUAL")
+                                print('is_greater_equal::=='+str(is_greater_equal))
+                                if (is_greater_equal is False):
+                                    _messageOpers = ' or '.join(opers_else[cond_left['OPER']])    
+                                    value_right = self.ignore_ascii(cond_right['VALUE'])
+                                    value_left = self.ignore_ascii(cond_left['VALUE'])
+                                    self.validtors.append({
+                                        'code': _messageAllowElse['CODE'],
+                                        'row': self.ignore_ascii(cond_key),
+                                        'value' : {       
+                                            'actual': {
+                                                'left' : value_left,
+                                                'right' : value_right,
+                                            },
+                                            'expected': {
+                                                'greater' :  value_right+' > '+value_left
+                                            }
+                                        },
+                                        'message': _messageAllowElseEN.replace('{0}', _messageOpers)
+                                    })  
+
                     else:
-                        # Please specify only {0} in Operator2 or Value2 greater than or equal to Value1
-                        is_same,same_key = self.is_same_condition1_and_2(
-                                cond_groups=id_dict,
-                                source_cond=cond_dict,soure_key=cond_key)  
-                        #print('is_same::=='+str(is_same))
-                        #print('same_key::=='+str(same_key))
-                        if is_same == True and (same_key is not None):
-                            _messageValidateAndENReplace = _messageValidateAndEN.replace('{0}', cond_key)
+                        is_oper = self.is_oper_control(source_cond=cond_dict,
+                                                    opers=opers_str_if)
+                        # If Value1 or Value2 are string, please specify operator as '=' or '<>' only. 
+                        if is_oper == False:
                             self.validtors.append({
-                                'code': _messageValidateAnd['CODE'],
+                                'code': _messageControl['CODE'],
                                 'row': self.ignore_ascii(cond_key),
-                                'message': _messageValidateAndENReplace.replace('{1}', same_key)
-                            })     
-                else:               
+                                'message': _messageControlEN.replace('{0}'," , ".join(opers_str_if))
+                            })                        
+                        else:
+                            # Please specify only {0} in Operator2 or Value2 greater than or equal to Value1
+                            is_same,same_key = self.is_same_condition1_and_2(
+                                    cond_groups=id_dict,
+                                    source_cond=cond_dict,soure_key=cond_key)  
+                            #print('is_same::=='+str(is_same))
+                            #print('same_key::=='+str(same_key))
+                            if is_same == True and (same_key is not None):
+                                _messageValidateAndENReplace = _messageValidateAndEN.replace('{0}', cond_key)
+                                self.validtors.append({
+                                    'code': _messageValidateAnd['CODE'],
+                                    'row': self.ignore_ascii(cond_key),
+                                    'message': _messageValidateAndENReplace.replace('{1}', same_key)
+                                })     
+                else:                         
+                    # condition left only
                     is_same,same_key = self.is_same_condition1(
                                 cond_groups=id_dict,
                                 source_cond=cond_dict,soure_key=cond_key)
@@ -218,11 +261,32 @@ class InputValidation():
                     if is_same == True:
                         self.validtors.append({
                             'code': _messageValidate['CODE'],
-                            'row': self.ignore_ascii(cond_key),
+                            'row': self.ignore_ascii(same_key),
                             'message': _messageValidateENReplace
                         })                        
 
-        #print('conditions::=='+json.dumps(conditions))
+    def eval_logic(self,source_cond):
+        print('source_cond::=='+json.dumps(source_cond))
+        source_left = source_cond['LEFT']
+        source_gate = source_cond['GATE']
+        source_right = source_cond['RIGHT']
+        # left
+        left_var = source_left['VAR']
+        left_oper = source_left['OPER']
+        left_value = source_left['VALUE']
+        #right
+        right_var = source_right['VAR']
+        right_oper = source_right['OPER']
+        right_value = source_right['VALUE']
+        var = 0
+        exec('left_var '+left_oper+' left_value ')        
+        print('left_var::=='+str(left_var))
+
+        _bool = eval('left_var '+right_oper+' right_value')
+        print('_bool::=='+str(_bool))
+        '''print('left_result::='+str(left_result))
+        right_result = eval('x right_oper right_value ')
+        print('right_result::='+str(right_result))'''
                 
     def is_same_condition1(self,cond_groups,source_cond,soure_key):        
         
@@ -244,20 +308,25 @@ class InputValidation():
         return False , None    
 
     def is_numberic_handler(self,source_cond,handler):
-        #print('source_cond::=='+json.dumps(source_cond))
+        #print('is_numberic_handler  source_cond::=='+json.dumps(source_cond))
+        bool_right = True
         source_left = source_cond['LEFT']
-        source_gate = source_cond['GATE']
-        source_right = source_cond['RIGHT']
+        source_gate = source_cond['GATE']   
+        if 'RIGHT' in source_cond:
+            source_right = source_cond['RIGHT']
+            if 'GREATER_EQUAL' == handler:
+                if int(source_right['VALUE']) > int(source_left['VALUE']):
+                    return True
+                else:
+                    return False
+            else:
+                bool_right = str(source_right['VALUE']).isdigit()
+
         if 'IS_NUMBERIC' == handler:
-            if str(source_right['VALUE']).isdigit() and str(source_right['VALUE']).isdigit():
+            if str(source_left['VALUE']).isdigit() and bool_right:
                 return True
             else:
-                return False
-        elif 'GREATER_EQUAL' == handler:
-            if source_right['VALUE'] > source_left['VALUE']:
-                return True
-            else:
-                return False
+                return False            
         else:
             return False            
 
@@ -267,13 +336,29 @@ class InputValidation():
         else:
             return str.encode('ascii', 'ignore')
 
+    def is_oper_control(self,source_cond,opers):
+        is_right_in = True
+        source_left = source_cond['LEFT']
+        source_gate = source_cond['GATE']
+        if 'RIGHT' in source_cond:
+            source_right = source_cond['RIGHT']
+            is_right_in = (source_right['OPER'] in opers)
+
+        if (source_left['OPER'] in opers) and is_right_in:
+            return True
+        else:
+            return False
+
     def is_oper_allowed(self,source_cond,opers):        
         source_left = source_cond['LEFT']
         source_gate = source_cond['GATE']
         source_right = source_cond['RIGHT']
         oper = opers[source_left['OPER']]
-        #print('oper::=='+str(oper))
-        if source_right['OPER'] in oper:
+        oper_ascii = map(lambda x: self.ignore_ascii(x),oper)
+        print('oper::=='+str(oper))
+        print('oper_ascii::=='+str(oper_ascii))
+        print('source_right[\'OPER\']::=='+json.dumps(source_right['OPER']))
+        if source_right['OPER'] in oper_ascii:
             return True
         else:
             return False
@@ -290,27 +375,19 @@ class InputValidation():
         same_value = source_right['VALUE'] == source_left['VALUE']
         same_var = source_right['VAR'] == source_left['VAR']
 
-        #print('opers ::=='+str((source_right['OPER'] in opers)))
-        #print('same_var::=='+str(same_var))
-        #print('same_oper::=='+str(same_oper))
-        #print('same_value::=='+str(same_value))
-        #print('cond_groups::=='+json.dumps(cond_groups))
-        #print('len(cond_groups)::=='+str(len(cond_groups)))
-        if len(cond_groups) > 1:
-            is_same_group,same_group_key = self.is_same_condition1(
-                                cond_groups=cond_groups,
-                                source_cond=source_cond,soure_key=soure_key)
-        else:
-            is_same_group,same_group_key = True , soure_key
-
-        #print('same_group_key::=='+str(same_group_key))
         if 'AND' == str(source_gate).upper():      
             is_same_gate = (same_var and (same_oper_right or same_oper_left) and same_value)
             #print('is_same_gate::=='+str(is_same_gate))
-            if is_same_gate or is_same_group:                
-                return True , same_group_key
+            if is_same_gate:
+                return True , soure_key
             else:
-                return False , None
+                if len(cond_groups) > 1:
+                    return self.is_same_condition1(
+                                cond_groups=cond_groups,
+                                source_cond=source_cond,soure_key=soure_key)
+                    #return is_same_group , same_group_key
+                else:    
+                    return False , None
         else:
             return False , None
 
@@ -536,12 +613,21 @@ class InputValidation():
 
 
 def main():
-    validate = InputValidation(root_path="D:/NickWork/tina-transform")
-    validate.runValidateInput(
-        xls_filename="D:/NickWork/tina-transform/inputs/TestData1 (1).xlsx")
-    validators = validate.getValidtors()
-    print('validators ::=='+json.dumps(validators, indent=1))
+    path_xls = "D:/NickWork/tina-transform"
+    path_walk = path_xls+"/inputs/testcase/"
+    path, dirs, files = next(os.walk(path_walk))    
+    len_files = len(files)
+    print('len_files::=='+str(len_files))
+    validate = InputValidation(root_path=path_xls)
+    for x in range(len_files):
+        filename = path_walk+"/"+files[x]
+        print('\n|-->filename::=='+filename)
+        validate.runValidateInput(xls_filename=filename)
+        validators = validate.getValidtors()
+        print('|--|-->validators ::=='+json.dumps(validators, indent=1))
+        print('|--|--|--> status::=='+('PASS' if len(validators) == 0 else 'FAIL'))        
 
+    #print('eval ::=='+str(eval('1000 > 500')))
 
 if __name__ == "__main__":
     print('validate')

@@ -1,4 +1,8 @@
 {
+  "OUTPUT_FILENAME":{
+    "ALIAS": "OUTPUT FILE NAME",
+    "VALUE": "LTL_YYYYMMDD_HHMMSS"
+  },
   "CONDITION": {
     "ALIAS": "C",
     "VALUES": [
@@ -74,12 +78,13 @@
   "OPER_ALLOW" : {
     "ALIAS" : "OPERATION ALLOW In Conidtion",
     "VALUES" : {
-        "IF" : ["=",">",">="],
-        "ELSE" : {
+        "NUMBER_IF" : ["=",">",">="],
+        "NUMBER_ELSE" : {
           "=" : ["<","<="],
           ">" : ["=","<","<="],
           ">=" : ["=","<","<="]        
-        }
+        },
+        "STRING_IF" : ["=","<>"]
     }
   }
 }
