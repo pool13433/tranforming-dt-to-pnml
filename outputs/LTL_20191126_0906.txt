@@ -1,0 +1,4 @@
+--Verify R1 : Specify Token in C11
+--LTL
+<>R1;
+<>A1;

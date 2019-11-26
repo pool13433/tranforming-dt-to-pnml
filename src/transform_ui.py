@@ -280,17 +280,15 @@ class TransformationUI(Frame):
 				dialog.showerror('Validate Input File Invalid', 'Input File Parameters Invalid!')
 			else:
 				# handle output file
-				now = datetime.now()  # current date and time
-				date_time = now.strftime("%Y%m%d_%H%M")
 				dirFullPathPmnl = os.path.dirname(os.path.abspath(fullPathExcell))
-				fillpathPnml = './outputs/LTL_' + str(date_time) + '.pnml'
+				fillpathPnml = './outputs/'
 				print('fillpathPnml::==' + str(fillpathPnml))
 
 				logic = TransformationLogic(root_path='.')
-				logic.draw_decision_rawdata(fullPathExcell, fillpathPnml)
+				pnml_filename,txt_filename = logic.draw_decision_rawdata(fullPathExcell, fillpathPnml)
 				# self.setLabelProcessFinished('Program Process Business Logic Successfully.')
 				self.setLabelProcessFinished(validate.get_message('PROCESS_SUCCESS'))
-				self.setTxtbFileOut(fillpathPnml.replace("\\", "/"))
+				self.setTxtbFileOut(pnml_filename.replace("\\", "/"))
 
 				dialog.showinfo('Transform xls to pnml successfully.', 'Transform xls to pnml successfully.')
 				self.appendTxtbConsole('Transform xls to pnml successfully.')

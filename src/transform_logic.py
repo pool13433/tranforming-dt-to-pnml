@@ -7,6 +7,7 @@ import collections
 import copy
 
 from datetime import date
+from datetime import datetime
 from xml.etree.ElementTree import Element, SubElement, tostring, XML
 from xml.dom import minidom
 from collections import OrderedDict
@@ -877,16 +878,24 @@ class TransformationLogic():
 
 		xmlstr = minidom.parseString(tostring(pnml)).toprettyxml(
 			encoding="UTF-8", indent="    ")
-		with open(pnmlpath, "w") as f:  # './tina-result.pnml'
+
+		timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+		pnml_filename = pnmlpath+'PN_' + str(timestamp) + '.pnml'
+		txt_filename = pnmlpath+'LTL_' + str(timestamp) + '.txt'
+		print('pnml_filename::=='+str(pnml_filename))
+		print('txt_filename::=='+str(txt_filename))
+		
+		with open(pnml_filename, "w") as f:  # './tina-result.pnml'
 			f.write(xmlstr)
 
 		try:
 			writer = TransformWriter();
 			writer.build_document(store=store)
-			writer.write_document(pnmlpath.replace('.pnml','.txt'))
+			writer.write_document(txt_filename)
 			print('write text file successfully.')
 		except:
 			raise Exception("cannot wrtie text file !!")
+		return pnml_filename,txt_filename
 
 def main():
 	path = 'D:/NickWork/tina-transform'
