@@ -1,8 +1,0 @@
-
-
-source 3trains.tpn
-source controler.tpn
-source barrier.tpn
-sync 3
-
-
